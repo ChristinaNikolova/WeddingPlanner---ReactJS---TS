@@ -1,9 +1,11 @@
 import mongoose from "mongoose";
 import global from "../utils/constants/global";
 
+const { important } = global;
+
 export default async function connectDB(): Promise<void> {
   try {
-    await mongoose.connect(global.important.CONNECTION_STRING, {
+    await mongoose.connect(important.CONNECTION_STRING, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     } as mongoose.ConnectOptions);

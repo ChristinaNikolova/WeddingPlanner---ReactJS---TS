@@ -1,5 +1,7 @@
 import global from "./constants/global";
 
+const { errors } = global;
+
 // TODO ADD Type Guard, interface
 function mapErrors(err: any) {
   if (Array.isArray(err)) {
@@ -10,5 +12,5 @@ function mapErrors(err: any) {
     return [{ msg: err.message }];
   }
 
-  return [{ msg: global.errors.REQUEST }];
+  return [{ msg: errors.REQUEST }];
 }
