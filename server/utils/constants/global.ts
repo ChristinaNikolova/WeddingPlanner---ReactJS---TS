@@ -1,9 +1,26 @@
 const important = {
-  CONNECTION_STRING: "mongodb://localhost:27017/weddingplanner-ts",
-  SECRET: "my-very-very-secret",
+  CONNECTION_STRING: "mongodb://localhost:27017/weddingplanner",
+  SECRET: "my-very-secret",
 };
 
-// TODO CHECK IF NUMBER
+const category = {
+  DEFAULT_CATEGORY_SELECTED_ID: "638325c6bdd58333840dcc7e",
+};
+
+const pagination = {
+  ARTICLES_PER_PAGE: 3,
+};
+
+const emails = {
+  ADMIN: "admin@weddingplanner.com",
+};
+
+const messages = {
+  REST_STARTED: "REST service started",
+  REST_OPERATED: "REST service operational",
+  DATABASE_CONNECTED: "Database connected",
+};
+
 const errors = {
   REQUEST: "Request error",
   INVALID_URL: "Invalid url",
@@ -22,9 +39,14 @@ const errors = {
   TOKEN_INVALID: "Invalid authorization token",
   DATABASE: "Database error",
   DATABASE_CONNECTION: "Error connecting to database",
+  DATABASE_UNKNOWN_ERROR: "Unknown error during database connection.",
 };
 
 export default {
   important,
+  category,
+  pagination,
+  emails,
+  messages,
   errors,
 };
