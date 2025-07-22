@@ -7,6 +7,6 @@ const tokenBlacklistSchema = new Schema({
   },
 });
 
-const TokenBlacklist = model("TokenBlacklist", tokenBlacklistSchema);
+const TokenBlacklistModel = model("TokenBlacklist", tokenBlacklistSchema);
 
-export default TokenBlacklist;
+export default TokenBlacklistModel;

@@ -1,6 +1,6 @@
 import { ObjectId } from "./ObjectId";
 
 export interface BaseEntity {
-  id: ObjectId;
+  _id: ObjectId;
   createdAt?: Date;
 }
