@@ -7,6 +7,7 @@ import UserModel from "../models/User";
 import TokenBlacklistModel from "../models/TokenBlacklist";
 import global from "../utils/constants/global";
 
+// TODO Do I need interface User?
 const { errors, important } = global;
 
 async function register(
