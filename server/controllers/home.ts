@@ -5,7 +5,6 @@ const router = Router();
 const { messages } = global;
 
 router.get("/", (req: Request, res: Response) => {
-  console.log("Home");
   res.json({ message: messages.REST_OPERATED });
 });
 
