@@ -1,33 +1,49 @@
+import { ErrorWithMessage } from "../interfaces/ErrorWithMessage";
+import { ValidationError } from "../interfaces/ValidationError";
 import global from "./constants/global";
 
 const { errors } = global;
 
-function mapErrors(err: unknown) {
+// todo extract interface
+interface ErrorResponse {
+  msg: string;
+}
+
+function mapErrors(err: unknown): ErrorResponse[] {
   if (Array.isArray(err)) {
     return err;
   }
 
-  if (
-    err != undefined &&
-    typeof err === "object" &&
-    "name" in err &&
-    err.name === "ValidationError"
-  ) {
-    return Object.values((err as any).errors).map((e: any) => ({
+  if (isValidationError(err)) {
+    return Object.values((err as ValidationError).errors).map((e) => ({
       msg: e.message,
     }));
   }
 
-  if (
-    err != undefined &&
-    typeof err === "object" &&
-    "message" in err &&
-    typeof err.message == "string"
-  ) {
+  if (isErrorWithMessage(err)) {
     return [{ msg: err.message }];
   }
 
   return [{ msg: errors.REQUEST }];
+}
+
+function isValidationError(err: unknown): err is ValidationError {
+  return (
+    err != undefined &&
+    typeof err === "object" &&
+    "name" in err &&
+    err.name === "ValidationError" &&
+    "errors" in err
+  );
+}
+
+function isErrorWithMessage(err: unknown): err is ErrorWithMessage {
+  return (
+    err != undefined &&
+    typeof err === "object" &&
+    "message" in err &&
+    typeof err.message === "string"
+  );
 }
 
 function formatCreatedAt(createdAt: Date): string {
@@ -36,7 +52,7 @@ function formatCreatedAt(createdAt: Date): string {
     "/" +
     (createdAt.getMonth() + 1) +
     "/" +
-    createdAt.getFullYear().toString().substr(-2)
+    createdAt.getFullYear().toString().slice(-2)
   );
 }
 
@@ -47,6 +63,7 @@ function extractTimeFromDate(date: Date): string {
   return time;
 }
 
+// todo check if two elements
 function getTotalMinutes(duration: string): number {
   const [hours, minutes] = duration.split(":");
   const result = Number(hours) * 60 + Number(minutes);
