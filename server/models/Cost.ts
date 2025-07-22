@@ -29,6 +29,6 @@ const costSchema = new Schema({
   },
 });
 
-const Cost = model("Cost", costSchema);
+const CostModel = model("Cost", costSchema);
 
-export default Cost;
+export default CostModel;

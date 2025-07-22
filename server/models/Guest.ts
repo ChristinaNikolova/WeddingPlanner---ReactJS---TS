@@ -75,6 +75,6 @@ const guestSchema = new Schema({
   },
 });
 
-const Guest = model("Guest", guestSchema);
+const GuestModel = model("Guest", guestSchema);
 
-export default Guest;
+export default GuestModel;

@@ -66,6 +66,6 @@ articleSchema.index(
   }
 );
 
-const Article = model("Article", articleSchema);
+const ArticleModel = model("Article", articleSchema);
 
-export default Article;
+export default ArticleModel;

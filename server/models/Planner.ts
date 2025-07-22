@@ -89,6 +89,6 @@ const plannerSchema = new Schema(
   }
 );
 
-const Planner = model("Planner", plannerSchema);
+const PlannerModel = model("Planner", plannerSchema);
 
-export default Planner;
+export default PlannerModel;

@@ -34,6 +34,6 @@ categorySchema.index(
   }
 );
 
-const Category = model("Category", categorySchema);
+const CategoryModel = model("Category", categorySchema);
 
-export default Category;
+export default CategoryModel;

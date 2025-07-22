@@ -50,6 +50,6 @@ userSchema.index(
   }
 );
 
-const User = model("User", userSchema);
+const UserModel = model("User", userSchema);
 
-export default User;
+export default UserModel;

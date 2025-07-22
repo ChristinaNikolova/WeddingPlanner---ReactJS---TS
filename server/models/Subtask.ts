@@ -27,6 +27,6 @@ const subtaskSchema = new Schema(
   }
 );
 
-const Subtask = model("Subtask", subtaskSchema);
+const SubtaskModel = model("Subtask", subtaskSchema);
 
-export default Subtask;
+export default SubtaskModel;
