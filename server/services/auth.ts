@@ -2,7 +2,7 @@ import { hash, compare } from "bcrypt";
 import jwt from "jsonwebtoken";
 import { AuthResponse } from "../interfaces/AuthResponse";
 import { TokenPayload } from "../interfaces/TokenPayload";
-import { UserDocument } from "../interfaces/UserDocument";
+import { UserDocument } from "../interfaces/dbmodels/UserDocument";
 import UserModel from "../models/User";
 import TokenBlacklistModel from "../models/TokenBlacklist";
 import global from "../utils/constants/global";
