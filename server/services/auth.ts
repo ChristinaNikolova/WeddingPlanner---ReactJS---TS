@@ -75,14 +75,19 @@ function createToken(user: UserDocument): AuthResponse {
 }
 
 async function parseToken(token: string): Promise<TokenPayload> {
-  const result = await TokenBlacklistModel.find({ token: token });
+  let cleanToken = token;
+  if (token[0] === '"' && token[token.length - 1] === '"') {
+    cleanToken = token.replace(/^"(.*)"$/, "$1");
+  }
 
-  if (result) {
+  const result = await TokenBlacklistModel.find({ token: cleanToken });
+
+  if (result.length) {
     throw new Error(errors.TOKEN_EXIST);
   }
 
   try {
-    const decoded = jwt.verify(token, important.SECRET) as TokenPayload;
+    const decoded = jwt.verify(cleanToken, important.SECRET) as TokenPayload;
     return decoded;
   } catch (error) {
     throw new Error(errors.TOKEN_INVALID);
