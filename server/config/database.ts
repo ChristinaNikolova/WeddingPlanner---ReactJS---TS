@@ -22,10 +22,7 @@ const { messages, important, errors } = global;
 export default async function connectDB(): Promise<void> {
   try {
     await loadModels();
-    await mongoose.connect(important.CONNECTION_STRING, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    } as mongoose.ConnectOptions);
+    await mongoose.connect(important.CONNECTION_STRING);
 
     console.log(messages.DATABASE_CONNECTED);
 
