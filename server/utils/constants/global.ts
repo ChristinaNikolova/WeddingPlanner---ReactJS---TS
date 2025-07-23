@@ -40,6 +40,8 @@ const errors = {
   DATABASE: "Database error",
   DATABASE_CONNECTION: "Error connecting to database",
   DATABASE_UNKNOWN_ERROR: "Unknown error during database connection.",
+  AUTH_HEADER_MISSING: "Authorization header missing",
+  INVALOD_AUTH_FORMAT: "Invalid authorization format",
 };
 
 export default {

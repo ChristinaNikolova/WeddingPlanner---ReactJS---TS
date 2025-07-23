@@ -71,13 +71,13 @@ router.get(
     try {
       const authHeader = req.headers["x-authorization"];
       if (!authHeader || typeof authHeader !== "string") {
-        // тодо адд еррорс ин глобал
-        throw new Error("Authorization header missing");
+        // TODO interfaces for the request
+        throw new Error(globalErrors.AUTH_HEADER_MISSING);
       }
 
       const token = authHeader.split(" ")[1];
       if (!token) {
-        throw new Error("Invalid authorization format");
+        throw new Error(globalErrors.INVALOD_AUTH_FORMAT);
       }
 
       await logout(token);
