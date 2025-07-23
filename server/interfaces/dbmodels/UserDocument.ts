@@ -1,7 +1,6 @@
-import { Document, Types } from "mongoose";
+import { BaseEntry } from "../BaseEntry";
 
-export interface UserDocument extends Document {
-  _id: Types.ObjectId;
+export interface UserDocument extends BaseEntry {
   firstName: string;
   lastName: string;
   email: string;

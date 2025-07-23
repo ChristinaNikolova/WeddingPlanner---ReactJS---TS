@@ -29,6 +29,7 @@ const errors = {
     return `Password should be between ${min} and ${max} characters long`;
   },
   SELECT_CATEGORY: "Please select category",
+  CATEGORY_NOT_FOUND: "Category not found",
   NAME_TAKEN: "Name is already taken",
   TITEL_TAKEN: "Title is already taken",
   EMAIL_TAKEN: "Email is already taken",

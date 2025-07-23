@@ -41,7 +41,7 @@ async function update(
   const category = await getById(id);
 
   if (!category) {
-    throw new Error("Category not found");
+    throw new Error(errors.CATEGORY_NOT_FOUND);
   }
 
   if (category.name.toLowerCase() !== name.toLowerCase()) {

@@ -1,7 +1,6 @@
-import { Document, Types } from "mongoose";
+import { BaseEntry } from "../BaseEntry";
 
-export interface CategoryDocument extends Document {
-  _id: Types.ObjectId;
+export interface CategoryDocument extends BaseEntry {
   name: string;
   image: string;
 }
