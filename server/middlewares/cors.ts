@@ -13,7 +13,6 @@ const cors = () => (req: Request, res: Response, next: NextFunction) => {
   );
 
   if (req.method === "OPTIONS") {
-    console.log("Handling OPTIONS preflight request");
     res.status(200).end();
     return;
   }
