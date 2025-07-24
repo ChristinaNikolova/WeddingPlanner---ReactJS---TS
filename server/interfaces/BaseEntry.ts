@@ -1,8 +1,8 @@
 import { Document } from "mongoose";
-import { ObjectId } from "./ObjectId";
+import { InputObjectId } from "./InputObjectId";
 
 export interface BaseEntry extends Document {
-  _id: ObjectId;
+  _id: InputObjectId;
   createdAt?: Date;
   updatedAt?: Date;
 }

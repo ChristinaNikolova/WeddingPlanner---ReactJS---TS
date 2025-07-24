@@ -1,5 +1,5 @@
 import { BaseEntry } from "../BaseEntry";
-import { ObjectId } from "../ObjectId";
+import { InputObjectId } from "../InputObjectId";
 import { CategoryDocument } from "./CategoryDocument";
 
 export interface ArticleDocument extends BaseEntry {
@@ -7,6 +7,6 @@ export interface ArticleDocument extends BaseEntry {
   content: string;
   image: string;
   jumboImage: string;
-  category: ObjectId | CategoryDocument;
-  likes: ObjectId[];
+  category: InputObjectId | CategoryDocument;
+  likes: InputObjectId[];
 }
