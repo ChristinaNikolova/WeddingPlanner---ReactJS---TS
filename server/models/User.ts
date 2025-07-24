@@ -1,4 +1,5 @@
 import { Schema, model } from "mongoose";
+import { UserDocument } from "../interfaces/dbmodels/UserDocument";
 import modelConstants from "../utils/constants/model";
 
 const { user } = modelConstants;
@@ -50,6 +51,6 @@ userSchema.index(
   }
 );
 
-const UserModel = model("User", userSchema);
+const UserModel = model<UserDocument>("User", userSchema);
 
 export default UserModel;

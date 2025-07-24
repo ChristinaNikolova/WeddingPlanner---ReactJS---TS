@@ -1,7 +1,8 @@
 import CategoryModel from "../models/Category";
-import global from "../utils/constants/global";
 import { CategoryDocument } from "../interfaces/dbmodels/CategoryDocument";
 import { CategoryViewModel } from "../interfaces/viewmodels/CategoryViewModel";
+import { InputObjectId } from "../interfaces/InputObjectId";
+import global from "../utils/constants/global";
 import category from "../utils/mapper/category";
 
 const { errors } = global;
@@ -29,7 +30,7 @@ async function all(): Promise<CategoryViewModel[]> {
   );
 }
 
-async function deleteById(id: string): Promise<void | null> {
+async function deleteById(id: InputObjectId): Promise<void | null> {
   return CategoryModel.findByIdAndDelete(id);
 }
 
@@ -60,7 +61,7 @@ async function update(
   return category;
 }
 
-async function getById(id: string): Promise<CategoryDocument | null> {
+async function getById(id: InputObjectId): Promise<CategoryDocument | null> {
   return CategoryModel.findById(id);
 }
 

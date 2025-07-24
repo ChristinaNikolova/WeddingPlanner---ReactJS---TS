@@ -1,4 +1,5 @@
 import { Schema, model } from "mongoose";
+import { CategoryDocument } from "../interfaces/dbmodels/CategoryDocument";
 import modelConstants from "../utils/constants/model";
 
 const { category } = modelConstants;
@@ -34,6 +35,6 @@ categorySchema.index(
   }
 );
 
-const CategoryModel = model("Category", categorySchema);
+const CategoryModel = model<CategoryDocument>("Category", categorySchema);
 
 export default CategoryModel;
