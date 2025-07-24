@@ -1,12 +1,11 @@
-import { Types } from "mongoose";
 import { ArticleDocument } from "../interfaces/dbmodels/ArticleDocument";
-import { ArticleDetailsViewModel } from "../interfaces/viewmodels/ArticleDetailsViewModel";
-import { ArticleListViewModel } from "../interfaces/viewmodels/ArticleListViewModel";
+import { InputObjectId } from "../interfaces/InputObjectId";
 import ArticleModel from "../models/Article";
+import { ArticleListViewModel } from "../interfaces/viewmodels/ArticleListViewModel";
+import { ArticleDetailsViewModel } from "../interfaces/viewmodels/ArticleDetailsViewModel";
 import article from "../utils/mapper/article";
 import global from "../utils/constants/global";
 
-const { ObjectId } = Types;
 const { articleListViewModel, articleDetailsViewModel } = article;
 const { errors } = global;
 
@@ -15,7 +14,7 @@ async function create(
   content: string,
   image: string,
   jumboImage: string,
-  category: string
+  category: InputObjectId
 ): Promise<ArticleDocument> {
   let article = await getByTitle(title);
 
@@ -37,18 +36,14 @@ async function create(
 }
 
 async function update(
-  id: string,
+  id: InputObjectId,
   title: string,
   content: string,
   image: string,
   jumboImage: string,
-  category: string
+  category: InputObjectId
 ): Promise<ArticleDocument> {
   const article = (await getById(id, false)) as ArticleDocument;
-
-  if (!article) {
-    throw new Error("No article");
-  }
 
   if (article.title.toLowerCase() !== title.toLowerCase()) {
     const result = await getByTitle(title);
@@ -72,12 +67,12 @@ async function update(
 async function all(
   take: number,
   skip: number,
-  selectedCategory: string,
+  selectedCategory: InputObjectId,
   searchedQuery: string
 ): Promise<ArticleListViewModel[]> {
   return (
     await ArticleModel.find(
-      selectedCategory ? { category: new ObjectId(selectedCategory) } : {}
+      selectedCategory ? { category: selectedCategory } : {}
     )
       .find(
         searchedQuery ? { title: { $regex: searchedQuery, $options: "i" } } : {}
@@ -90,12 +85,12 @@ async function all(
 }
 
 async function getTotalCount(
-  selectedCategory: string,
+  selectedCategory: InputObjectId,
   searchedQuery: string
 ): Promise<number> {
   return (
     await ArticleModel.find(
-      selectedCategory ? { category: new ObjectId(selectedCategory) } : {}
+      selectedCategory ? { category: selectedCategory } : {}
     ).find(
       searchedQuery ? { title: { $regex: searchedQuery, $options: "i" } } : {}
     )
@@ -103,22 +98,29 @@ async function getTotalCount(
 }
 
 async function getById(
-  id: string,
+  id: InputObjectId,
   hasToCast: boolean
-): Promise<ArticleDetailsViewModel | ArticleDocument | null> {
+): Promise<ArticleDetailsViewModel | ArticleDocument> {
   const article = await ArticleModel.findById(id).populate(
     "category",
     "name image"
   );
 
+  if (!article) {
+    throw new Error(errors.ARTICLE_NOT_FOUND);
+  }
+
   return hasToCast ? articleDetailsViewModel(article) : article;
 }
 
-async function like(id: string, userId: string): Promise<void> {
+async function like(
+  id: InputObjectId,
+  userId: InputObjectId
+): Promise<ArticleDocument> {
   const article = await ArticleModel.findById(id);
 
   if (!article) {
-    throw new Error("No article");
+    throw new Error(errors.ARTICLE_NOT_FOUND);
   }
 
   if (article.likes.includes(userId)) {
@@ -132,13 +134,13 @@ async function like(id: string, userId: string): Promise<void> {
 }
 
 async function getByTitle(title: string): Promise<ArticleDocument | null> {
-  return (await ArticleModel.findOne({ title }).collation({
+  return await ArticleModel.findOne({ title }).collation({
     locale: "en",
     strength: 2,
-  })) as ArticleDocument | null;
+  });
 }
 
-async function deleteById(id: string): Promise<void | null> {
+async function deleteById(id: InputObjectId): Promise<void | null> {
   return ArticleModel.findByIdAndDelete(id);
 }
 

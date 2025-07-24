@@ -1,4 +1,5 @@
 import { Schema, model, Types } from "mongoose";
+import { ArticleDocument } from "../interfaces/dbmodels/ArticleDocument";
 import modelConstants from "../utils/constants/model";
 
 const { ObjectId } = Types;
@@ -66,6 +67,6 @@ articleSchema.index(
   }
 );
 
-const ArticleModel = model("Article", articleSchema);
+const ArticleModel = model<ArticleDocument>("Article", articleSchema);
 
 export default ArticleModel;

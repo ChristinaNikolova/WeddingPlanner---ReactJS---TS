@@ -1,6 +1,7 @@
 import { ArticleDocument } from "../../interfaces/dbmodels/ArticleDocument";
-import { ArticleDetailsViewModel } from "../../interfaces/viewmodels/ArticleDetailsViewModel";
+import { CategoryDocument } from "../../interfaces/dbmodels/CategoryDocument";
 import { ArticleListViewModel } from "../../interfaces/viewmodels/ArticleListViewModel";
+import { ArticleDetailsViewModel } from "../../interfaces/viewmodels/ArticleDetailsViewModel";
 import category from "./category";
 import parser from "../parser";
 
@@ -13,7 +14,7 @@ function articleListViewModel(article: ArticleDocument): ArticleListViewModel {
     title: article.title,
     shortContent: article.content.slice(0, 200) + "...",
     image: article.image,
-    category: categoryNameViewModel(article.category),
+    category: categoryNameViewModel(article.category as CategoryDocument),
     createdAt: formatCreatedAt(article.createdAt),
   };
 }
@@ -32,7 +33,7 @@ function articleDetailsViewModel(
     jumboImage: article.jumboImage,
     likesCount: article.likes.length,
     likes: article.likes,
-    category: categoryViewModel(article.category),
+    category: categoryViewModel(article.category as CategoryDocument),
     createdAt: formatCreatedAt(article.createdAt),
   };
 }

@@ -30,6 +30,7 @@ const errors = {
   },
   SELECT_CATEGORY: "Please select category",
   CATEGORY_NOT_FOUND: "Category not found",
+  ARTICLE_NOT_FOUND: "Article not found",
   NAME_TAKEN: "Name is already taken",
   TITEL_TAKEN: "Title is already taken",
   EMAIL_TAKEN: "Email is already taken",
