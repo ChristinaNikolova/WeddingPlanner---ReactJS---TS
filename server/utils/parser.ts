@@ -46,7 +46,11 @@ function isErrorWithMessage(err: unknown): err is ErrorWithMessage {
   );
 }
 
-function formatCreatedAt(createdAt: Date): string {
+// todo
+function formatCreatedAt(createdAt: Date | undefined): string {
+  if (!createdAt) {
+    return "";
+  }
   return (
     createdAt.getDate() +
     "/" +
