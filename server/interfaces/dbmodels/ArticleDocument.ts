@@ -7,7 +7,6 @@ export interface ArticleDocument extends BaseEntry {
   content: string;
   image: string;
   jumboImage: string;
-  // todo ???  CategoryDocument | ObjectId ???
-  category: CategoryDocument;
-  likes: ObjectId[] ;
+  category: ObjectId | CategoryDocument;
+  likes: ObjectId[];
 }
