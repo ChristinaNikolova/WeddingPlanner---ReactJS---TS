@@ -1,5 +1,5 @@
-export interface CategoryViewModel {
-  id: string;
-  name: string;
+import { CategoryNameViewModel } from "./CategoryNameViewModel";
+
+export interface CategoryViewModel extends CategoryNameViewModel {
   image: string;
 }
