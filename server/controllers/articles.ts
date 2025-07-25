@@ -1,0 +1,75 @@
+import { Request, Response, Router } from "express";
+import articles from "../services/articles";
+import guards from "../middlewares/guards";
+import global from "../utils/constants/global";
+import parser from "../utils/parser";
+
+const router = Router();
+const { getLastThree, getById } = articles;
+const { hasUser } = guards;
+const { messages } = global;
+const { mapErrors } = parser;
+
+router.get("/", async (req: Request, res: Response): Promise<void> => {
+  try {
+    const articles = await getLastThree();
+    res.json(articles);
+  } catch (error) {
+    const message = mapErrors(error);
+    res.status(400).json({ message });
+  }
+});
+
+// router.get("/:page/:category/:query?", async (req, res) => {
+//   try {
+//     const currentPage = req.params.page;
+//     const selectedCategory =
+//       req.params.category !== "default" ? req.params.category : "";
+//     const searchedQuery = req.params.query || "";
+
+//     const skip = (currentPage - 1) * pagination.ARTICLES_PER_PAGE;
+//     const totalArticles = await getTotalCount(selectedCategory, searchedQuery);
+//     const pagesCount = Math.ceil(totalArticles / pagination.ARTICLES_PER_PAGE);
+
+//     const articles = await all(
+//       pagination.ARTICLES_PER_PAGE,
+//       skip,
+//       selectedCategory,
+//       searchedQuery
+//     );
+//     res.json({ articles, pagesCount, currentPage });
+//   } catch (error) {
+//     const message = mapErrors(error);
+//     res.status(400).json({ message });
+//   }
+// });
+
+router.get(
+  "/:id",
+  hasUser(),
+  async (req: Request, res: Response): Promise<void> => {
+    try {
+      const id = req.params.id;
+      const article = await getById(id, true);
+      res.json(article);
+    } catch (error) {
+      const message = mapErrors(error);
+      res.status(400).json({ message });
+    }
+  }
+);
+
+// router.post("/:id", hasUser(), async (req, res) => {
+//   try {
+//     const id = req.params.id;
+//     const userId = req.user._id;
+
+//     const article = await like(id, userId);
+//     res.json(article);
+//   } catch (error) {
+//     const message = mapErrors(error);
+//     res.status(400).json({ message });
+//   }
+// });
+
+export default router;
