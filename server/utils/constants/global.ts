@@ -35,6 +35,7 @@ const errors = {
   COST_NOT_FOUND: "Cost not found",
   EVENT_NOT_FOUND: "Event not found",
   GUEST_NOT_FOUND: "Guest not found",
+  NOTE_NOT_FOUND: "Note not found",
   NAME_TAKEN: "Name is already taken",
   TITEL_TAKEN: "Title is already taken",
   EMAIL_TAKEN: "Email is already taken",
