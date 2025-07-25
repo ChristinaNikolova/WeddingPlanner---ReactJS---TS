@@ -1,55 +1,18 @@
 import { BaseEntry } from "../BaseEntry";
+import { Age } from "../enums/Age";
+import { Gender } from "../enums/Gender";
+import { MainDish } from "../enums/MainDish";
+import { Role } from "../enums/Role";
+import { Side } from "../enums/Side";
 
 export interface GuestDocument extends BaseEntry {
   firstName: string;
   lastName: string;
-  // todo enum?
-  gender: string;
-  //   {
-  //     type: String;
-  //     required: [true, "Gender is required"];
-  //     enum: ["male", "female"];
-  //   };
-  // todo enum?
-  age: string;
-  //   {
-  //     type: String;
-  //     required: [true, "Age is required"];
-  //     enum: ["adult", "child", "baby"];
-  //   };
-  // todo enum?
-  side: string;
-  //    {
-  //     type: String;
-  //     required: [true, "Side is required"];
-  //     enum: ["bride", "groom"];
-  //   };
-  // todo enum?
-  role: string;
-  //   {
-  //     type: String;
-  //     required: [true, "Role is required"];
-  //     enum: [
-  //       "bride",
-  //       "groom",
-  //       "best man",
-  //       "maid of honor",
-  //       "bridesmaid",
-  //       "groomsman",
-  //       "parent",
-  //       "sister",
-  //       "brother",
-  //       "family member",
-  //       "friend"
-  //     ];
-  //   };
+  gender: Gender;
+  age: Age;
+  side: Side;
+  role: Role;
   table: string;
-  // todo enum?
-  mainDish: string;
-  //   {
-  //     type: String;
-  //     enum: ["no info", "meat", "fish", "veggies"];
-  //     default: "no info";
-  //   };
+  mainDish: MainDish;
   confirmed: boolean;
 }
