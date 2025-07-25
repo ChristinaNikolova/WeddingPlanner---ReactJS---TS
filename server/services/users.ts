@@ -1,7 +1,7 @@
 import ArticleModel from "../models/Article";
 import { InputObjectId } from "../interfaces/InputObjectId";
-import article from "../utils/mapper/article";
 import { ArticleListViewModel } from "../interfaces/viewmodels/ArticleListViewModel";
+import article from "../utils/mapper/article";
 
 const { articleListViewModel } = article;
 

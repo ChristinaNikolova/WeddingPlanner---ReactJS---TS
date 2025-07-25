@@ -2,9 +2,9 @@ import { EventDocument } from "../interfaces/dbmodels/EventDocument";
 import { InputObjectId } from "../interfaces/InputObjectId";
 import { EventViewModel } from "../interfaces/viewmodels/EventViewModel";
 import PlannerModel from "../models/Planner";
+import EventModel from "../models/Event";
 import event from "../utils/mapper/event";
 import global from "../utils/constants/global";
-import EventModel from "../models/Event";
 
 const { eventViewModel } = event;
 const { errors } = global;
