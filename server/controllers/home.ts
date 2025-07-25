@@ -4,7 +4,7 @@ import global from "../utils/constants/global";
 const router = Router();
 const { messages } = global;
 
-router.get("/", (req: Request, res: Response) => {
+router.get("/", (req: Request, res: Response): void => {
   res.json({ message: messages.REST_OPERATED });
 });
 
