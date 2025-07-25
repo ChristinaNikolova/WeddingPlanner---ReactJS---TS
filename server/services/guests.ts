@@ -10,9 +10,11 @@ import { Role } from "../interfaces/enums/Role";
 import { MainDish } from "../interfaces/enums/MainDish";
 import guest from "../utils/mapper/guest";
 import global from "../utils/constants/global";
+import validator from "../utils/validator";
 
 const { guestViewModel } = guest;
 const { errors } = global;
+const { validateEnum } = validator;
 
 async function all(plannerId: InputObjectId): Promise<GuestViewModel[]> {
   const planner = await PlannerModel.findById(plannerId).populate("guests");
@@ -77,16 +79,15 @@ async function update(
   confirmed: boolean
 ): Promise<GuestDocument> {
   const guest = (await getById(id, false)) as GuestDocument;
-  // todo better??
+
   guest.firstName = firstName;
   guest.lastName = lastName;
-  guest.gender = gender as Gender;
-  guest.age = age as Age;
-  guest.side = side as Side;
-  guest.role = role as Role;
+  guest.gender = validateEnum(gender, Gender, "gender");
+  guest.age = validateEnum(age, Age, "age");
+  guest.side = validateEnum(side, Side, "side");
+  guest.role = validateEnum(role, Role, "role");
   guest.table = table;
-  guest.mainDish = mainDish as MainDish;
-  guest.confirmed = confirmed;
+  guest.mainDish = validateEnum(mainDish, MainDish, "mainDish");
 
   await guest.save();
 

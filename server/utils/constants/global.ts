@@ -48,6 +48,9 @@ const errors = {
   DATABASE_UNKNOWN_ERROR: "Unknown error during database connection.",
   AUTH_HEADER_MISSING: "Authorization header missing",
   INVALOD_AUTH_FORMAT: "Invalid authorization format",
+  INVALID_ENUM(fieldName: string, value: string) {
+    return `Invalid ${fieldName}: ${value}`;
+  },
 };
 
 export default {
