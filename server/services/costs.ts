@@ -1,19 +1,19 @@
 import { CostDocument } from "../interfaces/dbmodels/CostDocument";
-import { PlannerDocument } from "../interfaces/dbmodels/PlannerDocument";
 import { InputObjectId } from "../interfaces/InputObjectId";
 import { CostViewModel } from "../interfaces/viewmodels/CostViewModel";
 import CostModel from "../models/Cost";
 import PlannerModel from "../models/Planner";
 import cost from "../utils/mapper/cost";
+import global from "../utils/constants/global";
 
 const { costViewModel } = cost;
+const { errors } = global;
 
 async function all(plannerId: InputObjectId): Promise<CostViewModel[]> {
   const planner = await PlannerModel.findById(plannerId).populate("costs");
 
   if (!planner) {
-    //todo add error
-    throw new Error("no planner");
+    throw new Error(errors.PLANNER_NOT_FOUND);
   }
 
   return (planner.costs as CostDocument[])
@@ -38,8 +38,7 @@ async function create(
   const planner = await PlannerModel.findById(plannerId);
 
   if (!planner) {
-    // todo add error
-    throw new Error("No planner");
+    throw new Error(errors.PLANNER_NOT_FOUND);
   }
 
   (planner.costs as InputObjectId[]).push(result._id);
@@ -59,8 +58,7 @@ async function getById(
   const cost = await CostModel.findById(id);
 
   if (!cost) {
-    // todo add error
-    throw new Error("No cost");
+    throw new Error(errors.COST_NOT_FOUND);
   }
 
   return hasToCast ? costViewModel(cost) : cost;
