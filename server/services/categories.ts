@@ -30,7 +30,7 @@ async function all(): Promise<CategoryViewModel[]> {
   );
 }
 
-async function deleteById(id: InputObjectId): Promise<void | null> {
+async function deleteById(id: InputObjectId): Promise<CategoryDocument | null> {
   return CategoryModel.findByIdAndDelete(id);
 }
 

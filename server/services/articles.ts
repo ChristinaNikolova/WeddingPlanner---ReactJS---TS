@@ -140,7 +140,7 @@ async function getByTitle(title: string): Promise<ArticleDocument | null> {
   });
 }
 
-async function deleteById(id: InputObjectId): Promise<void | null> {
+async function deleteById(id: InputObjectId): Promise<ArticleDocument | null> {
   return ArticleModel.findByIdAndDelete(id);
 }
 
