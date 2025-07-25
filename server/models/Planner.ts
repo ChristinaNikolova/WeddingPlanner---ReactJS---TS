@@ -1,4 +1,5 @@
 import { Schema, model, Types } from "mongoose";
+import { PlannerDocument } from "../interfaces/dbmodels/PlannerDocument";
 import modelConstants from "../utils/constants/model";
 
 const { ObjectId } = Types;
@@ -89,6 +90,6 @@ const plannerSchema = new Schema(
   }
 );
 
-const PlannerModel = model("Planner", plannerSchema);
+const PlannerModel = model<PlannerDocument>("Planner", plannerSchema);
 
 export default PlannerModel;

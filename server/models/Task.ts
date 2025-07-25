@@ -1,4 +1,5 @@
 import { Schema, model, Types } from "mongoose";
+import { TaskDocument } from "../interfaces/dbmodels/TaskDocument";
 import modelConstants from "../utils/constants/model";
 
 const { ObjectId } = Types;
@@ -65,6 +66,6 @@ const taskSchema = new Schema(
   }
 );
 
-const TaskModel = model("Task", taskSchema);
+const TaskModel = model<TaskDocument>("Task", taskSchema);
 
 export default TaskModel;

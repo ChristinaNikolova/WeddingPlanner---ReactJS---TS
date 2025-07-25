@@ -1,4 +1,5 @@
 import { Schema, model } from "mongoose";
+import { EventDocument } from "../interfaces/dbmodels/EventDocument";
 import modelConstants from "../utils/constants/model";
 
 const { event } = modelConstants;
@@ -34,6 +35,6 @@ const eventSchema = new Schema({
   },
 });
 
-const EventModel = model("Event", eventSchema);
+const EventModel = model<EventDocument>("Event", eventSchema);
 
 export default EventModel;

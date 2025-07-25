@@ -1,4 +1,5 @@
 import { Schema, model } from "mongoose";
+import { GuestDocument } from "../interfaces/dbmodels/GuestDocument";
 import modelConstants from "../utils/constants/model";
 
 const { guest } = modelConstants;
@@ -75,6 +76,6 @@ const guestSchema = new Schema({
   },
 });
 
-const GuestModel = model("Guest", guestSchema);
+const GuestModel = model<GuestDocument>("Guest", guestSchema);
 
 export default GuestModel;

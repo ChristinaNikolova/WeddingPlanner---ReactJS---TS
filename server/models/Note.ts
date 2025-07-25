@@ -1,4 +1,5 @@
 import { Schema, model } from "mongoose";
+import { NoteDocument } from "../interfaces/dbmodels/NoteDocument";
 import modelConstants from "../utils/constants/model";
 
 const { note } = modelConstants;
@@ -23,6 +24,6 @@ const noteSchema = new Schema(
   }
 );
 
-const NoteModel = model("Note", noteSchema);
+const NoteModel = model<NoteDocument>("Note", noteSchema);
 
 export default NoteModel;

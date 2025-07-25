@@ -1,4 +1,5 @@
 import { Schema, model } from "mongoose";
+import { SubtaskDocument } from "../interfaces/dbmodels/SubtaskDocument";
 import modelConstants from "../utils/constants/model";
 
 const { subtask } = modelConstants;
@@ -27,6 +28,6 @@ const subtaskSchema = new Schema(
   }
 );
 
-const SubtaskModel = model("Subtask", subtaskSchema);
+const SubtaskModel = model<SubtaskDocument>("Subtask", subtaskSchema);
 
 export default SubtaskModel;

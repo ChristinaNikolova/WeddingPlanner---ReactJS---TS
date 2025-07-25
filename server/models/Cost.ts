@@ -1,4 +1,5 @@
 import { Schema, model, Types } from "mongoose";
+import { CostDocument } from "../interfaces/dbmodels/CostDocument";
 import modelConstants from "../utils/constants/model";
 
 const { ObjectId } = Types;
@@ -29,6 +30,6 @@ const costSchema = new Schema({
   },
 });
 
-const CostModel = model("Cost", costSchema);
+const CostModel = model<CostDocument>("Cost", costSchema);
 
 export default CostModel;
