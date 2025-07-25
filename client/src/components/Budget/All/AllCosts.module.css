@@ -1,0 +1,76 @@
+.budget-main-content-wrapper {
+  max-width: 1500px;
+  margin: 0 auto;
+  background-color: var(--clr-creme);
+  border-radius: 8px;
+  padding: 22px;
+}
+
+.budget-main-current-category-wrapper {
+  margin-bottom: 50px;
+}
+
+.budget-main-content-wrapper
+  .budget-main-current-category-wrapper:last-of-type {
+  margin-bottom: 12px;
+}
+
+.budget-main-current-category-costs-wrapper {
+  padding-left: 80px;
+  padding-right: 80px;
+}
+
+.budget-main-current-category-costs-titles-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.budget-main-current-category-costs-empty {
+  font-size: 24px;
+  font-weight: 600;
+  text-align: left;
+  color: var(--clr-gold);
+  border-bottom: 1px solid var(--clr-gold);
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+}
+
+@media screen and (max-width: 1600px) {
+  .budget-main-content-wrapper {
+    max-width: 80%;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  #budget {
+    margin-bottom: 120px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .budget-main-content-wrapper {
+    max-width: 95%;
+  }
+
+  .budget-main-current-category-costs-wrapper {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .budget-main-current-category-costs-wrapper {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .budget-main-current-category-costs-titles-cost,
+  .budget-main-current-category-costs-titles-title {
+    display: none;
+  }
+}
