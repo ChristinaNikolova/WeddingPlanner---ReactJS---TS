@@ -1,4 +1,4 @@
-import { BaseEntry } from "../BaseEntry";
+import { BaseEntry } from "./BaseEntry";
 import { Age } from "../enums/Age";
 import { Gender } from "../enums/Gender";
 import { MainDish } from "../enums/MainDish";

@@ -1,7 +1,7 @@
 import CategoryModel from "../models/Category";
 import { CategoryDocument } from "../interfaces/dbmodels/CategoryDocument";
 import { CategoryViewModel } from "../interfaces/viewmodels/CategoryViewModel";
-import { InputObjectId } from "../interfaces/InputObjectId";
+import { InputObjectId } from "../interfaces/dbmodels/InputObjectId";
 import global from "../utils/constants/global";
 import category from "../utils/mapper/category";
 

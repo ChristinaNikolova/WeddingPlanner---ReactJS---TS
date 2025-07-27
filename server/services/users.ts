@@ -1,5 +1,5 @@
 import ArticleModel from "../models/Article";
-import { InputObjectId } from "../interfaces/InputObjectId";
+import { InputObjectId } from "../interfaces/dbmodels/InputObjectId";
 import { ArticleListViewModel } from "../interfaces/viewmodels/ArticleListViewModel";
 import article from "../utils/mapper/article";
 

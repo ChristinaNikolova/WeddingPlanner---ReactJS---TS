@@ -1,4 +1,4 @@
-import { InputObjectId } from "../InputObjectId";
+import { InputObjectId } from "../dbmodels/InputObjectId";
 import { ArticleBaseViewModel } from "./ArticleBaseViewModel";
 import { CategoryViewModel } from "./CategoryViewModel";
 

@@ -1,5 +1,5 @@
 import { CostDocument } from "../interfaces/dbmodels/CostDocument";
-import { InputObjectId } from "../interfaces/InputObjectId";
+import { InputObjectId } from "../interfaces/dbmodels/InputObjectId";
 import { CostViewModel } from "../interfaces/viewmodels/CostViewModel";
 import CostModel from "../models/Cost";
 import PlannerModel from "../models/Planner";

@@ -1,5 +1,5 @@
 import { NoteDocument } from "../interfaces/dbmodels/NoteDocument";
-import { InputObjectId } from "../interfaces/InputObjectId";
+import { InputObjectId } from "../interfaces/dbmodels/InputObjectId";
 import { NoteViewModel } from "../interfaces/viewmodels/NoteViewModel";
 import PlannerModel from "../models/Planner";
 import note from "../utils/mapper/note";

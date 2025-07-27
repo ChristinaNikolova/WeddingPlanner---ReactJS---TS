@@ -1,6 +1,6 @@
-import { BaseEntry } from "../BaseEntry";
+import { BaseEntry } from "./BaseEntry";
 import { Timespan } from "../enums/Timespan";
-import { InputObjectId } from "../InputObjectId";
+import { InputObjectId } from "./InputObjectId";
 import { SubtaskDocument } from "./SubtaskDocument";
 
 export interface TaskDocument extends BaseEntry {

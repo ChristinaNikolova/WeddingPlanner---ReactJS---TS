@@ -1,6 +1,6 @@
-export interface plannerViewModel {
-  id: string;
-  title: string;
+import { PlannerViewModel } from "./PlannerViewModel";
+
+export interface PlannerExtendedViewModel extends PlannerViewModel {
   description: string;
   date: string;
   budget: string;

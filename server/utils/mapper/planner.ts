@@ -2,19 +2,19 @@ import { CostDocument } from "../../interfaces/dbmodels/CostDocument";
 import { EventDocument } from "../../interfaces/dbmodels/EventDocument";
 import { GuestDocument } from "../../interfaces/dbmodels/GuestDocument";
 import { PlannerDocument } from "../../interfaces/dbmodels/PlannerDocument";
-import { plannerViewModel } from "../../interfaces/dbmodels/PlannerViewModel";
+import { PlannerViewModel } from "../../interfaces/viewmodels/PlannerViewModel";
+import { PlannerExtendedViewModel } from "../../interfaces/viewmodels/PlannerExtendedViewModel";
 import { SubtaskDocument } from "../../interfaces/dbmodels/SubtaskDocument";
 import { TaskDocument } from "../../interfaces/dbmodels/TaskDocument";
-import { PlannerLinkViewModel } from "../../interfaces/viewmodels/PlannerLinkViewModel";
 
-function plannerLinkViewModel(planner: PlannerDocument): PlannerLinkViewModel {
+function plannerLinkViewModel(planner: PlannerDocument): PlannerViewModel {
   return {
     id: planner._id.toString(),
     title: planner.title,
   };
 }
-// todo nasledqvane pri interfaces i viewmodels
-function plannerViewModel(planner: PlannerDocument): plannerViewModel {
+
+function plannerViewModel(planner: PlannerDocument): PlannerExtendedViewModel {
   return {
     id: planner._id.toString(),
     title: planner.title,

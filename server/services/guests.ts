@@ -1,6 +1,6 @@
 import PlannerModel from "../models/Planner";
 import GuestModel from "../models/Guest";
-import { InputObjectId } from "../interfaces/InputObjectId";
+import { InputObjectId } from "../interfaces/dbmodels/InputObjectId";
 import { GuestViewModel } from "../interfaces/viewmodels/GuestViewModel";
 import { GuestDocument } from "../interfaces/dbmodels/GuestDocument";
 import { Gender } from "../interfaces/enums/Gender";

@@ -1,5 +1,5 @@
-import { BaseEntry } from "../BaseEntry";
-import { InputObjectId } from "../InputObjectId";
+import { BaseEntry } from "./BaseEntry";
+import { InputObjectId } from "./InputObjectId";
 import { CostDocument } from "./CostDocument";
 import { EventDocument } from "./EventDocument";
 import { GuestDocument } from "./GuestDocument";

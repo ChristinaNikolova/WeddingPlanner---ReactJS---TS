@@ -1,4 +1,4 @@
-import { BaseEntry } from "../BaseEntry";
+import { BaseEntry } from "./BaseEntry";
 
 export interface EventDocument extends BaseEntry {
   title: string;

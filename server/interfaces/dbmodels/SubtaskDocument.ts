@@ -1,4 +1,4 @@
-import { BaseEntry } from "../BaseEntry";
+import { BaseEntry } from "./BaseEntry";
 
 export interface SubtaskDocument extends BaseEntry {
   description: string;

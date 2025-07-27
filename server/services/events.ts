@@ -1,5 +1,5 @@
 import { EventDocument } from "../interfaces/dbmodels/EventDocument";
-import { InputObjectId } from "../interfaces/InputObjectId";
+import { InputObjectId } from "../interfaces/dbmodels/InputObjectId";
 import { EventViewModel } from "../interfaces/viewmodels/EventViewModel";
 import PlannerModel from "../models/Planner";
 import EventModel from "../models/Event";
