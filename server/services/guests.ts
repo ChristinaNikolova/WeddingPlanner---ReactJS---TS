@@ -36,7 +36,7 @@ async function create(
   table: string,
   mainDish: string,
   confirmed: boolean,
-  plannerId: InputObjectId
+  plannerId?: InputObjectId
 ): Promise<GuestDocument> {
   const guest = new GuestModel({
     firstName,
