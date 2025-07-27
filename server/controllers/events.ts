@@ -4,7 +4,7 @@ import guards from "../middlewares/guards";
 import parser from "../utils/parser";
 
 const router = Router();
-const { all, create, heightlight, deleteById, update, getById } = events;
+const { all, create, update, deleteById, getById, heightlight } = events;
 const { hasUser } = guards;
 const { mapErrors } = parser;
 

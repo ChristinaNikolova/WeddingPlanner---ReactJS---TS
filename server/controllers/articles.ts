@@ -6,7 +6,7 @@ import global from "../utils/constants/global";
 import parser from "../utils/parser";
 
 const router = Router();
-const { getLastThree, getById, like, getTotalCount, all } = articles;
+const { all, getById, like, getLastThree, getTotalCount } = articles;
 const { hasUser } = guards;
 const { pagination } = global;
 const { mapErrors } = parser;

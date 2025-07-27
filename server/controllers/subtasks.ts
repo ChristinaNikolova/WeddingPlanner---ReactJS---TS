@@ -5,7 +5,7 @@ import parser from "../utils/parser";
 
 const router = Router();
 const { hasUser } = guards;
-const { create, done, deleteById, update, getById } = subtasks;
+const { create, update, deleteById, getById, done } = subtasks;
 const { mapErrors } = parser;
 
 router.post(
