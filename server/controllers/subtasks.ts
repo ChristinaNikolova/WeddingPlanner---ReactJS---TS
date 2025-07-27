@@ -1,11 +1,11 @@
 import { Request, Response, Router } from "express";
-import guards from "../middlewares/guards";
 import subtasks from "../services/subtasks";
+import guards from "../middlewares/guards";
 import parser from "../utils/parser";
 
 const router = Router();
-const { hasUser } = guards;
 const { create, update, deleteById, getById, done } = subtasks;
+const { hasUser } = guards;
 const { mapErrors } = parser;
 
 router.post(
