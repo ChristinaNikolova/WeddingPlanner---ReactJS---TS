@@ -4,9 +4,11 @@ import { PlannerViewModel } from "../interfaces/viewmodels/PlannerViewModel";
 import guests from "./guests";
 import PlannerModel from "../models/Planner";
 import planner from "../utils/mapper/planner";
+import global from "../utils/constants/global";
 
 const { create: createGuest, update: updateGuest } = guests;
 const { plannerViewModel } = planner;
+const { errors } = global;
 
 async function allByUserId(userId: InputObjectId): Promise<PlannerViewModel[]> {
   return (
