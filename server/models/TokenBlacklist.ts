@@ -7,7 +7,6 @@ const tokenBlacklistSchema = new Schema({
   },
 });
 
-// todo <TokenDocument>
 const TokenBlacklistModel = model("TokenBlacklist", tokenBlacklistSchema);
 
 export default TokenBlacklistModel;
