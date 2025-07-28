@@ -1,7 +1,61 @@
+// import { lazy, Suspense } from "react";
+import { Routes, Route } from "react-router-dom";
+
+// import { AuthProvider } from "./contexts/authContext";
+// import * as constants from "./utils/constants/images";
+
+// import Footer from "./components/Footer/Footer";
+// import Header from "./components/Header/Header";
+import Home from "./components/Home/Home";
+// import Login from "./components/Auth/Login/Login";
+// import Register from "./components/Auth/Register/Register";
+// import Logout from "./components/Auth/Logout/Logout";
+// import ArticlesAll from "./components/Blog/ArticlesAll/ArticlesAll";
+// import ArticleDetails from "./components/Blog/ArticleDetails/ArticleDetails";
+// import FavouriteArticle from "./components/User/FavouriteArticle/FavouriteArticle";
+// import PlannerDashboard from "./components/Planner/Dashboard/Dashboard";
+// import CreatePlanner from "./components/Planner/Create/CreatePlanner";
+// import DetailsPlanner from "./components/Planner/Details/DetailsPlanner";
+// import UpdatePlanner from "./components/Planner/Update/UpdatePlanner";
+// import GuestsAll from "./components/Guest/All/GuestsAll";
+// import AllCosts from "./components/Budget/All/AllCosts";
+// import ChecklistAll from "./components/Checklist/Task/All/TasksAll";
+// import EventsAll from "./components/Event/All/EventsAll";
+// import NotesAll from "./components/Note/All/NotesAll";
+// import NotFound from "./components/NotFound/NotFound";
+// import Loading from "./components/shared/Loading/Loading";
+
+// import AdminRoute from "./components/common/AdminRoute";
+// import GuestRoute from "./components/common/GuestRoute";
+// import PrivateRoute from "./components/common/PrivateRoute";
+
 import "./App.css";
 
+// const AdminDashboard = lazy(() =>
+//   import("./components/Administration/Dashboard/Dashboard")
+// );
+// const CreateArticle = lazy(() =>
+//   import("./components/Administration/Articles/Create/CreateArticle")
+// );
+// const UpdateArticle = lazy(() =>
+//   import("./components/Administration/Articles/Update/UpdateArticle")
+// );
+// const AllCategories = lazy(() =>
+//   import("./components/Administration/Categories/All/AllCategories")
+// );
+// const CreateCategory = lazy(() =>
+//   import("./components/Administration/Categories/Create/CreateCategory")
+// );
+// const UpdateCategory = lazy(() =>
+//   import("./components/Administration/Categories/Update/UpdateCategory")
+// );
+
 function App() {
-  return <h1>hi</h1>;
+  return (
+    <Routes>
+      <Route path="/" element={<Home />} />
+    </Routes>
+  );
 }
 
 export default App;
