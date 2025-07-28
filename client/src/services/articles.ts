@@ -5,50 +5,88 @@ import type { ArticleResponse } from "../interfaces/ArticleResponse";
 import { httpMethods } from "../utils/constants/global";
 import { handleServiceError } from "../utils/helpers/errorHandler";
 
+// todo enums - constants
 const SERVICE_NAME = "Articles";
 
-// export const create = (
-//   title: string,
-//   content: string,
-//   image: string,
-//   jumboImage: string,
-//   category: string
-// ) => {
-//   return requester(api.admin.articles, httpMethods.POST, {
-//     title,
-//     content,
-//     image,
-//     jumboImage,
-//     category,
-//   })
-//     .then((res) => res.json())
-//     .catch((err) => console.error(err));
-// };
+export const create = async (
+  title: string,
+  content: string,
+  image: string,
+  jumboImage: string,
+  category: string
+): Promise<ArticleProps> => {
+  try {
+    const response = await requester(api.admin.articles, httpMethods.POST, {
+      title,
+      content,
+      image,
+      jumboImage,
+      category,
+    });
 
-// export const update = (
-//   id: string,
-//   title: string,
-//   content: string,
-//   image: string,
-//   jumboImage: string,
-//   category: string
-// ) => {
-//   return requester(`${api.admin.articles}/${id}`, httpMethods.PUT, {
-//     title,
-//     content,
-//     image,
-//     jumboImage,
-//     category,
-//   })
-//     .then((res) => res.json())
-//     .catch((err) => console.error(err));
-// };
+    // todo all func??? => constants
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
 
-// export const deleteById = (id: string) => {
-//   return requester(`${api.admin.articles}/${id}`, httpMethods.DELETE)
-//     .then((res) => res.json())
-//     .catch((err) => console.error(err));
-// };
+    return response.json();
+  } catch (error) {
+    handleServiceError(error, SERVICE_NAME);
+    throw error;
+  }
+};
+
+export const update = async (
+  id: string,
+  title: string,
+  content: string,
+  image: string,
+  jumboImage: string,
+  category: string
+): Promise<ArticleProps> => {
+  try {
+    const response = await requester(
+      `${api.admin.articles}/${id}`,
+      httpMethods.PUT,
+      {
+        title,
+        content,
+        image,
+        jumboImage,
+        category,
+      }
+    );
+
+    // todo all func??? => constants
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    return response.json();
+  } catch (error) {
+    handleServiceError(error, SERVICE_NAME);
+    throw error;
+  }
+};
+
+export const deleteById = async (id: string): Promise<ArticleProps> => {
+  try {
+    const response = await requester(
+      `${api.admin.articles}/${id}`,
+      httpMethods.DELETE
+    );
+
+    // todo all func??? => constants
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    return response.json();
+  } catch (error) {
+    handleServiceError(error, SERVICE_NAME);
+    throw error;
+  }
+};
 
 export const all = async (
   currentPage = 1,
