@@ -9,6 +9,5 @@ export interface TaskDocument extends BaseEntry {
   timespan: Timespan;
   progress: number;
   target: number;
-  // todo this two??
   subtasks: InputObjectId[] | SubtaskDocument[];
 }

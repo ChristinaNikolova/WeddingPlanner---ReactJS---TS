@@ -13,20 +13,12 @@ export interface PlannerDocument extends BaseEntry {
   date: string;
   budget: number;
   location: string;
-  // todo 2??
-  bride: InputObjectId | GuestDocument;
-  // todo 2??
-  groom: InputObjectId | GuestDocument;
-  // todo 2??
-  creator: InputObjectId | UserDocument;
-  // todo 2??
+  bride: GuestDocument;
+  groom: GuestDocument;
+  creator: UserDocument;
   notes: InputObjectId[] | NoteDocument[];
-  // todo 2??
   guests: InputObjectId[] | GuestDocument[];
-  // todo 2??
   tasks: InputObjectId[] | TaskDocument[];
-  // todo 2??
   costs: InputObjectId[] | CostDocument[];
-  // todo 2??
   events: InputObjectId[] | EventDocument[];
 }

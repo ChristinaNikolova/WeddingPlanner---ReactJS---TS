@@ -5,7 +5,6 @@ import guards from "../../middlewares/guards";
 import global from "../../utils/constants/global";
 import parser from "../../utils/parser";
 
-// todo test gueards
 const router = Router();
 const { create, update, deleteById } = articles;
 const { isAdmin } = guards;

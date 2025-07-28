@@ -46,11 +46,11 @@ function isErrorWithMessage(err: unknown): err is ErrorWithMessage {
   );
 }
 
-// todo
 function formatCreatedAt(createdAt: Date | undefined): string {
   if (!createdAt) {
     return "";
   }
+
   return (
     createdAt.getDate() +
     "/" +
@@ -67,8 +67,8 @@ function extractTimeFromDate(date: Date): string {
   return time;
 }
 
-// todo check if two elements
 function getTotalMinutes(duration: string): number {
+  console.log(duration);
   const [hours, minutes] = duration.split(":");
   const result = Number(hours) * 60 + Number(minutes);
   return result;

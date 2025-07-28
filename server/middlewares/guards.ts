@@ -6,7 +6,6 @@ import parser from "../utils/parser";
 const { emails, errors } = global;
 const { mapErrors } = parser;
 
-// TODO mapErrors in all functions
 function isAdmin() {
   return (req: AuthRequest, res: Response, next: NextFunction) => {
     if (req.user && req.user.email === emails.ADMIN) {
@@ -23,7 +22,8 @@ function hasUser() {
     if (req.user) {
       next();
     } else {
-      res.status(401).json({ message: errors.NOT_LOGGED_IN });
+      const message = mapErrors({ message: errors.NOT_LOGGED_IN });
+      res.status(401).json({ message });
     }
   };
 }
@@ -31,7 +31,8 @@ function hasUser() {
 function isGuest() {
   return (req: AuthRequest, res: Response, next: NextFunction) => {
     if (req.user) {
-      res.status(400).json({ message: errors.ALREADY_LOGGED_IN });
+      const message = mapErrors({ message: errors.ALREADY_LOGGED_IN });
+      res.status(400).json({ message });
     } else {
       next();
     }

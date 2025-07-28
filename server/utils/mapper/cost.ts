@@ -6,7 +6,6 @@ function costViewModel(cost: CostDocument): CostViewModel {
     id: cost._id.toString(),
     title: cost.title,
     price: Number(cost.price).toFixed(2),
-    // todo test here
     category: cost.category as string,
   };
 }
