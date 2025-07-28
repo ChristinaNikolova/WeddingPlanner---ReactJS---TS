@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import Jumbotron from "./shared/Jumbotron/Jumbotron";
+import Jumbotron from "../shared/Jumbotron/Jumbotron";
+import LastThreeArticles from "../shared/Blog/LastThreeArticles/LastThreeArticles";
 import * as constants from "../../utils/constants/images";
-
 import styles from "./Home.module.css";
 
 function Home() {
@@ -20,7 +20,7 @@ function Home() {
           Start planning
         </Link>
       </div>
-      {/* <LastThreeArticles /> */}
+      <LastThreeArticles />
     </section>
   );
 }
