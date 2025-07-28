@@ -7,7 +7,7 @@ function ServerError({ errors }) {
     >
       {errors.map((e, i) => (
         <div key={i} className={styles["server-error"]}>
-          {e.msg}
+          {e.message}
         </div>
       ))}
     </div>

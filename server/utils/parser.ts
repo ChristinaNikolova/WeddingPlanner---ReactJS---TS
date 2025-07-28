@@ -4,27 +4,22 @@ import global from "./constants/global";
 
 const { errors } = global;
 
-// todo extract interface
-interface ErrorResponse {
-  msg: string;
-}
-
-function mapErrors(err: unknown): ErrorResponse[] {
+function mapErrors(err: unknown): ErrorWithMessage[] {
   if (Array.isArray(err)) {
     return err;
   }
 
   if (isValidationError(err)) {
     return Object.values((err as ValidationError).errors).map((e) => ({
-      msg: e.message,
+      message: e.message,
     }));
   }
 
   if (isErrorWithMessage(err)) {
-    return [{ msg: err.message }];
+    return [{ message: err.message }];
   }
 
-  return [{ msg: errors.REQUEST }];
+  return [{ message: errors.REQUEST }];
 }
 
 function isValidationError(err: unknown): err is ValidationError {
