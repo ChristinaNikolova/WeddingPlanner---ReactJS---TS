@@ -1,5 +1,5 @@
-import { ErrorWithMessage } from "../interfaces/ErrorWithMessage";
-import { ValidationError } from "../interfaces/ValidationError";
+import { ErrorWithMessage } from "../interfaces/errors/ErrorWithMessage";
+import { ValidationError } from "../interfaces/errors/ValidationError";
 import global from "./constants/global";
 
 const { errors } = global;

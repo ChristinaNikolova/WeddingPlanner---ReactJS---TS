@@ -1,6 +1,6 @@
 import { Request, Response, Router } from "express";
-import { AuthRequest } from "../interfaces/AuthRequest";
-import { TokenPayload } from "../interfaces/TokenPayload";
+import { AuthRequest } from "../interfaces/auth/AuthRequest";
+import { TokenPayload } from "../interfaces/auth/TokenPayload";
 import planners from "../services/planners";
 import guards from "../middlewares/guards";
 import parser from "../utils/parser";

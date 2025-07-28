@@ -1,7 +1,7 @@
 import { Response, NextFunction } from "express";
 import authService from "../services/auth";
 import global from "../utils/constants/global";
-import { AuthRequest } from "../interfaces/AuthRequest";
+import { AuthRequest } from "../interfaces/auth/AuthRequest";
 
 const { errors } = global;
 const { parseToken } = authService;

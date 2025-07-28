@@ -1,6 +1,6 @@
 import { Response, NextFunction } from "express";
-import { AuthRequest } from "../interfaces/AuthRequest";
-import { TokenPayload } from "../interfaces/TokenPayload";
+import { AuthRequest } from "../interfaces/auth/AuthRequest";
+import { TokenPayload } from "../interfaces/auth/TokenPayload";
 import global from "../utils/constants/global";
 import parser from "../utils/parser";
 

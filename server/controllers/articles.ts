@@ -1,6 +1,6 @@
 import { Request, Response, Router } from "express";
-import { AuthRequest } from "../interfaces/AuthRequest";
-import { TokenPayload } from "../interfaces/TokenPayload";
+import { AuthRequest } from "../interfaces/auth/AuthRequest";
+import { TokenPayload } from "../interfaces/auth/TokenPayload";
 import articles from "../services/articles";
 import guards from "../middlewares/guards";
 import global from "../utils/constants/global";
@@ -26,7 +26,6 @@ router.get(
   "/:page/:category",
   async (req: Request, res: Response): Promise<void> => {
     try {
-      // todo request interface
       const currentPage = Number(req.params.page);
       const selectedCategory =
         req.params.category !== "default" ? req.params.category : "";
