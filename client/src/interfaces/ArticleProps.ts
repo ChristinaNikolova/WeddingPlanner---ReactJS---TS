@@ -3,4 +3,5 @@ export interface ArticleProps {
   title: string;
   shortContent: string;
   image: string;
+  category?: string;
 }

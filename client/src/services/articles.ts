@@ -1,6 +1,7 @@
 import { api } from "./api";
 import { requester } from "./requester";
 import type { ArticleProps } from "../interfaces/ArticleProps";
+import type { ArticleResponse } from "../interfaces/ArticleResponse";
 import { httpMethods } from "../utils/constants/global";
 import { handleServiceError } from "../utils/helpers/errorHandler";
 
@@ -53,7 +54,7 @@ export const all = async (
   currentPage = 1,
   selectedCategory: string,
   query = ""
-): Promise<ArticleProps[]> => {
+): Promise<ArticleResponse> => {
   try {
     const response = await fetch(
       `${api.public.articles}/${currentPage}/${selectedCategory}?query=${query}`,
