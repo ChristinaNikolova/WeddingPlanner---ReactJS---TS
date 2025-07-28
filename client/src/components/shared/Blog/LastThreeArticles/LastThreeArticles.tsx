@@ -1,17 +1,11 @@
 import { useState, useEffect } from "react";
-import LastSingleArticle from "../LastSingleArticle/LastSingleArticle.module";
+import LastSingleArticle from "../LastSingleArticle/LastSingleArticle";
+import type { ArticleProps } from "../../../../interfaces/ArticleProps";
 import * as articlesService from "../../../../services/articles";
 import styles from "./LastThreeArticles.module.css";
 
-interface ArticleProps {
-  id: string;
-  title: string;
-  shortContent: string;
-  image: string;
-}
-
 function LastThreeArticles() {
-  const [articles, setArticles] = useState([]);
+  const [articles, setArticles] = useState<ArticleProps[]>([]);
 
   useEffect(() => {
     articlesService
@@ -21,20 +15,20 @@ function LastThreeArticles() {
   }, []);
 
   return (
-    <div className={styles["last-three-articles-section-wrapper"]}>
+    <section className={styles["last-three-articles-section-wrapper"]}>
       <h3 className={styles["last-three-artilces-title"]}>Recent articles</h3>
       <div className={styles["last-three-articles-wrapper"]}>
-        {articles.map((a: ArticleProps) => (
+        {articles.map((article) => (
           <LastSingleArticle
-            key={a.id}
-            id={a.id}
-            title={a.title}
-            shortContent={a.shortContent}
-            image={a.image}
+            key={article.id}
+            id={article.id}
+            title={article.title}
+            shortContent={article.shortContent}
+            image={article.image}
           />
         ))}
       </div>
-    </div>
+    </section>
   );
 }
 
