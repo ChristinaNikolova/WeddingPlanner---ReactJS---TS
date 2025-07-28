@@ -1,6 +1,10 @@
 import { api } from "./api";
-// import { requester } from "./requester";
+import { requester } from "./requester";
+import type { ArticleProps } from "../interfaces/ArticleProps";
 import { httpMethods } from "../utils/constants/global";
+import { handleServiceError } from "../utils/helpers/errorHandler";
+
+const SERVICE_NAME = "Articles";
 
 // export const create = (
 //   title: string,
@@ -45,39 +49,89 @@ import { httpMethods } from "../utils/constants/global";
 //     .catch((err) => console.error(err));
 // };
 
-// export const all = (currentPage = 1, selectedCategory: string, query = "") => {
-//   return fetch(
-//     `${api.public.articles}/${currentPage}/${selectedCategory}?query=${query}`,
-//     {
-//       method: httpMethods.GET,
-//       headers: {
-//         "Content-Type": "application/json",
-//       },
-//     }
-//   )
-//     .then((res) => res.json())
-//     .catch((err) => console.error(err));
-// };
+export const all = async (
+  currentPage = 1,
+  selectedCategory: string,
+  query = ""
+): Promise<ArticleProps[]> => {
+  try {
+    const response = await fetch(
+      `${api.public.articles}/${currentPage}/${selectedCategory}?query=${query}`,
+      {
+        method: httpMethods.GET,
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
-// export const getById = (id: string) => {
-//   return requester(`${api.public.articles}/${id}`, httpMethods.GET)
-//     .then((res) => res.json())
-//     .catch((err) => console.error(err));
-// };
+    // todo all func??? => constants
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
 
-// export const like = (id: string) => {
-//   return requester(`${api.public.articles}/${id}`, httpMethods.POST)
-//     .then((res) => res.json())
-//     .catch((err) => console.error(err));
-// };
+    return response.json();
+  } catch (error) {
+    handleServiceError(error, SERVICE_NAME);
+    throw error;
+  }
+};
 
-export const getLastThree = () => {
-  return fetch(`${api.public.articles}`, {
-    method: httpMethods.GET,
-    headers: {
-      "Content-Type": "application/json",
-    },
-  })
-    .then((res) => res.json())
-    .catch((err) => console.error(err));
+export const getById = async (id: string): Promise<ArticleProps> => {
+  try {
+    const response = await requester(
+      `${api.public.articles}/${id}`,
+      httpMethods.GET
+    );
+
+    //todo do we need this here
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    return response.json();
+  } catch (error) {
+    handleServiceError(error, SERVICE_NAME);
+    throw error;
+  }
+};
+
+export const like = async (id: string): Promise<ArticleProps> => {
+  try {
+    const response = await requester(
+      `${api.public.articles}/${id}`,
+      httpMethods.POST
+    );
+
+    //todo do we need this here
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    return response.json();
+  } catch (error) {
+    handleServiceError(error, SERVICE_NAME);
+    throw error;
+  }
+};
+
+export const getLastThree = async (): Promise<ArticleProps[]> => {
+  try {
+    const response = await fetch(`${api.public.articles}`, {
+      method: httpMethods.GET,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    // todo all func??? => constants
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    return response.json();
+  } catch (error) {
+    handleServiceError(error, SERVICE_NAME);
+    throw error;
+  }
 };
