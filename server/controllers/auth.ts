@@ -71,7 +71,6 @@ router.get(
     try {
       const authHeader = req.headers["x-authorization"];
       if (!authHeader || typeof authHeader !== "string") {
-        // TODO interfaces for the request
         throw new Error(globalErrors.AUTH_HEADER_MISSING);
       }
 

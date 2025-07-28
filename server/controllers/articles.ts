@@ -1,5 +1,6 @@
 import { Request, Response, Router } from "express";
 import { AuthRequest } from "../interfaces/AuthRequest";
+import { TokenPayload } from "../interfaces/TokenPayload";
 import articles from "../services/articles";
 import guards from "../middlewares/guards";
 import global from "../utils/constants/global";
@@ -25,7 +26,7 @@ router.get(
   "/:page/:category",
   async (req: Request, res: Response): Promise<void> => {
     try {
-      // todo интерфейс
+      // todo request interface
       const currentPage = Number(req.params.page);
       const selectedCategory =
         req.params.category !== "default" ? req.params.category : "";
@@ -75,7 +76,7 @@ router.post(
   async (req: AuthRequest, res: Response): Promise<void> => {
     try {
       const id = req.params.id;
-      const userId = req.user._id;
+      const userId = (req.user as TokenPayload)._id;
 
       const article = await like(id, userId);
       res.json(article);

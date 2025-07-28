@@ -1,8 +1,7 @@
 import { Request } from "express";
+import { TokenPayload } from "./TokenPayload";
 
-// todo add types here
-// todo inher.
 export interface AuthRequest extends Request {
-  user?: any;
-  token?: any;
+  user?: TokenPayload | string;
+  token?: TokenPayload | string;
 }

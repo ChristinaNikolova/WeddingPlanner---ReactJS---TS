@@ -1,5 +1,6 @@
 import { Response, NextFunction } from "express";
 import { AuthRequest } from "../interfaces/AuthRequest";
+import { TokenPayload } from "../interfaces/TokenPayload";
 import global from "../utils/constants/global";
 import parser from "../utils/parser";
 
@@ -8,7 +9,7 @@ const { mapErrors } = parser;
 
 function isAdmin() {
   return (req: AuthRequest, res: Response, next: NextFunction) => {
-    if (req.user && req.user.email === emails.ADMIN) {
+    if (req.user && (req.user as TokenPayload).email === emails.ADMIN) {
       next();
     } else {
       const message = mapErrors({ message: errors.NOT_LOGGED_IN });

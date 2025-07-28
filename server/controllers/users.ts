@@ -1,5 +1,6 @@
 import { Response, Router } from "express";
 import { AuthRequest } from "../interfaces/AuthRequest";
+import { TokenPayload } from "../interfaces/TokenPayload";
 import users from "../services/users";
 import guards from "../middlewares/guards";
 import parser from "../utils/parser";
@@ -15,7 +16,7 @@ router.get(
   hasUser(),
   async (req: AuthRequest, res: Response): Promise<void> => {
     try {
-      const userId = req.user._id;
+      const userId = (req.user as TokenPayload)._id;
       const articles = await getFavArticles(userId);
       res.json(articles);
     } catch (error) {

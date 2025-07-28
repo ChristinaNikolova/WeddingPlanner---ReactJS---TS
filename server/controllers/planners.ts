@@ -1,5 +1,6 @@
 import { Request, Response, Router } from "express";
 import { AuthRequest } from "../interfaces/AuthRequest";
+import { TokenPayload } from "../interfaces/TokenPayload";
 import planners from "../services/planners";
 import guards from "../middlewares/guards";
 import parser from "../utils/parser";
@@ -14,7 +15,7 @@ router.get(
   hasUser(),
   async (req: AuthRequest, res: Response): Promise<void> => {
     try {
-      const userId = req.user._id;
+      const userId = (req.user as TokenPayload)._id;
       const planners = await allByUserId(userId);
       res.json(planners);
     } catch (error) {
@@ -29,7 +30,7 @@ router.post(
   hasUser(),
   async (req: AuthRequest, res: Response): Promise<void> => {
     try {
-      const userId = req.user._id;
+      const userId = (req.user as TokenPayload)._id;
       const planner = await create(
         req.body.description,
         req.body.date,
