@@ -26,7 +26,6 @@ router.get(
   async (req: Request, res: Response): Promise<void> => {
     try {
       // todo интерфейс
-      // todo test category + query + pagination
       const currentPage = Number(req.params.page);
       const selectedCategory =
         req.params.category !== "default" ? req.params.category : "";

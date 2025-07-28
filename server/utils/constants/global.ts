@@ -4,7 +4,7 @@ const important = {
 };
 
 const category = {
-  DEFAULT_CATEGORY_SELECTED_ID: "638325c6bdd58333840dcc7e",
+  DEFAULT_CATEGORY_SELECTED_ID: "6886f98d7e37c7dcfaac40a6",
 };
 
 const pagination = {

@@ -62,8 +62,7 @@ router.delete(
   async (req: Request, res: Response): Promise<void> => {
     try {
       const id = req.params.id;
-      // todo check defaults
-      // todo fins out default category
+
       if (id === category.DEFAULT_CATEGORY_SELECTED_ID) {
         return;
       }
