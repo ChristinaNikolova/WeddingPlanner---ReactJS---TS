@@ -1,12 +1,4 @@
-interface InputProps {
-  name: string;
-  type: string;
-  label: string;
-  value: string;
-  onChangeHandler: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  onBlurHandler: (event: React.FocusEvent<HTMLInputElement>) => void;
-  checked: boolean;
-}
+import type { InputProps } from "../../../../interfaces/InputProps";
 
 //todo check this checked={checked || false} => checked={checked ? checked : ""}
 function Input({
