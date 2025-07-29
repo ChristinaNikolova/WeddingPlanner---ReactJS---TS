@@ -1,10 +1,11 @@
-import { useEffect, useContext } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../../../contexts/AuthContext";
+import { useAuth } from "../../../hooks/useAuth";
 import * as authService from "../../../services/auth";
 
+// todo test dependencies in use effect
 function Logout() {
-  const { userLogout } = useContext(AuthContext);
+  const { userLogout } = useAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -15,7 +16,9 @@ function Logout() {
         navigate("/");
       })
       .catch((err) => console.error(err));
-  }, []);
+  }, [userLogout, navigate]);
+
+  return <></>;
 }
 
 export default Logout;

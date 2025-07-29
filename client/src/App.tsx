@@ -5,13 +5,12 @@ import { AuthProvider } from "./contexts/AuthProvider";
 // import * as constants from "./utils/constants/images";
 
 import Footer from "./components/Footer/Footer";
-// import Header from "./components/Header/Header";
+import Header from "./components/Header/Header";
 import Home from "./components/Home/Home";
 import NotFound from "./components/NotFound/NotFound";
 import Login from "./components/Auth/Login/Login";
 import Register from "./components/Auth/Register/Register";
-// import Register from "./components/Auth/Register/Register";
-// import Logout from "./components/Auth/Logout/Logout";
+import Logout from "./components/Auth/Logout/Logout";
 // import ArticlesAll from "./components/Blog/ArticlesAll/ArticlesAll";
 // import ArticleDetails from "./components/Blog/ArticleDetails/ArticleDetails";
 // import FavouriteArticle from "./components/User/FavouriteArticle/FavouriteArticle";
@@ -28,7 +27,7 @@ import Register from "./components/Auth/Register/Register";
 
 // import AdminRoute from "./components/common/AdminRoute";
 import GuestRoute from "./components/common/GuestRoute";
-// import PrivateRoute from "./components/common/PrivateRoute";
+import PrivateRoute from "./components/common/PrivateRoute";
 
 import "./App.css";
 
@@ -54,11 +53,16 @@ import "./App.css";
 function App() {
   return (
     <AuthProvider>
+      <Header />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route element={<GuestRoute />}>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+        </Route>
+
+        <Route element={<PrivateRoute />}>
+          <Route path="/logout" element={<Logout />} />
         </Route>
 
         <Route path="*" element={<NotFound />} />
