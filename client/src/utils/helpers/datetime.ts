@@ -2,9 +2,10 @@ export const parseTime = (time: string): string => {
   return parseDate(time).toLocaleTimeString();
 };
 
+// todo test here!!!
 export const parseDate = (time: string): Date => {
   const [hour, minutes] = time.split(":");
-  return new Date("", "", "", hour, minutes);
+  return new Date(0, 0, 0, Number(hour), Number(minutes));
 };
 
 // todo check return type here
@@ -26,7 +27,6 @@ export const getDifference = (
   return [hours, minutes];
 };
 
-// todo check if only string possible
-const formatTime = (time: number): string | number => {
-  return time <= 9 ? `0${time}` : time;
+const formatTime = (time: number): string => {
+  return time <= 9 ? `0${time}` : time.toString();
 };
