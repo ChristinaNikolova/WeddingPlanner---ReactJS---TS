@@ -1,10 +1,7 @@
 import { classNames, displayStyles } from "../constants/global";
 
 // todo test types hete!!!!
-export const isButtonDisabled = (
-  inputs: Record<string, string>,
-  errors: string[]
-): boolean => {
+export const isButtonDisabled = (inputs: object, errors: string[]): boolean => {
   return Object.values(inputs).some((x) => !x) || errors.some((x) => x);
 };
 
