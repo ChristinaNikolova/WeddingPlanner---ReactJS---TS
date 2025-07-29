@@ -1,6 +1,5 @@
 import type { RequestData } from "../interfaces/types/RequestData";
 import { getToken } from "./auth";
-import { global } from "../utils/constants/errors";
 
 export const requester = (
   url: string,
@@ -21,10 +20,5 @@ export const requester = (
     method,
     headers,
     body: data ? JSON.stringify(data) : null,
-  }).then((response) => {
-    if (!response.ok) {
-      throw new Error(global.RESPONSE(response.status));
-    }
-    return response;
   });
 };

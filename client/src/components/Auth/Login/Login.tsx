@@ -9,6 +9,8 @@ import * as validator from "../../../utils/validators/auth";
 import * as authService from "../../../services/auth";
 import { useAuth } from "../../../hooks/useAuth";
 import styles from "./Login.module.css";
+
+// todo interface
 interface LoginValues {
   email: string;
   password: string;

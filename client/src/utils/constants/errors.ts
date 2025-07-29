@@ -1,7 +1,4 @@
 export const global = {
-  RESPONSE(statusCode: number): string {
-    return `HTTP error! status: ${statusCode}`;
-  },
   SERVER_ERROR(serviceName = ""): string {
     return serviceName ? `${serviceName} service error:` : "Service error:";
   },
