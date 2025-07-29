@@ -1,14 +1,14 @@
 // import { lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 
-// import { AuthProvider } from "./contexts/authContext";
+import { AuthProvider } from "./contexts/AuthProvider";
 // import * as constants from "./utils/constants/images";
 
 // import Footer from "./components/Footer/Footer";
 // import Header from "./components/Header/Header";
 import Home from "./components/Home/Home";
 import NotFound from "./components/NotFound/NotFound";
-// import Login from "./components/Auth/Login/Login";
+import Login from "./components/Auth/Login/Login";
 // import Register from "./components/Auth/Register/Register";
 // import Logout from "./components/Auth/Logout/Logout";
 // import ArticlesAll from "./components/Blog/ArticlesAll/ArticlesAll";
@@ -26,7 +26,7 @@ import NotFound from "./components/NotFound/NotFound";
 // import Loading from "./components/shared/Loading/Loading";
 
 // import AdminRoute from "./components/common/AdminRoute";
-// import GuestRoute from "./components/common/GuestRoute";
+import GuestRoute from "./components/common/GuestRoute";
 // import PrivateRoute from "./components/common/PrivateRoute";
 
 import "./App.css";
@@ -52,10 +52,17 @@ import "./App.css";
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="*" element={<NotFound />} />
-    </Routes>
+    <AuthProvider>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route element={<GuestRoute />}>
+          <Route path="/login" element={<Login />} />
+          {/* <Route path="/register" element={<Register />} /> */}
+        </Route>
+
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </AuthProvider>
   );
 }
 
