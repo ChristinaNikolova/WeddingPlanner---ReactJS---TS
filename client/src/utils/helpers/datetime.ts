@@ -8,18 +8,21 @@ export const parseDate = (time: string): Date => {
   return new Date(0, 0, 0, Number(hour), Number(minutes));
 };
 
-// todo check return type here
-export const getDifference = (
-  start: string,
-  end: string
-): (string | number)[] => {
+// todo check return type here, and new if here
+export const getDifference = (start: string, end: string): string[] => {
   const difference =
-    new Date("01/01/2007 " + end) - new Date("01/01/2007 " + start);
+    new Date("01/01/2007 " + end).getTime() -
+    new Date("01/01/2007 " + start).getTime();
 
   let hours = formatTime(Math.floor((difference / (1000 * 60 * 60)) % 24));
   let minutes = formatTime(Math.floor((difference / (1000 * 60)) % 60));
 
-  if (hours.toString().includes("-") || minutes.toString().includes("-")) {
+  //   if (hours.toString().includes("-") || minutes.toString().includes("-")) {
+  //     hours = "00";
+  //     minutes = "00";
+  //   }
+
+  if (difference < 0) {
     hours = "00";
     minutes = "00";
   }
