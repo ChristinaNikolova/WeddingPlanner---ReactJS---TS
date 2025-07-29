@@ -3,31 +3,36 @@ import { Link, useNavigate } from "react-router-dom";
 import Input from "../../shared/Tags/Input/Input";
 import ClientError from "../../shared/Errors/ClientError/ClientError";
 import ServerError from "../../shared/Errors/ServerError/ServerError";
+import type { ErrorProps } from "../../../interfaces/ErrorProps";
 import * as helpers from "../../../utils/helpers/form";
 import * as validator from "../../../utils/validators/auth";
 import * as authService from "../../../services/auth";
 import { useAuth } from "../../../hooks/useAuth";
 import styles from "./Login.module.css";
+interface LoginValues {
+  email: string;
+  password: string;
+}
 
 function Login() {
   const { userLogin } = useAuth();
   const navigate = useNavigate();
-
-  const [values, setValues] = useState({
+  //todo update names of the interfaces Props/Values
+  const [values, setValues] = useState<LoginValues>({
     email: "",
     password: "",
   });
 
-  const [isDisabled, setIsDisabled] = useState(true);
-  const [emailError, setEmailError] = useState("");
-  const [passwordError, setPasswordError] = useState("");
-  const [serverError, setServerError] = useState("");
+  const [isDisabled, setIsDisabled] = useState<boolean>(true);
+  const [emailError, setEmailError] = useState<string>("");
+  const [passwordError, setPasswordError] = useState<string>("");
+  const [serverError, setServerError] = useState<ErrorProps[]>([]);
 
   useEffect(() => {
     checkDisabled();
   }, [values, emailError, passwordError]);
 
-  const submitHandler = (e) => {
+  const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     setEmailError(validator.validEmail(values.email));
@@ -51,7 +56,7 @@ function Login() {
       .catch((err) => console.error(err));
   };
 
-  const changeHandler = (e) => {
+  const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValues((state) => ({
       ...state,
       [e.target.name]: e.target.value,
