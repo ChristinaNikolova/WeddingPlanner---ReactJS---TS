@@ -1,0 +1,13 @@
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.loading-content {
+  font-size: 70px;
+  font-weight: 700;
+  color: var(--clr-gold);
+  text-shadow: -2px 0px 41px rgba(0, 0, 0, 0.18);
+}
