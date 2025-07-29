@@ -2,8 +2,7 @@ import { useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 import { displayStyles } from "../../utils/constants/global";
-
-// import HamburgerHeader from "./HamburgerHeader/HamburgerHeader";
+import HamburgerHeader from "./HamburgerHeader/HamburgerHeader";
 import styles from "./Header.module.css";
 
 function Header() {
@@ -37,7 +36,7 @@ function Header() {
       setInitialCssStyles();
     }
   };
-
+  // todo test mobile design
   const setInitialCssStyles = () => {
     (
       document.getElementsByClassName(
@@ -103,12 +102,12 @@ function Header() {
             <i className="fa-solid fa-bars"></i>
           </li>
         </ul>
-        {/* <HamburgerHeader
+        <HamburgerHeader
           isAuthenticated={isAuthenticated}
           isAdmin={isAdmin}
           setNavStyle={setNavStyle}
           setInitialCssStyles={setInitialCssStyles}
-        /> */}
+        />
       </nav>
     </header>
   );
