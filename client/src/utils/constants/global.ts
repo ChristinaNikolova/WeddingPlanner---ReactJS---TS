@@ -1,3 +1,4 @@
+// todo check all files +  add types!!!
 export const emails = {
   ADMIN: "admin@weddingplanner.com",
 } as const;
@@ -12,6 +13,11 @@ export const httpMethods = {
   POST: "POST",
   PUT: "PUT",
   DELETE: "DELETE",
+} as const;
+
+export const serviceNames = {
+  ARTICLES: "Articles",
+  AUTH: "Auth",
 } as const;
 
 export const formNames = {

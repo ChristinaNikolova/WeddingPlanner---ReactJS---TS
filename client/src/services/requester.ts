@@ -1,7 +1,7 @@
 import type { RequestData } from "../interfaces/types/RequestData";
-// import { getToken } from "./auth";
+import { getToken } from "./auth";
+import { global } from "../utils/constants/errors";
 
-// todo check all files +  add types!!!
 export const requester = (
   url: string,
   method: string,
@@ -11,8 +11,13 @@ export const requester = (
     method,
     headers: {
       "Content-Type": "application/json",
-    //   "X-Authorization": `Bearer ${getToken()}`,
+      "X-Authorization": `Bearer ${getToken()}`,
     },
     body: data ? JSON.stringify(data) : null,
+  }).then((response) => {
+    if (!response.ok) {
+      throw new Error(global.RESPONSE(response.status));
+    }
+    return response;
   });
 };

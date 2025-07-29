@@ -2,11 +2,9 @@ import { api } from "./api";
 import { requester } from "./requester";
 import type { ArticleProps } from "../interfaces/ArticleProps";
 import type { ArticleResponse } from "../interfaces/ArticleResponse";
-import { httpMethods } from "../utils/constants/global";
+import { httpMethods, serviceNames } from "../utils/constants/global";
+import { global } from "../utils/constants/errors";
 import { handleServiceError } from "../utils/helpers/errorHandler";
-
-// todo enums - constants
-const SERVICE_NAME = "Articles";
 
 export const create = async (
   title: string,
@@ -23,16 +21,9 @@ export const create = async (
       jumboImage,
       category,
     });
-
-    // todo all func??? => constants
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-
     return response.json();
   } catch (error) {
-    handleServiceError(error, SERVICE_NAME);
-    throw error;
+    return handleServiceError(error, serviceNames.ARTICLES);
   }
 };
 
@@ -56,16 +47,9 @@ export const update = async (
         category,
       }
     );
-
-    // todo all func??? => constants
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-
     return response.json();
   } catch (error) {
-    handleServiceError(error, SERVICE_NAME);
-    throw error;
+    return handleServiceError(error, serviceNames.ARTICLES);
   }
 };
 
@@ -75,16 +59,9 @@ export const deleteById = async (id: string): Promise<ArticleProps> => {
       `${api.admin.articles}/${id}`,
       httpMethods.DELETE
     );
-
-    // todo all func??? => constants
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-
     return response.json();
   } catch (error) {
-    handleServiceError(error, SERVICE_NAME);
-    throw error;
+    return handleServiceError(error, serviceNames.ARTICLES);
   }
 };
 
@@ -104,15 +81,13 @@ export const all = async (
       }
     );
 
-    // todo all func??? => constants
     if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+      throw new Error(global.RESPONSE(response.status));
     }
 
     return response.json();
   } catch (error) {
-    handleServiceError(error, SERVICE_NAME);
-    throw error;
+    return handleServiceError(error, serviceNames.ARTICLES);
   }
 };
 
@@ -122,16 +97,9 @@ export const getById = async (id: string): Promise<ArticleProps> => {
       `${api.public.articles}/${id}`,
       httpMethods.GET
     );
-
-    //todo do we need this here
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-
     return response.json();
   } catch (error) {
-    handleServiceError(error, SERVICE_NAME);
-    throw error;
+    return handleServiceError(error, serviceNames.ARTICLES);
   }
 };
 
@@ -141,16 +109,9 @@ export const like = async (id: string): Promise<ArticleProps> => {
       `${api.public.articles}/${id}`,
       httpMethods.POST
     );
-
-    //todo do we need this here
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-
     return response.json();
   } catch (error) {
-    handleServiceError(error, SERVICE_NAME);
-    throw error;
+    return handleServiceError(error, serviceNames.ARTICLES);
   }
 };
 
@@ -163,14 +124,12 @@ export const getLastThree = async (): Promise<ArticleProps[]> => {
       },
     });
 
-    // todo all func??? => constants
     if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+      throw new Error(global.RESPONSE(response.status));
     }
 
     return response.json();
   } catch (error) {
-    handleServiceError(error, SERVICE_NAME);
-    throw error;
+    return handleServiceError(error, serviceNames.ARTICLES);
   }
 };
