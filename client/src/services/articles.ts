@@ -6,6 +6,7 @@ import { httpMethods, serviceNames } from "../utils/constants/global";
 import { global } from "../utils/constants/errors";
 import { handleServiceError } from "../utils/helpers/errorHandler";
 
+// todo create + unpdate = interface???
 export const create = async (
   title: string,
   content: string,

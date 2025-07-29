@@ -5,14 +5,21 @@ import { global } from "../utils/constants/errors";
 export const requester = (
   url: string,
   method: string,
-  data?: RequestData
+  data?: RequestData,
+  isAuth = true
 ): Promise<Response> => {
+  const headers: Record<string, string> = {
+    "Content-Type": "application/json",
+  };
+  const token = getToken();
+
+  if (isAuth && token) {
+    headers["X-Authorization"] = `Bearer ${token}`;
+  }
+
   return fetch(url, {
     method,
-    headers: {
-      "Content-Type": "application/json",
-      "X-Authorization": `Bearer ${getToken()}`,
-    },
+    headers,
     body: data ? JSON.stringify(data) : null,
   }).then((response) => {
     if (!response.ok) {
