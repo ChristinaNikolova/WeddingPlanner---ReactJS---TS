@@ -16,8 +16,8 @@ export const toggleWithTargetContent = (
   const isHidden = targetElement.style.display === displayStyles.NONE;
 
   targetElement.style.display = isHidden
-    ? (targetElement.style.display = displayStyles.BLOCK)
-    : (targetElement.style.display = displayStyles.NONE);
+    ? displayStyles.BLOCK
+    : displayStyles.NONE;
 
   if (targetIcon.classList.contains(classNames.CHEVRON_DOWN)) {
     targetIcon.classList.remove(classNames.CHEVRON_DOWN);
