@@ -7,6 +7,7 @@ import { Routes, Route } from "react-router-dom";
 // import Footer from "./components/Footer/Footer";
 // import Header from "./components/Header/Header";
 import Home from "./components/Home/Home";
+import NotFound from "./components/NotFound/NotFound";
 // import Login from "./components/Auth/Login/Login";
 // import Register from "./components/Auth/Register/Register";
 // import Logout from "./components/Auth/Logout/Logout";
@@ -22,7 +23,6 @@ import Home from "./components/Home/Home";
 // import ChecklistAll from "./components/Checklist/Task/All/TasksAll";
 // import EventsAll from "./components/Event/All/EventsAll";
 // import NotesAll from "./components/Note/All/NotesAll";
-// import NotFound from "./components/NotFound/NotFound";
 // import Loading from "./components/shared/Loading/Loading";
 
 // import AdminRoute from "./components/common/AdminRoute";
@@ -54,6 +54,7 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 }
