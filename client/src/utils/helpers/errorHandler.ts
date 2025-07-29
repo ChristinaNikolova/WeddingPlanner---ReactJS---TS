@@ -1,11 +1,10 @@
+import { global } from "../constants/errors";
+
 export const handleServiceError = (
   error: unknown,
   serviceName?: string
 ): never => {
-  // todo add constants here
-  const prefix = serviceName
-    ? `${serviceName} service error:`
-    : "Service error:";
-  console.error(prefix, error);
+  // todo test here!!!
+  console.error(global.SERVER_ERROR(serviceName));
   throw error;
 };

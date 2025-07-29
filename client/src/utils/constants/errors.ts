@@ -2,6 +2,9 @@ export const global = {
   RESPONSE(statusCode: number): string {
     return `HTTP error! status: ${statusCode}`;
   },
+  SERVER_ERROR(serviceName = ""): string {
+    return serviceName ? `${serviceName} service error:` : "Service error:";
+  },
   TITLE(min: number, max: number): string {
     return `Title should be between ${min} and ${max} characters long`;
   },
