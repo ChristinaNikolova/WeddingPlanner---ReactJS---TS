@@ -5,9 +5,8 @@ import {
 } from "../constants/errors";
 
 export const validEmail = (email: string): string => {
-  const emailRegex = new RegExp(
-    "^\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$"
-  );
+  const emailRegex =
+    /^[\w]+([-+.'][\w]+)*@[\w]+([-.][\w]+)*\.[\w]+([-.][\w]+)*$/;
   return email && emailRegex.test(email) ? "" : authErrors.EMAIL;
 };
 
