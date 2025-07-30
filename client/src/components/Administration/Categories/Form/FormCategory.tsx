@@ -4,11 +4,20 @@ import ClientError from "../../../shared/Errors/ClientError/ClientError";
 import ServerError from "../../../shared/Errors/ServerError/ServerError";
 import FormButton from "../../../shared/Buttons/Form/FormButton";
 import Bottom from "../../../shared/Images/Bottom/Bottom";
+import type { ErrorProps } from "../../../../interfaces/ErrorProps";
 import * as helpers from "../../../../utils/helpers/form";
-import * as validator from "../../../../utils/validators/category";
 import * as constants from "../../../../utils/constants/images";
+import * as validator from "../../../../utils/validators/category";
 import styles from "./FormCategory.module.css";
 
+interface FormCategoryProps {
+  formName: string;
+  name: string;
+  image: string;
+  serverError: ErrorProps[];
+  onSubmitHandler: (name: string, image: string) => void;
+  onCancelFormHandler: (event: React.MouseEvent<HTMLElement>) => void;
+}
 const FormCategory = ({
   formName,
   name,
@@ -16,7 +25,7 @@ const FormCategory = ({
   serverError,
   onSubmitHandler,
   onCancelFormHandler,
-}) => {
+}: FormCategoryProps) => {
   const [values, setValues] = useState({
     name: name,
     image: image,
@@ -30,26 +39,26 @@ const FormCategory = ({
     checkDisabled();
   }, [values, nameError, imageError]);
 
-  const changeHandler = (e) => {
+  const changeHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setValues((state) => ({
       ...state,
       [e.target.name]: e.target.value,
     }));
   };
 
-  const validateName = () => {
+  const validateName = (): void => {
     setNameError(validator.validName(values.name));
   };
 
-  const validateImage = () => {
+  const validateImage = (): void => {
     setImageError(validator.validImage(values.image));
   };
 
-  const checkDisabled = () => {
+  const checkDisabled = (): void => {
     setIsDisabled(helpers.isButtonDisabled(values, [nameError, imageError]));
   };
 
-  const onsubmitHelperHandler = (e) => {
+  const onSubmitHelperHandler = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
 
     setNameError(validator.validName(values.name));
@@ -70,7 +79,7 @@ const FormCategory = ({
       </div>
       <div className="form-wrapper-center">
         <form
-          onSubmit={onsubmitHelperHandler}
+          onSubmit={onSubmitHelperHandler}
           className={[styles["create-category-form"], "form-width"].join(" ")}
         >
           <div className="form-wrapper">
@@ -82,7 +91,7 @@ const FormCategory = ({
               onChangeHandler={changeHandler}
               onBlurHandler={validateName}
             />
-            {nameError && <ClientError error={nameError} />}
+            {nameError && <ClientError message={nameError} />}
           </div>
           <div className="form-wrapper">
             <Input
@@ -93,7 +102,7 @@ const FormCategory = ({
               onChangeHandler={changeHandler}
               onBlurHandler={validateImage}
             />
-            {imageError && <ClientError error={imageError} />}
+            {imageError && <ClientError message={imageError} />}
           </div>
           <FormButton
             formName={formName}
