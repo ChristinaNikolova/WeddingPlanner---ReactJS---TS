@@ -1,0 +1,230 @@
+import { useState, useEffect } from "react";
+
+import { category as categoryModel } from "../../../../utils/constants/model";
+import * as helpers from "../../../../utils/helpers/form";
+import * as validator from "../../../../utils/validators/article";
+import * as categoriesService from "../../../../services/categories";
+
+import Input from "../../../shared/Tags/Input/Input";
+import TextArea from "../../../shared/Tags/TextArea/TextArea";
+import Select from "../../../shared/Tags/Select/Select";
+import ClientError from "../../../shared/Errors/ClientError/ClientError";
+import ServerError from "../../../shared/Errors/ServerError/ServerError";
+import FormButton from "../../../shared/Buttons/Form/FormButton";
+import type { CategoryProps } from "../../../../interfaces/CategoryProps";
+import type { ErrorProps } from "../../../../interfaces/ErrorProps";
+
+interface FormArticleProps {
+  formName: string;
+  title: string;
+  content: string;
+  image: string;
+  jumboImage: string;
+  category?: CategoryProps;
+  serverError: ErrorProps[];
+  onSubmitHandler: (
+    title: string,
+    content: string,
+    image: string,
+    jumboImage: string,
+    category: string
+  ) => void;
+  onCancelFormHandler: (event: React.MouseEvent<HTMLElement>) => void;
+}
+
+const FormArticle = ({
+  formName,
+  title,
+  content,
+  image,
+  jumboImage,
+  category,
+  serverError,
+  onSubmitHandler,
+  onCancelFormHandler,
+}: FormArticleProps) => {
+  // todo add interface here
+  const [values, setValues] = useState({
+    title: title,
+    content: content,
+    image: image,
+    jumboImage: jumboImage,
+    category: category
+      ? category.id
+      : categoryModel.DEFAULT_CATEGORY_SELECTED_ID,
+  });
+
+  const [isDisabled, setIsDisabled] = useState<boolean>(true);
+  const [categories, setCategories] = useState<CategoryProps[]>([]);
+  const [titleError, setTitleError] = useState<string>("");
+  const [contentError, setContentError] = useState<string>("");
+  const [imageError, setImageError] = useState<string>("");
+  const [jumboImageError, setJumboImageError] = useState<string>("");
+  const [categoryError, setCategoryError] = useState<string>("");
+
+  useEffect(() => {
+    categoriesService
+      .all()
+      .then((data) => setCategories(data))
+      .catch((err) => console.error(err));
+  }, []);
+
+  useEffect(() => {
+    checkDisabled();
+  }, [
+    values,
+    titleError,
+    contentError,
+    imageError,
+    jumboImageError,
+    categoryError,
+  ]);
+
+  const changeHandler = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ): void => {
+    // todo check in code for more !!!
+    const { name, value } = e.target;
+    setValues((state) => ({
+      ...state,
+      [name]: value,
+    }));
+  };
+
+  const validateTitle = (): void => {
+    setTitleError(validator.validTitle(values.title));
+  };
+
+  const validateContent = (): void => {
+    setContentError(validator.validContent(values.content));
+  };
+
+  const validateImage = (): void => {
+    setImageError(validator.validImage(values.image));
+  };
+
+  const validateJumboImage = (): void => {
+    setJumboImageError(validator.validImage(values.jumboImage));
+  };
+
+  const validateCategory = (): void => {
+    setCategoryError(validator.validCategory(values.category!));
+  };
+
+  const checkDisabled = (): void => {
+    setIsDisabled(
+      helpers.isButtonDisabled(values, [
+        titleError,
+        contentError,
+        imageError,
+        jumboImageError,
+        categoryError,
+      ])
+    );
+  };
+
+  const onSubmitHelperHandler = (e: React.FormEvent<HTMLFormElement>): void => {
+    e.preventDefault();
+
+    setTitleError(validator.validTitle(values.title));
+    setContentError(validator.validContent(values.content));
+    setImageError(validator.validImage(values.image));
+    setJumboImageError(validator.validImage(values.jumboImage));
+    setCategoryError(validator.validCategory(values.category!));
+
+    if (
+      titleError ||
+      contentError ||
+      imageError ||
+      jumboImageError ||
+      categoryError
+    ) {
+      return;
+    }
+
+    onSubmitHandler(
+      values.title,
+      values.content,
+      values.image,
+      values.jumboImage,
+      values.category!
+    );
+  };
+
+  return (
+    <section className="section-background">
+      {serverError && <ServerError errors={serverError} />}
+      <div className="section-title-wrapper">
+        <h2 className="section-title">{formName} Article</h2>
+      </div>
+      <div className="form-wrapper-center">
+        <form onSubmit={onSubmitHelperHandler} className="form-width">
+          <div className="form-wrapper">
+            <Input
+              name="title"
+              type="text"
+              label="Title"
+              value={values.title}
+              onChangeHandler={changeHandler}
+              onBlurHandler={validateTitle}
+            />
+            {titleError && <ClientError message={titleError} />}
+          </div>
+          <div className="form-wrapper">
+            <TextArea
+              name="content"
+              label="Content"
+              value={values.content}
+              rows={16}
+              onChangeHandler={changeHandler}
+              onBlurHandler={validateContent}
+            />
+            {contentError && <ClientError message={contentError} />}
+          </div>
+          <div className="form-wrapper">
+            <Input
+              name="image"
+              type="url"
+              label="Image"
+              value={values.image}
+              onChangeHandler={changeHandler}
+              onBlurHandler={validateImage}
+            />
+            {imageError && <ClientError message={imageError} />}
+          </div>
+          <div className="form-wrapper">
+            <Input
+              name="jumboImage"
+              type="url"
+              label="Jumbo Image"
+              value={values.jumboImage}
+              onChangeHandler={changeHandler}
+              onBlurHandler={validateJumboImage}
+            />
+            {jumboImageError && <ClientError message={jumboImageError} />}
+          </div>
+          <div className="form-wrapper">
+            <Select
+              name="category"
+              label="Category"
+              value={values.category}
+              onChangeHandler={changeHandler}
+              onBlurHandler={validateCategory}
+              categories={categories}
+            />
+            {categoryError && <ClientError message={categoryError} />}
+          </div>
+          <FormButton
+            formName={formName}
+            isDisabled={isDisabled}
+            onCancelFormHandler={onCancelFormHandler}
+          />
+        </form>
+      </div>
+    </section>
+  );
+};
+
+export default FormArticle;
