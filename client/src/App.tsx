@@ -40,15 +40,15 @@ const AdminDashboard = lazy(
 // const UpdateArticle = lazy(() =>
 //   import("./components/Administration/Articles/Update/UpdateArticle")
 // );
-// const AllCategories = lazy(() =>
-//   import("./components/Administration/Categories/All/AllCategories")
-// );
-// const CreateCategory = lazy(() =>
-//   import("./components/Administration/Categories/Create/CreateCategory")
-// );
-// const UpdateCategory = lazy(() =>
-//   import("./components/Administration/Categories/Update/UpdateCategory")
-// );
+const AllCategories = lazy(
+  () => import("./components/Administration/Categories/All/AllCategories")
+);
+const CreateCategory = lazy(
+  () => import("./components/Administration/Categories/Create/CreateCategory")
+);
+const UpdateCategory = lazy(
+  () => import("./components/Administration/Categories/Update/UpdateCategory")
+);
 
 const App = () => {
   return (
@@ -100,30 +100,30 @@ const App = () => {
               </Suspense>
             }
           /> */}
-          {/* <Route
+          <Route
             path="/administration/categories"
             element={
               <Suspense fallback={<Loading />}>
                 <AllCategories />
               </Suspense>
             }
-          /> */}
-          {/* <Route
+          />
+          <Route
             path="/administration/categories/create"
             element={
               <Suspense fallback={<Loading />}>
                 <CreateCategory />
               </Suspense>
             }
-          /> */}
-          {/* <Route
+          />
+          <Route
             path="/administration/categories/edit/:id"
             element={
               <Suspense fallback={<Loading />}>
                 <UpdateCategory />
               </Suspense>
             }
-          /> */}
+          />
         </Route>
 
         <Route path="*" element={<NotFound />} />
