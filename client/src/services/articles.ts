@@ -4,6 +4,7 @@ import type { ArticleProps } from "../interfaces/ArticleProps";
 import type { ArticleResponse } from "../interfaces/ArticleResponse";
 import { httpMethods, serviceNames } from "../utils/constants/global";
 import { handleServiceError } from "../utils/helpers/errorHandler";
+import type { ArticleDetailsProps } from "../interfaces/ArticleDetailsProps";
 
 // todo create + unpdate = interface???
 export const create = async (
@@ -86,7 +87,7 @@ export const all = async (
   }
 };
 
-export const getById = async (id: string): Promise<ArticleProps> => {
+export const getById = async (id: string): Promise<ArticleDetailsProps> => {
   try {
     const response = await requester(
       `${api.public.articles}/${id}`,
@@ -98,7 +99,7 @@ export const getById = async (id: string): Promise<ArticleProps> => {
   }
 };
 
-export const like = async (id: string): Promise<ArticleProps> => {
+export const like = async (id: string): Promise<ArticleDetailsProps> => {
   try {
     const response = await requester(
       `${api.public.articles}/${id}`,
