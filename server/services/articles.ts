@@ -32,7 +32,12 @@ async function create(
 
   await article.save();
 
-  return article;
+  return {
+    ...article.toObject(),
+    id: article._id.toString(),
+    // todo ???
+    // category: article.category.toString(),
+  };
 }
 
 async function update(
