@@ -34,12 +34,12 @@ import "./App.css";
 const AdminDashboard = lazy(
   () => import("./components/Administration/Dashboard/Dashboard")
 );
-// const CreateArticle = lazy(() =>
-//   import("./components/Administration/Articles/Create/CreateArticle")
-// );
-// const UpdateArticle = lazy(() =>
-//   import("./components/Administration/Articles/Update/UpdateArticle")
-// );
+const CreateArticle = lazy(
+  () => import("./components/Administration/Articles/Create/CreateArticle")
+);
+const UpdateArticle = lazy(
+  () => import("./components/Administration/Articles/Update/UpdateArticle")
+);
 const AllCategories = lazy(
   () => import("./components/Administration/Categories/All/AllCategories")
 );
@@ -84,22 +84,22 @@ const App = () => {
               </Suspense>
             }
           />
-          {/* <Route
+          <Route
             path="/administration/articles/create"
             element={
               <Suspense fallback={<Loading />}>
                 <CreateArticle />
               </Suspense>
             }
-          /> */}
-          {/* <Route
+          />
+          <Route
             path="/administration/articles/edit/:id"
             element={
               <Suspense fallback={<Loading />}>
                 <UpdateArticle />
               </Suspense>
             }
-          /> */}
+          />
           <Route
             path="/administration/categories"
             element={
