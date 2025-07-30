@@ -1,10 +1,20 @@
 import { Link } from "react-router-dom";
-
 import { category } from "../../../../utils/constants/model";
-
 import styles from "./SingleCategory.module.css";
 
-const SingleCategory = ({ id, name, image, onDeleteHandler }) => {
+interface SingleCategoryProps {
+  id: string;
+  name: string;
+  image: string;
+  onDeleteHandler: (id: string) => void;
+}
+
+const SingleCategory = ({
+  id,
+  name,
+  image,
+  onDeleteHandler,
+}: SingleCategoryProps) => {
   return (
     <li className={styles["all-categories-li"]}>
       <img
