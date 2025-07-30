@@ -3,11 +3,12 @@ import { useNavigate } from "react-router-dom";
 import FormCategory from "../Form/FormCategory";
 import * as categoriesService from "../../../../services/categories";
 import { formNames } from "../../../../utils/constants/global";
+import type { ErrorProps } from "../../../../interfaces/ErrorProps";
 
 const CreateCategory = () => {
   const formName = formNames.CREATE;
   const navigate = useNavigate();
-  const [serverError, setServerError] = useState("");
+  const [serverError, setServerError] = useState<ErrorProps[]>([]);
 
   useEffect(() => {}, [serverError]);
 
@@ -25,7 +26,7 @@ const CreateCategory = () => {
       .catch((err) => console.error(err));
   };
 
-  const onCancelFormHandler = () => {
+  const onCancelFormHandler = (): void => {
     navigate("/administration/categories");
   };
 
