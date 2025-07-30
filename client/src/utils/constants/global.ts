@@ -18,6 +18,14 @@ export const httpMethods = {
 export const serviceNames = {
   ARTICLES: "Articles",
   AUTH: "Auth",
+  CATEGORIES: "Categories",
+  COSTS: "Costs",
+  EVENTS: "Events",
+  GUESTS: "Guests",
+  NOTES: "Notes",
+  PLANNERS: "Planners",
+  SUBTASKS: "Subtasks",
+  TASKS: "Tasks",
   USERS: "Users",
 } as const;
 
