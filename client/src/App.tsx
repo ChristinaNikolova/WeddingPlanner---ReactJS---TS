@@ -2,7 +2,7 @@
 import { Routes, Route } from "react-router-dom";
 
 import { AuthProvider } from "./contexts/AuthProvider";
-// import * as constants from "./utils/constants/images";
+import * as constants from "./utils/constants/images";
 
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
@@ -13,7 +13,7 @@ import Register from "./components/Auth/Register/Register";
 import Logout from "./components/Auth/Logout/Logout";
 // import ArticlesAll from "./components/Blog/ArticlesAll/ArticlesAll";
 // import ArticleDetails from "./components/Blog/ArticleDetails/ArticleDetails";
-// import FavouriteArticle from "./components/User/FavouriteArticle/FavouriteArticle";
+import FavouriteArticle from "./components/User/FavouriteArticle/FavouriteArticle";
 // import PlannerDashboard from "./components/Planner/Dashboard/Dashboard";
 // import CreatePlanner from "./components/Planner/Create/CreatePlanner";
 // import DetailsPlanner from "./components/Planner/Details/DetailsPlanner";
@@ -62,6 +62,10 @@ const App = () => {
         </Route>
 
         <Route element={<PrivateRoute />}>
+          <Route
+            path="/user/favourite-article"
+            element={<FavouriteArticle pathToImage={constants.jumbo.USER} />}
+          />
           <Route path="/logout" element={<Logout />} />
         </Route>
 
