@@ -1,5 +1,5 @@
 import type { ArticleProps } from "../../../interfaces/ArticleProps";
-import ArticleSingle from "../SingleArticle/ArticleSingle";
+import ArticleSingle from "../ArticleSingle/ArticleSingle";
 import styles from "./ArticlesList.module.css";
 
 // todo create sub interfaces
