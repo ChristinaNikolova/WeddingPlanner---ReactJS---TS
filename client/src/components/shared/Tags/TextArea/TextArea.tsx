@@ -1,13 +1,13 @@
 import type { TextAreaProps } from "../../../../interfaces/TextAreaProps";
 
-function TextArea({
+const TextArea = ({
   name,
   label,
   value,
   rows,
   onChangeHandler,
   onBlurHandler,
-}: TextAreaProps) {
+}: TextAreaProps) => {
   return (
     <>
       <label className="label" htmlFor={name}>
@@ -24,6 +24,6 @@ function TextArea({
       />
     </>
   );
-}
+};
 
 export default TextArea;

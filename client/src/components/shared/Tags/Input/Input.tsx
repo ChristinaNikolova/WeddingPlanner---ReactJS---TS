@@ -1,7 +1,7 @@
 import type { InputProps } from "../../../../interfaces/InputProps";
 
 //todo check this checked={checked || false} => checked={checked ? checked : ""}
-function Input({
+const Input = ({
   name,
   type,
   label,
@@ -9,7 +9,7 @@ function Input({
   onChangeHandler,
   onBlurHandler,
   checked,
-}: InputProps) {
+}: InputProps) => {
   return (
     <>
       <label className="label" htmlFor={name}>
@@ -27,6 +27,6 @@ function Input({
       />
     </>
   );
-}
+};
 
 export default Input;

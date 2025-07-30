@@ -1,10 +1,10 @@
 import type { FormButtonProps } from "../../../../interfaces/FormButtonProps";
 
-function FormButton({
+const FormButton = ({
   formName,
   isDisabled,
   onCancelFormHandler,
-}: FormButtonProps) {
+}: FormButtonProps) => {
   return (
     <div className="form-btns-wrapper">
       <button disabled={isDisabled} className="btn btn-center">
@@ -19,6 +19,6 @@ function FormButton({
       </button>
     </div>
   );
-}
+};
 
 export default FormButton;

@@ -3,7 +3,12 @@ import type { ArticleProps } from "../../../../interfaces/ArticleProps";
 import styles from "./LastSingleArticle.module.css";
 
 // todo ad lazy to the images
-function LastSingleArticle({ id, title, shortContent, image }: ArticleProps) {
+const LastSingleArticle = ({
+  id,
+  title,
+  shortContent,
+  image,
+}: ArticleProps) => {
   return (
     <article className={styles["last-three-articles-current-article-wrapper"]}>
       <img
@@ -25,6 +30,6 @@ function LastSingleArticle({ id, title, shortContent, image }: ArticleProps) {
       </Link>
     </article>
   );
-}
+};
 
 export default LastSingleArticle;

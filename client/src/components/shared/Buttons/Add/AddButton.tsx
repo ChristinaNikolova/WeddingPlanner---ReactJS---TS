@@ -1,11 +1,11 @@
 import type { AddButtonProps } from "../../../../interfaces/AddButtonProps";
 
-function AddButton({
+const AddButton = ({
   classNames,
   text,
   isEmptyString,
   onShowFormHandler,
-}: AddButtonProps) {
+}: AddButtonProps) => {
   const getStyles = () => {
     return [...classNames, "form-icon-wrapper"].join(" ");
   };
@@ -21,6 +21,6 @@ function AddButton({
       Add {text}
     </div>
   );
-}
+};
 
 export default AddButton;

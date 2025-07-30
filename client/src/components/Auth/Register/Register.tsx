@@ -18,7 +18,7 @@ interface RegisterValues {
   password: string;
   repass: string;
 }
-function Register() {
+const Register = () => {
   const { userLogin } = useAuth();
   const navigate = useNavigate();
 
@@ -213,6 +213,6 @@ function Register() {
       </div>
     </section>
   );
-}
+};
 
 export default Register;

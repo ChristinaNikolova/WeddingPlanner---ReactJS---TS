@@ -1,7 +1,7 @@
 import type { ServerErrorProps } from "../../../../interfaces/ServerErrorProps";
 import styles from "./ServerError.module.css";
 
-function ServerError({ errors }: ServerErrorProps) {
+const ServerError = ({ errors }: ServerErrorProps) => {
   return (
     <div
       className={[styles["server-error-wrapper"], "error-message"].join(" ")}
@@ -13,6 +13,6 @@ function ServerError({ errors }: ServerErrorProps) {
       ))}
     </div>
   );
-}
+};
 
 export default ServerError;

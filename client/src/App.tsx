@@ -50,7 +50,7 @@ import "./App.css";
 //   import("./components/Administration/Categories/Update/UpdateCategory")
 // );
 
-function App() {
+const App = () => {
   return (
     <AuthProvider>
       <Header />
@@ -70,6 +70,6 @@ function App() {
       <Footer />
     </AuthProvider>
   );
-}
+};
 
 export default App;

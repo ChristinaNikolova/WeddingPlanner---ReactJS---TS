@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 import styles from "./Footer.module.css";
 
-function Footer() {
+const Footer = () => {
   const { isAuthenticated } = useAuth();
 
   return (
@@ -55,6 +55,6 @@ function Footer() {
       </nav>
     </footer>
   );
-}
+};
 
 export default Footer;

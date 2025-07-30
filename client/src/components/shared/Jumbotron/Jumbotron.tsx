@@ -1,7 +1,7 @@
 import type { JumbotronProps } from "../../../interfaces/JumbotronProps";
 import styles from "./Jumbotron.module.css";
 
-function Jumbotron({ pathToImage, isHomePage }: JumbotronProps) {
+const Jumbotron = ({ pathToImage, isHomePage }: JumbotronProps) => {
   return (
     <section
       className={styles.jumbo}
@@ -15,6 +15,6 @@ function Jumbotron({ pathToImage, isHomePage }: JumbotronProps) {
       )}
     </section>
   );
-}
+};
 
 export default Jumbotron;

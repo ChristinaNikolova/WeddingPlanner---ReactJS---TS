@@ -16,7 +16,7 @@ interface LoginValues {
   password: string;
 }
 
-function Login() {
+const Login = () => {
   const { userLogin } = useAuth();
   const navigate = useNavigate();
   //todo update names of the interfaces Props/Values
@@ -127,6 +127,6 @@ function Login() {
       </div>
     </section>
   );
-}
+};
 
 export default Login;

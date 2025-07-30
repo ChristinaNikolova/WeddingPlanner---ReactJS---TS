@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import styles from "./NotFound.module.css";
 
-function NotFound() {
+const NotFound = () => {
   return (
     <section className={styles["not-found"]}>
       <h2 className={styles["not-found-main-title"]}>404</h2>
@@ -14,6 +14,6 @@ function NotFound() {
       </Link>
     </section>
   );
-}
+};
 
 export default NotFound;

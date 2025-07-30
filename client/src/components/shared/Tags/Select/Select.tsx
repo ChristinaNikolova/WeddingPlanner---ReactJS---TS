@@ -1,13 +1,13 @@
 import type { SelectProps } from "../../../../interfaces/SelectProps";
 
-function Select({
+const Select = ({
   name,
   label,
   value,
   onChangeHandler,
   onBlurHandler,
   categories,
-}: SelectProps) {
+}: SelectProps) => {
   return (
     <>
       <label className="label" htmlFor={name}>
@@ -36,6 +36,6 @@ function Select({
       </select>
     </>
   );
-}
+};
 
 export default Select;

@@ -4,7 +4,7 @@ import { useAuth } from "../../../hooks/useAuth";
 import * as authService from "../../../services/auth";
 
 // todo test dependencies in use effect
-function Logout() {
+const Logout = () => {
   const { userLogout } = useAuth();
   const navigate = useNavigate();
 
@@ -19,6 +19,6 @@ function Logout() {
   }, [userLogout, navigate]);
 
   return <></>;
-}
+};
 
 export default Logout;

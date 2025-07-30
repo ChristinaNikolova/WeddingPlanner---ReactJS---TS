@@ -1,7 +1,7 @@
 import type { ImageBottomProps } from "../../../../interfaces/ImageBottomProps";
 import styles from "./Bottom.module.css";
 
-function Bottom({ first, second, third }: ImageBottomProps) {
+const Bottom = ({ first, second, third }: ImageBottomProps) => {
   return (
     <div className={styles["bottom-img-wrapper"]}>
       <img
@@ -21,6 +21,6 @@ function Bottom({ first, second, third }: ImageBottomProps) {
       />
     </div>
   );
-}
+};
 
 export default Bottom;

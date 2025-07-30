@@ -3,12 +3,12 @@ import type { PaginationProps } from "../../../interfaces/PaginationProps";
 import { directions } from "../../../utils/constants/global";
 import styles from "./Pagination.module.css";
 
-function Pagination({
+const Pagination = ({
   currentPage,
   pagesCount,
   selectedCategory,
   onClickHandler,
-}: PaginationProps) {
+}: PaginationProps) => {
   return (
     <div className={styles["pagination-wrapper"]}>
       {currentPage !== 1 && (
@@ -31,6 +31,6 @@ function Pagination({
       )}
     </div>
   );
-}
+};
 
 export default Pagination;

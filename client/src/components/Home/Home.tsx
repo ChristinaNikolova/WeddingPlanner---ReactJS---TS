@@ -4,7 +4,7 @@ import LastThreeArticles from "../shared/Blog/LastThreeArticles/LastThreeArticle
 import * as constants from "../../utils/constants/images";
 import styles from "./Home.module.css";
 
-function Home() {
+const Home = () => {
   return (
     <section className={styles.home}>
       <Jumbotron pathToImage={constants.jumbo.HOME} isHomePage={true} />
@@ -23,6 +23,6 @@ function Home() {
       <LastThreeArticles />
     </section>
   );
-}
+};
 
 export default Home;

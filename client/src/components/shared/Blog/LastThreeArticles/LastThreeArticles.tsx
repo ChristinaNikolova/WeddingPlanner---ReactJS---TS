@@ -4,7 +4,7 @@ import type { ArticleProps } from "../../../../interfaces/ArticleProps";
 import * as articlesService from "../../../../services/articles";
 import styles from "./LastThreeArticles.module.css";
 
-function LastThreeArticles() {
+const LastThreeArticles = () => {
   const [articles, setArticles] = useState<ArticleProps[]>([]);
 
   useEffect(() => {
@@ -30,6 +30,6 @@ function LastThreeArticles() {
       </div>
     </section>
   );
-}
+};
 
 export default LastThreeArticles;
