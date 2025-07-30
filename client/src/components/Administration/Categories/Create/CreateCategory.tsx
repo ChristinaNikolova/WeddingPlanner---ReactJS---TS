@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import FormCategory from "../Form/FormCategory";
+import type { ErrorProps } from "../../../../interfaces/ErrorProps";
 import * as categoriesService from "../../../../services/categories";
 import { formNames } from "../../../../utils/constants/global";
-import type { ErrorProps } from "../../../../interfaces/ErrorProps";
 
 const CreateCategory = () => {
   const formName = formNames.CREATE;

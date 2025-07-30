@@ -24,7 +24,7 @@ const UpdateCategory = () => {
 
   useEffect(() => {}, [serverError]);
 
-  const submitHandler = (name: string, image: string) => {
+  const submitHandler = (name: string, image: string): void => {
     categoriesService
       .update(id!, name, image)
       .then((data) => {
@@ -38,7 +38,7 @@ const UpdateCategory = () => {
       .catch((err) => console.error(err));
   };
 
-  const onCancelFormHandler = () => {
+  const onCancelFormHandler = (): void => {
     navigate("/administration/categories");
   };
 

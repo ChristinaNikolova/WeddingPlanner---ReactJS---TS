@@ -22,7 +22,6 @@ const AllCategories = () => {
           setServerError(data.message);
           return;
         }
-
         loadCategories();
       })
       .catch((err) => console.error(err));

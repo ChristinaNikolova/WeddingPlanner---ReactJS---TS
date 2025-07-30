@@ -31,9 +31,9 @@ const FormCategory = ({
     image: image,
   });
 
-  const [isDisabled, setIsDisabled] = useState(true);
-  const [nameError, setNameError] = useState("");
-  const [imageError, setImageError] = useState("");
+  const [isDisabled, setIsDisabled] = useState<boolean>(true);
+  const [nameError, setNameError] = useState<string>("");
+  const [imageError, setImageError] = useState<string>("");
 
   useEffect(() => {
     checkDisabled();
