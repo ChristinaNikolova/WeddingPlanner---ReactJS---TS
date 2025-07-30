@@ -3,7 +3,6 @@ import { requester } from "./requester";
 import type { ArticleProps } from "../interfaces/ArticleProps";
 import type { ArticleResponse } from "../interfaces/ArticleResponse";
 import { httpMethods, serviceNames } from "../utils/constants/global";
-import { global } from "../utils/constants/errors";
 import { handleServiceError } from "../utils/helpers/errorHandler";
 
 // todo create + unpdate = interface???
@@ -81,11 +80,6 @@ export const all = async (
         },
       }
     );
-
-    if (!response.ok) {
-      throw new Error(global.RESPONSE(response.status));
-    }
-
     return response.json();
   } catch (error) {
     return handleServiceError(error, serviceNames.ARTICLES);
@@ -124,11 +118,6 @@ export const getLastThree = async (): Promise<ArticleProps[]> => {
         "Content-Type": "application/json",
       },
     });
-
-    if (!response.ok) {
-      throw new Error(global.RESPONSE(response.status));
-    }
-
     return response.json();
   } catch (error) {
     return handleServiceError(error, serviceNames.ARTICLES);

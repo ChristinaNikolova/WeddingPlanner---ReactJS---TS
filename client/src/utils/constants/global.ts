@@ -18,6 +18,7 @@ export const httpMethods = {
 export const serviceNames = {
   ARTICLES: "Articles",
   AUTH: "Auth",
+  USERS: "Users",
 } as const;
 
 export const formNames = {
