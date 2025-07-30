@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react";
-import ServerError from "../../../shared/Errors/ServerError/ServerError";
 import SingleCategory from "../Single/SingleCategory";
+import ServerError from "../../../shared/Errors/ServerError/ServerError";
+import type { CategoryProps } from "../../../../interfaces/CategoryProps";
+import type { ErrorProps } from "../../../../interfaces/ErrorProps";
 import * as categoriesService from "../../../../services/categories";
 import styles from "./AllCategories.module.css";
-import type { CategoryProps } from "../../../../interfaces/CategoryProps";
 
 const AllCategories = () => {
   const [categories, setCategories] = useState<CategoryProps[]>([]);
-  const [serverError, setServerError] = useState("");
+  const [serverError, setServerError] = useState<ErrorProps[]>([]);
 
   useEffect(() => {
     loadCategories();
@@ -34,6 +35,7 @@ const AllCategories = () => {
       .catch((err) => console.error(err));
   };
 
+  // todo optional, not optional
   return (
     <section className="section-background">
       {serverError && <ServerError errors={serverError} />}
@@ -45,7 +47,7 @@ const AllCategories = () => {
           {categories.map((c) => (
             <SingleCategory
               key={c.id}
-              id={c.id}
+              id={c.id!}
               name={c.name}
               image={c.image}
               onDeleteHandler={onDeleteHandler}
