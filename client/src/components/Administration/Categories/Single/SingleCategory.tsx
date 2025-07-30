@@ -5,7 +5,7 @@ import styles from "./SingleCategory.module.css";
 interface SingleCategoryProps {
   id: string;
   name: string;
-  image: string;
+  image?: string;
   onDeleteHandler: (id: string) => void;
 }
 
