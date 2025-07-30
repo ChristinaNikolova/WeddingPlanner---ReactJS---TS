@@ -1,56 +1,68 @@
-import { useEffect } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 import { displayStyles } from "../../utils/constants/global";
 import HamburgerHeader from "./HamburgerHeader/HamburgerHeader";
 import styles from "./Header.module.css";
 
-function Header() {
+const Header = () => {
   const { isAuthenticated, isAdmin } = useAuth();
 
-  //   const ulHamburgerRef = useRef<HTMLElement | null>(null);
-  //   const ulRef = useRef<HTMLUListElement | null>(null);
-  //   const headerRef = useRef<HTMLElement | null>(null);
+  const ulHamburgerRef = useRef<HTMLUListElement | null>(null);
+  const ulRef = useRef<HTMLUListElement | null>(null);
+  const headerRef = useRef<HTMLElement | null>(null);
+
+  const setInitialCssStyles = useCallback(() => {
+    if (ulHamburgerRef.current) {
+      ulHamburgerRef.current.style.display = displayStyles.NONE;
+    }
+
+    const isMobile = window.innerWidth <= 992;
+
+    if (isMobile) {
+      if (ulRef.current) {
+        ulRef.current.style.height = "3vh";
+      }
+      if (headerRef.current) {
+        headerRef.current.style.height = "3vh";
+      }
+    } else {
+      if (ulRef.current) {
+        ulRef.current.style.height = "16vh";
+      }
+      if (headerRef.current) {
+        headerRef.current.style.height = "16vh";
+      }
+    }
+  }, []);
 
   useEffect(() => {
+    setInitialCssStyles();
     window.addEventListener("resize", setInitialCssStyles);
     return () => window.removeEventListener("resize", setInitialCssStyles);
-  }, []);
+  }, [setInitialCssStyles]);
 
   const setNavStyle = ({ isActive }: { isActive: boolean }) => {
     return isActive ? styles["header-active-li"] : undefined;
   };
 
-  const showMenu = () => {
-    const ulHamburgerElement = document.getElementsByClassName(
-      "header-nav-ul-hamburger"
-    )[0] as HTMLElement;
-    const ulElement = document.getElementsByTagName("ul")[0];
+  const showMenu = (): void => {
+    if (!ulHamburgerRef.current || !ulRef.current || !headerRef.current) return;
 
-    if (ulHamburgerElement.style.display === displayStyles.NONE) {
-      ulHamburgerElement.style.display = displayStyles.BLOCK;
-      ulElement.style.height = "unset";
-      ulElement.style.marginBottom = "12px";
-      document.getElementsByTagName("header")[0].style.height = "unset";
+    if (ulHamburgerRef.current.style.display === displayStyles.NONE) {
+      ulHamburgerRef.current.style.display = displayStyles.BLOCK;
+      ulRef.current.style.height = "unset";
+      ulRef.current.style.marginBottom = "12px";
+      headerRef.current.style.height = "unset";
     } else {
       setInitialCssStyles();
     }
   };
-  // todo test mobile design
-  const setInitialCssStyles = () => {
-    (
-      document.getElementsByClassName(
-        "header-nav-ul-hamburger"
-      )[0] as HTMLElement
-    ).style.display = displayStyles.NONE;
-    document.getElementsByTagName("ul")[0].style.height = "16vh";
-    document.getElementsByTagName("header")[0].style.height = "16vh";
-  };
 
   return (
-    <header className={styles.header}>
+    <header ref={headerRef} className={styles.header}>
       <nav className={styles["header-nav"]}>
-        <ul className={styles["header-nav-ul"]}>
+        <ul ref={ulRef} className={styles["header-nav-ul"]}>
           <li className={styles["header-nav-li"]}>
             <NavLink className={setNavStyle} to="/plan">
               Plan your wedding
@@ -103,6 +115,7 @@ function Header() {
           </li>
         </ul>
         <HamburgerHeader
+          ref={ulHamburgerRef}
           isAuthenticated={isAuthenticated}
           isAdmin={isAdmin}
           setNavStyle={setNavStyle}
@@ -111,6 +124,6 @@ function Header() {
       </nav>
     </header>
   );
-}
+};
 
 export default Header;

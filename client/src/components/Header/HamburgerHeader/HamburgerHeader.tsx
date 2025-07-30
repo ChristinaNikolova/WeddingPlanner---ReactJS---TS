@@ -1,99 +1,95 @@
 import { NavLink } from "react-router-dom";
+import type { HamburgerHeaderProps } from "../../../interfaces/HamburgerHeaderProps";
 import { displayStyles } from "../../../utils/constants/global";
 import styles from "./HamburgerHeader.module.css";
+import { forwardRef } from "react";
 
-interface HamburgerHeaderProps {
-  isAuthenticated: boolean;
-  isAdmin: boolean;
-  setNavStyle: ({ isActive }: { isActive: boolean }) => string | undefined;
-  setInitialCssStyles: () => void;
-}
-
-function HamburgerHeader({
-  isAuthenticated,
-  isAdmin,
-  setNavStyle,
-  setInitialCssStyles,
-}: HamburgerHeaderProps) {
-  return (
-    <ul
-      className="header-nav-ul-hamburger"
-      style={{ display: displayStyles.NONE }}
-    >
-      <li className={styles["header-nav-li-hamburger"]}>
-        <NavLink
-          className={setNavStyle}
-          to="/plan"
-          onClick={setInitialCssStyles}
-        >
-          Plan your wedding
-        </NavLink>
-      </li>
-      <li className={styles["header-nav-li-hamburger"]}>
-        <NavLink
-          className={setNavStyle}
-          to="/blog?page=1&category=all"
-          onClick={setInitialCssStyles}
-        >
-          Wedding's blog
-        </NavLink>
-      </li>
-      {isAuthenticated ? (
-        <>
-          <li className={styles["header-nav-li-hamburger"]}>
-            <NavLink
-              className={setNavStyle}
-              to="/user/favourite-article"
-              onClick={setInitialCssStyles}
-            >
-              Favourite
-            </NavLink>
-          </li>
-          {isAdmin && (
+// todo update components
+const HamburgerHeader = forwardRef<HTMLUListElement, HamburgerHeaderProps>(
+  (
+    { isAuthenticated, isAdmin, setNavStyle, setInitialCssStyles },
+    ulHamburgerRef
+  ) => {
+    return (
+      <ul
+        ref={ulHamburgerRef}
+        className="header-nav-ul-hamburger"
+        style={{ display: displayStyles.NONE }}
+      >
+        <li className={styles["header-nav-li-hamburger"]}>
+          <NavLink
+            className={setNavStyle}
+            to="/plan"
+            onClick={setInitialCssStyles}
+          >
+            Plan your wedding
+          </NavLink>
+        </li>
+        <li className={styles["header-nav-li-hamburger"]}>
+          <NavLink
+            className={setNavStyle}
+            to="/blog?page=1&category=all"
+            onClick={setInitialCssStyles}
+          >
+            Wedding's blog
+          </NavLink>
+        </li>
+        {isAuthenticated ? (
+          <>
             <li className={styles["header-nav-li-hamburger"]}>
               <NavLink
                 className={setNavStyle}
-                to="/administration"
+                to="/user/favourite-article"
                 onClick={setInitialCssStyles}
               >
-                Administration
+                Favourite
               </NavLink>
             </li>
-          )}
-          <li className={styles["header-nav-li-hamburger"]}>
-            <NavLink
-              className={setNavStyle}
-              to="/logout"
-              onClick={setInitialCssStyles}
-            >
-              Logout
-            </NavLink>
-          </li>
-        </>
-      ) : (
-        <>
-          <li className={styles["header-nav-li-hamburger"]}>
-            <NavLink
-              className={setNavStyle}
-              to="/login"
-              onClick={setInitialCssStyles}
-            >
-              Login
-            </NavLink>
-          </li>
-          <li className={styles["header-nav-li-hamburger"]}>
-            <NavLink
-              className={setNavStyle}
-              to="/register"
-              onClick={setInitialCssStyles}
-            >
-              Register
-            </NavLink>
-          </li>
-        </>
-      )}
-    </ul>
-  );
-}
-
+            {isAdmin && (
+              <li className={styles["header-nav-li-hamburger"]}>
+                <NavLink
+                  className={setNavStyle}
+                  to="/administration"
+                  onClick={setInitialCssStyles}
+                >
+                  Administration
+                </NavLink>
+              </li>
+            )}
+            <li className={styles["header-nav-li-hamburger"]}>
+              <NavLink
+                className={setNavStyle}
+                to="/logout"
+                onClick={setInitialCssStyles}
+              >
+                Logout
+              </NavLink>
+            </li>
+          </>
+        ) : (
+          <>
+            <li className={styles["header-nav-li-hamburger"]}>
+              <NavLink
+                className={setNavStyle}
+                to="/login"
+                onClick={setInitialCssStyles}
+              >
+                Login
+              </NavLink>
+            </li>
+            <li className={styles["header-nav-li-hamburger"]}>
+              <NavLink
+                className={setNavStyle}
+                to="/register"
+                onClick={setInitialCssStyles}
+              >
+                Register
+              </NavLink>
+            </li>
+          </>
+        )}
+      </ul>
+    );
+  }
+);
 export default HamburgerHeader;
