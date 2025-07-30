@@ -10,7 +10,7 @@ interface ArticleSingleProps {
   shortContent: string;
   createdAt: string;
   categoryName: string;
-  currentPage?: number;
+  currentPage?: string;
   selectedCategory?: string;
 }
 const ArticleSingle = ({

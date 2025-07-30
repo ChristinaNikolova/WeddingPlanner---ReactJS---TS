@@ -1,12 +1,13 @@
-import type { ArticleProps } from "../../../interfaces/ArticleProps";
+import type { ArticleDetailsProps } from "../../../interfaces/ArticleDetailsProps";
 import ArticleSingle from "../ArticleSingle/ArticleSingle";
 import styles from "./ArticlesList.module.css";
 
 // todo create sub interfaces
 interface ArticlesListProps {
-  articles: ArticleProps[];
-  currentPage?: number;
+  articles?: ArticleDetailsProps[];
+  currentPage?: string;
   selectedCategory?: string;
+  pathToImage?: string;
 }
 const ArticlesList = ({
   articles,
@@ -15,7 +16,7 @@ const ArticlesList = ({
 }: ArticlesListProps) => {
   return (
     <>
-      {articles.length ? (
+      {articles?.length ? (
         <div className={styles["articles-list-blog"]}>
           {articles.map((a, i) => (
             <ArticleSingle

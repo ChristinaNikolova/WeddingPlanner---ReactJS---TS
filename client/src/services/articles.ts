@@ -67,7 +67,7 @@ export const deleteById = async (id: string): Promise<ArticleProps> => {
 };
 
 export const all = async (
-  currentPage = 1,
+  currentPage = "1",
   selectedCategory: string,
   query = ""
 ): Promise<ArticleResponse> => {

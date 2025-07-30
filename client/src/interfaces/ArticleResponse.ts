@@ -1,7 +1,7 @@
-import type { ArticleProps } from "./ArticleProps";
+import type { ArticleDetailsProps } from "./ArticleDetailsProps";
 
 export interface ArticleResponse {
-  articles: ArticleProps[];
+  articles: ArticleDetailsProps[];
   pagesCount: number;
-  currentPage: number;
+  currentPage: string;
 }

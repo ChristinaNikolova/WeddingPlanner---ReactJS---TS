@@ -11,8 +11,8 @@ import NotFound from "./components/NotFound/NotFound";
 import Login from "./components/Auth/Login/Login";
 import Register from "./components/Auth/Register/Register";
 import Logout from "./components/Auth/Logout/Logout";
-// import ArticlesAll from "./components/Blog/ArticlesAll/ArticlesAll";
-// import ArticleDetails from "./components/Blog/ArticleDetails/ArticleDetails";
+import ArticlesAll from "./components/Blog/ArticlesAll/ArticlesAll";
+import ArticleDetails from "./components/Blog/ArticleDetails/ArticleDetails";
 import FavouriteArticle from "./components/User/FavouriteArticle/FavouriteArticle";
 // import PlannerDashboard from "./components/Planner/Dashboard/Dashboard";
 // import CreatePlanner from "./components/Planner/Create/CreatePlanner";
@@ -56,12 +56,18 @@ const App = () => {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route
+          path="/blog"
+          element={<ArticlesAll pathToImage={constants.jumbo.BLOG} />}
+        />
+
         <Route element={<GuestRoute />}>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
         </Route>
 
         <Route element={<PrivateRoute />}>
+          <Route path="/blog/:id/" element={<ArticleDetails />} />
           <Route
             path="/user/favourite-article"
             element={<FavouriteArticle pathToImage={constants.jumbo.USER} />}

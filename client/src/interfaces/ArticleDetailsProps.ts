@@ -1,6 +1,7 @@
 import type { CategoryProps } from "./CategoryProps";
 
 export interface ArticleDetailsProps {
+  id: string;
   title: string;
   jumboImage: string;
   content: string[];
@@ -10,4 +11,5 @@ export interface ArticleDetailsProps {
   likes: string[];
   createdAt: string;
   category: CategoryProps;
+  selectedCategory?: string;
 }

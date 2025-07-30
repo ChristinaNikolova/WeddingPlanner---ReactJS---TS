@@ -62,7 +62,7 @@ export const all = async (): Promise<CategoryProps[]> => {
     const response = await requester(
       api.public.categories,
       httpMethods.GET,
-      {},
+      undefined,
       false
     );
     return response.json();
