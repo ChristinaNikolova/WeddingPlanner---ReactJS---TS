@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import type { ArticleProps } from "../../../../interfaces/ArticleProps";
 import styles from "./LastSingleArticle.module.css";
+import type { ArticleProps } from "../../../../interfaces/props/articles/ArticleProps";
 
 // todo ad lazy to the images
 const LastSingleArticle = ({

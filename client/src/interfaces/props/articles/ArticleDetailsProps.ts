@@ -1,15 +1,12 @@
 import type { CategoryProps } from "../categories/CategoryProps";
+import type { ArticleProps } from "./ArticleProps";
 
-export interface ArticleDetailsProps {
-  id: string;
-  title: string;
+export interface ArticleDetailsProps extends ArticleProps {
   jumboImage: string;
   content: string[];
-  shortContent: string;
-  image: string;
   likesCount: number;
   likes: string[];
-  createdAt: string;
   category: CategoryProps;
+  categoryName: string;
   selectedCategory?: string;
 }

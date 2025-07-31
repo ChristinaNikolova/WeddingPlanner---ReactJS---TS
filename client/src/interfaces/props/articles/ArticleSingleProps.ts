@@ -1,10 +1,7 @@
-export interface ArticleSingleProps {
-  id: string;
+import type { ArticleProps } from "./ArticleProps";
+
+export interface ArticleSingleProps extends ArticleProps {
   className: string;
-  title: string;
-  image: string;
-  shortContent: string;
-  createdAt: string;
   categoryName: string;
   currentPage?: string;
   selectedCategory?: string;

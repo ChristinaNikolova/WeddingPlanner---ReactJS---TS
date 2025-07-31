@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import LastSingleArticle from "../LastSingleArticle/LastSingleArticle";
-import type { ArticleProps } from "../../../../interfaces/ArticleProps";
 import * as articlesService from "../../../../services/articles";
 import styles from "./LastThreeArticles.module.css";
+import type { ArticleProps } from "../../../../interfaces/props/articles/ArticleProps";
 
 const LastThreeArticles = () => {
   const [articles, setArticles] = useState<ArticleProps[]>([]);

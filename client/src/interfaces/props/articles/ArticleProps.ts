@@ -1,4 +1,3 @@
-import type { CategoryProps } from "../categories/CategoryProps";
 import type { ErrorProps } from "../shared/ErrorProps";
 
 export interface ArticleProps {
@@ -6,8 +5,6 @@ export interface ArticleProps {
   title: string;
   shortContent: string;
   image: string;
-  category: CategoryProps;
-  createdAt: string;
+  createdAt?: string;
   message?: ErrorProps[];
-  likes: string[]
 }
