@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import FormCategory from "../Form/FormCategory";
-import type { ErrorProps } from "../../../../interfaces/ErrorProps";
 import * as categoriesService from "../../../../services/categories";
 import { formNames } from "../../../../utils/constants/global";
+import type { ErrorProps } from "../../../../interfaces/props/shared/ErrorProps";
+import type { CreateCategory } from "../../../../interfaces/props/categories/CreateCategory";
 
 const CreateCategory = () => {
   const formName = formNames.CREATE;
@@ -12,9 +13,9 @@ const CreateCategory = () => {
 
   useEffect(() => {}, [serverError]);
 
-  const submitHandler = (name: string, image: string): void => {
+  const submitHandler = (category: CreateCategory): void => {
     categoriesService
-      .create(name, image)
+      .create(category.name, category.image)
       .then((data) => {
         if (data.message) {
           setServerError(data.message);

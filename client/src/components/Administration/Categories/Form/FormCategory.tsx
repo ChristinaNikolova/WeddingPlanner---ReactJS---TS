@@ -60,7 +60,12 @@ const FormCategory = ({
       return;
     }
 
-    onSubmitHandler(values.name, values.image);
+    const category = {
+      name: values.name,
+      image: values.image,
+    };
+
+    onSubmitHandler(category);
   };
 
   return (

@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import FormCategory from "../Form/FormCategory";
-import type { CategoryProps } from "../../../../interfaces/CategoryProps";
-import type { ErrorProps } from "../../../../interfaces/ErrorProps";
 import * as categoriesService from "../../../../services/categories";
 import { formNames } from "../../../../utils/constants/global";
+import type { ErrorProps } from "../../../../interfaces/props/shared/ErrorProps";
+import type { CategoryProps } from "../../../../interfaces/props/categories/CategoryProps";
+import type { CreateCategory } from "../../../../interfaces/props/categories/CreateCategory";
 
 const UpdateCategory = () => {
   const formName = formNames.UPDATE;
@@ -24,9 +25,9 @@ const UpdateCategory = () => {
 
   useEffect(() => {}, [serverError]);
 
-  const submitHandler = (name: string, image: string): void => {
+  const submitHandler = (category: CreateCategory): void => {
     categoriesService
-      .update(id!, name, image)
+      .update(id!, category.name, category.image)
       .then((data) => {
         if (data.message) {
           setServerError(data.message);
