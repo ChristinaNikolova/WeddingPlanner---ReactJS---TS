@@ -1,11 +1,11 @@
 import { api } from "./api";
 import { requester } from "./requester";
-import type { ArticleResponse } from "../interfaces/ArticleResponse";
-import { httpMethods, serviceNames } from "../utils/constants/global";
-import { handleServiceError } from "../utils/helpers/errorHandler";
 import type { ArticleModel } from "../interfaces/models/ArticleModel";
 import type { ArticleProps } from "../interfaces/props/articles/ArticleProps";
 import type { ArticleDetailsProps } from "../interfaces/props/articles/ArticleDetailsProps";
+import type { ArticlesListProps } from "../interfaces/props/articles/ArticleListProps";
+import { httpMethods, serviceNames } from "../utils/constants/global";
+import { handleServiceError } from "../utils/helpers/errorHandler";
 
 export const create = async (article: ArticleModel): Promise<ArticleProps> => {
   try {
@@ -52,7 +52,7 @@ export const all = async (
   currentPage = "1",
   selectedCategory: string,
   query = ""
-): Promise<ArticleResponse> => {
+): Promise<ArticlesListProps> => {
   try {
     const response = await fetch(
       `${api.public.articles}/${currentPage}/${selectedCategory}?query=${query}`,
