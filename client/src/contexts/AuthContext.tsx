@@ -1,6 +1,6 @@
 import { createContext } from "react";
-import type { AuthContextValue } from "../interfaces/AuthContextValue";
+import type { AuthContextModel } from "../interfaces/models/AuthContextModel";
 
-export const AuthContext = createContext<AuthContextValue | undefined>(
+export const AuthContext = createContext<AuthContextModel | undefined>(
   undefined
 );

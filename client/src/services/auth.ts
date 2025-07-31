@@ -1,6 +1,6 @@
 import { api } from "./api";
 import { requester } from "./requester";
-import type { AuthResponse } from "../interfaces/AuthResponse";
+import type { AuthModel } from "../interfaces/models/AuthModel";
 import type { LoginModel } from "../interfaces/models/LoginModel";
 import type { RegisterModel } from "../interfaces/models/RegisterModel";
 import { httpMethods, serviceNames } from "../utils/constants/global";
@@ -8,7 +8,7 @@ import { handleServiceError } from "../utils/helpers/errorHandler";
 
 export const register = async (
   registerData: RegisterModel
-): Promise<AuthResponse> => {
+): Promise<AuthModel> => {
   try {
     const response = await requester(
       api.auth.register,
@@ -24,7 +24,7 @@ export const register = async (
   }
 };
 
-export const login = async (loginData: LoginModel): Promise<AuthResponse> => {
+export const login = async (loginData: LoginModel): Promise<AuthModel> => {
   try {
     const response = await requester(
       api.auth.login,

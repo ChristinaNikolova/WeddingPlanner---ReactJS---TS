@@ -1,16 +1,16 @@
 import { AuthContext } from "./AuthContext";
-import type { AuthResponse } from "../interfaces/AuthResponse";
-import type { AuthContextValue } from "../interfaces/AuthContextValue";
+import type { AuthProviderProps } from "../interfaces/props/auth/AuthProviderProps";
+import type { AuthModel } from "../interfaces/models/AuthModel";
+import type { AuthContextModel } from "../interfaces/models/AuthContextModel";
 import { useSessionStorage } from "../hooks/useSessionStorage";
 import { emails } from "../utils/constants/global";
-import type { AuthProviderProps } from "../interfaces/props/auth/AuthProviderProps";
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
   const [authToken, setAuthToken] = useSessionStorage<string>("authToken", "");
   const [email, setEmail] = useSessionStorage<string>("email", "");
   const [id, setId] = useSessionStorage<string>("userId", "");
 
-  const userLogin = (authData: AuthResponse): void => {
+  const userLogin = (authData: AuthModel): void => {
     setAuthToken(authData.accessToken);
     setEmail(authData.user.email);
     setId(authData.user._id);
@@ -22,7 +22,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     setId("");
   };
 
-  const contextValue: AuthContextValue = {
+  const contextValue: AuthContextModel = {
     userLogin,
     userLogout,
     isAuthenticated: !!authToken,
