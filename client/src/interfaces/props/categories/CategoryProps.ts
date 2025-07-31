@@ -1,4 +1,4 @@
-import type { ErrorProps } from "./ErrorProps";
+import type { ErrorProps } from "../shared/ErrorProps";
 
 export interface CategoryProps {
   id?: string;

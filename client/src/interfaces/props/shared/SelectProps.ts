@@ -1,4 +1,4 @@
-import type { CategoryProps } from "./CategoryProps";
+import type { CategoryProps } from "../categories/CategoryProps";
 import type { TagProps } from "./TagProps";
 
 export interface SelectProps extends TagProps {

@@ -1,13 +1,7 @@
 import { Link } from "react-router-dom";
+import type { SingleCategoryProps } from "../../../../interfaces/props/categories/SingleCategoryProps";
 import { category } from "../../../../utils/constants/model";
 import styles from "./SingleCategory.module.css";
-
-interface SingleCategoryProps {
-  id: string;
-  name: string;
-  image?: string;
-  onDeleteHandler: (id: string) => void;
-}
 
 const SingleCategory = ({
   id,

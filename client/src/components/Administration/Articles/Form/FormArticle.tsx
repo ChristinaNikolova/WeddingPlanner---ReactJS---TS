@@ -11,27 +11,8 @@ import Select from "../../../shared/Tags/Select/Select";
 import ClientError from "../../../shared/Errors/ClientError/ClientError";
 import ServerError from "../../../shared/Errors/ServerError/ServerError";
 import FormButton from "../../../shared/Buttons/Form/FormButton";
-import type { CategoryProps } from "../../../../interfaces/CategoryProps";
-import type { ErrorProps } from "../../../../interfaces/ErrorProps";
-import type { FormName } from "../../../../utils/constants/global";
-
-interface FormArticleProps {
-  formName: FormName;
-  title: string;
-  content: string;
-  image: string;
-  jumboImage: string;
-  category?: CategoryProps;
-  serverError: ErrorProps[];
-  onSubmitHandler: (
-    title: string,
-    content: string,
-    image: string,
-    jumboImage: string,
-    category: string
-  ) => void;
-  onCancelFormHandler: (event: React.MouseEvent<HTMLElement>) => void;
-}
+import type { CategoryProps } from "../../../../interfaces/props/categories/CategoryProps";
+import type { FormArticleProps } from "../../../../interfaces/props/articles/FormArticleProps";
 
 const FormArticle = ({
   formName,

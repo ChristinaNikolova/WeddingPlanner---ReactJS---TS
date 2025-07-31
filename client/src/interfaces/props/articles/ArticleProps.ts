@@ -1,5 +1,5 @@
-import type { CategoryProps } from "./CategoryProps";
-import type { ErrorProps } from "./ErrorProps";
+import type { CategoryProps } from "../categories/CategoryProps";
+import type { ErrorProps } from "../shared/ErrorProps";
 
 export interface ArticleProps {
   id: string;

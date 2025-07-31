@@ -6,7 +6,7 @@ import { useAuth } from "../../../hooks/useAuth";
 import * as articlesService from "../../../services/articles";
 import { scrollToTop } from "../../../utils/helpers/form";
 import styles from "./ArticleDetails.module.css";
-import type { ArticleDetailsProps } from "../../../interfaces/ArticleDetailsProps";
+import type { ArticleDetailsProps } from "../../../interfaces/props/articles/ArticleDetailsProps";
 
 const ArticleDetails = () => {
   const { userId, isAdmin } = useAuth();

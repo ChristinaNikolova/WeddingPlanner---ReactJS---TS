@@ -4,21 +4,12 @@ import ClientError from "../../../shared/Errors/ClientError/ClientError";
 import ServerError from "../../../shared/Errors/ServerError/ServerError";
 import FormButton from "../../../shared/Buttons/Form/FormButton";
 import Bottom from "../../../shared/Images/Bottom/Bottom";
-import type { ErrorProps } from "../../../../interfaces/ErrorProps";
 import * as helpers from "../../../../utils/helpers/form";
 import * as constants from "../../../../utils/constants/images";
 import * as validator from "../../../../utils/validators/category";
 import styles from "./FormCategory.module.css";
-import type { FormName } from "../../../../utils/constants/global";
+import type { FormCategoryProps } from "../../../../interfaces/props/categories/FormCategoryProps";
 
-interface FormCategoryProps {
-  formName: FormName;
-  name: string;
-  image: string;
-  serverError: ErrorProps[];
-  onSubmitHandler: (name: string, image: string) => void;
-  onCancelFormHandler: (event: React.MouseEvent<HTMLElement>) => void;
-}
 const FormCategory = ({
   formName,
   name,

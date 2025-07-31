@@ -1,18 +1,7 @@
 import { Link } from "react-router-dom";
-
+import type { ArticleSingleProps } from "../../../interfaces/props/articles/ArticleSingleProps";
 import styles from "./ArticleSingle.module.css";
 
-interface ArticleSingleProps {
-  id: string;
-  className: string;
-  title: string;
-  image: string;
-  shortContent: string;
-  createdAt: string;
-  categoryName: string;
-  currentPage?: string;
-  selectedCategory?: string;
-}
 const ArticleSingle = ({
   id,
   className,

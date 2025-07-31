@@ -4,13 +4,8 @@ import { classNames } from "../../../utils/constants/global";
 import { category } from "../../../utils/constants/model";
 import { toggle } from "../../../utils/helpers/dropdown";
 import styles from "./ArticlesAllCategoryDropDown.module.css";
-import type { CategoryProps } from "../../../interfaces/CategoryProps";
-
-interface ArticlesAllCategoryDropDownProps {
-  selectedCategoryName: string;
-  onCategoryHandler: (event: React.MouseEvent<HTMLElement>) => void;
-  onRemoveCategotyHandler: (event: React.MouseEvent<HTMLElement>) => void;
-}
+import type { ArticlesAllCategoryDropDownProps } from "../../../interfaces/props/articles/ArticlesAllCategoryDropDown";
+import type { CategoryProps } from "../../../interfaces/props/categories/CategoryProps";
 
 const ArticlesAllCategoryDropDown = ({
   selectedCategoryName,
