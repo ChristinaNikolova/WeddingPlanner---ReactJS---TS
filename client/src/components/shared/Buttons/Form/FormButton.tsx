@@ -1,4 +1,4 @@
-import type { FormButtonProps } from "../../../../interfaces/FormButtonProps";
+import type { FormButtonProps } from "../../../../interfaces/props/shared/FormButtonProps";
 
 const FormButton = ({
   formName,

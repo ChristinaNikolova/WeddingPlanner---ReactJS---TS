@@ -1,4 +1,4 @@
-import type { ImageBottomProps } from "../../../../interfaces/ImageBottomProps";
+import type { ImageBottomProps } from "../../../../interfaces/props/shared/ImageBottomProps";
 import styles from "./Bottom.module.css";
 
 const Bottom = ({ first, second, third }: ImageBottomProps) => {

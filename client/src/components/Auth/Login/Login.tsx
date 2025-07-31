@@ -3,12 +3,12 @@ import { Link, useNavigate } from "react-router-dom";
 import Input from "../../shared/Tags/Input/Input";
 import ClientError from "../../shared/Errors/ClientError/ClientError";
 import ServerError from "../../shared/Errors/ServerError/ServerError";
-import type { ErrorProps } from "../../../interfaces/ErrorProps";
 import * as helpers from "../../../utils/helpers/form";
 import * as validator from "../../../utils/validators/auth";
 import * as authService from "../../../services/auth";
 import { useAuth } from "../../../hooks/useAuth";
 import styles from "./Login.module.css";
+import type { ErrorProps } from "../../../interfaces/props/shared/ErrorProps";
 
 // todo interface
 interface LoginValues {

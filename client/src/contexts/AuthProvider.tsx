@@ -1,9 +1,9 @@
 import { AuthContext } from "./AuthContext";
 import type { AuthResponse } from "../interfaces/AuthResponse";
 import type { AuthContextValue } from "../interfaces/AuthContextValue";
-import type { AuthProviderProps } from "../interfaces/AuthProviderProps";
 import { useSessionStorage } from "../hooks/useSessionStorage";
 import { emails } from "../utils/constants/global";
+import type { AuthProviderProps } from "../interfaces/props/auth/AuthProviderProps";
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
   const [authToken, setAuthToken] = useSessionStorage<string>("authToken", "");

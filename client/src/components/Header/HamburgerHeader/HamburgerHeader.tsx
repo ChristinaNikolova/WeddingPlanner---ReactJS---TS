@@ -1,8 +1,8 @@
 import { NavLink } from "react-router-dom";
-import type { HamburgerHeaderProps } from "../../../interfaces/HamburgerHeaderProps";
 import { displayStyles } from "../../../utils/constants/global";
 import styles from "./HamburgerHeader.module.css";
 import { forwardRef } from "react";
+import type { HamburgerHeaderProps } from "../../../interfaces/props/shared/HamburgerHeaderProps";
 
 // todo update components
 const HamburgerHeader = forwardRef<HTMLUListElement, HamburgerHeaderProps>(

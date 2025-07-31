@@ -1,5 +1,4 @@
-import { Navigate, Outlet } from "react-router-dom";
-import type { RouteProps } from "../../interfaces/RouteProps";
+import { Navigate, Outlet, type RouteProps } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 
 const AdminRoute = ({ children }: RouteProps) => {
