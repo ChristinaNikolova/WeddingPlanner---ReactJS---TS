@@ -11,8 +11,9 @@ import Select from "../../../shared/Tags/Select/Select";
 import ClientError from "../../../shared/Errors/ClientError/ClientError";
 import ServerError from "../../../shared/Errors/ServerError/ServerError";
 import FormButton from "../../../shared/Buttons/Form/FormButton";
-import type { CategoryProps } from "../../../../interfaces/props/categories/CategoryProps";
 import type { FormArticleProps } from "../../../../interfaces/props/articles/FormArticleProps";
+import type { CategoryProps } from "../../../../interfaces/props/categories/CategoryProps";
+import type { CreateArticle } from "../../../../interfaces/props/articles/CreateArticle";
 
 const FormArticle = ({
   formName,
@@ -25,15 +26,15 @@ const FormArticle = ({
   onSubmitHandler,
   onCancelFormHandler,
 }: FormArticleProps) => {
-  // todo add interface here
-  const [values, setValues] = useState({
-    title: title,
-    content: content,
-    image: image,
-    jumboImage: jumboImage,
-    category: category
-      ? category.id
-      : categoryModel.DEFAULT_CATEGORY_SELECTED_ID,
+  const [values, setValues] = useState<CreateArticle>({
+    title,
+    content,
+    image,
+    jumboImage,
+    category:
+      typeof category === "object" && category?.id
+        ? category.id
+        : categoryModel.DEFAULT_CATEGORY_SELECTED_ID,
   });
 
   const [isDisabled, setIsDisabled] = useState<boolean>(true);
@@ -126,13 +127,14 @@ const FormArticle = ({
       return;
     }
 
-    onSubmitHandler(
-      values.title,
-      values.content,
-      values.image,
-      values.jumboImage,
-      values.category!
-    );
+    const article = {
+      title: values.title,
+      content: values.content,
+      image: values.image,
+      jumboImage: values.jumboImage,
+      category: values.category!,
+    };
+    onSubmitHandler(article);
   };
 
   return (

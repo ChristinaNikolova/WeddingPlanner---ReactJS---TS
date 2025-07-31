@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import FormArticle from "../Form/FormArticle";
-import type { ErrorProps } from "../../../../interfaces/ErrorProps";
 import * as articlesService from "../../../../services/articles";
 import { formNames } from "../../../../utils/constants/global";
+import type { ErrorProps } from "../../../../interfaces/props/shared/ErrorProps";
+import type { CreateArticle } from "../../../../interfaces/props/articles/CreateArticle";
 
 const CreateArticle = () => {
   const formName = formNames.CREATE;
@@ -12,15 +13,15 @@ const CreateArticle = () => {
 
   useEffect(() => {}, [serverError]);
 
-  const submitHandler = (
-    title: string,
-    content: string,
-    image: string,
-    jumboImage: string,
-    category: string
-  ): void => {
+  const submitHandler = (article: CreateArticle): void => {
     articlesService
-      .create(title, content, image, jumboImage, category)
+      .create(
+        article.title,
+        article.content,
+        article.image,
+        article.jumboImage,
+        article.category
+      )
       .then((data) => {
         if (data.message) {
           setServerError(data.message);
@@ -43,7 +44,7 @@ const CreateArticle = () => {
       content={""}
       image={""}
       jumboImage={""}
-    //   category={}
+      category={""}
       serverError={serverError}
       onSubmitHandler={submitHandler}
       onCancelFormHandler={onCancelFormHandler}

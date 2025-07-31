@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router";
 import FormArticle from "../Form/FormArticle";
-import type { ErrorProps } from "../../../../interfaces/ErrorProps";
-import type { ArticleDetailsProps } from "../../../../interfaces/ArticleDetailsProps";
 import * as articlesService from "../../../../services/articles";
 import { formNames } from "../../../../utils/constants/global";
+import type { ErrorProps } from "../../../../interfaces/props/shared/ErrorProps";
+import type { ArticleDetailsProps } from "../../../../interfaces/props/articles/ArticleDetailsProps";
+import type { CreateArticle } from "../../../../interfaces/props/articles/CreateArticle";
 
 const UpdateArticle = () => {
   const formName = formNames.UPDATE;
@@ -25,15 +26,17 @@ const UpdateArticle = () => {
 
   useEffect(() => {}, [serverError]);
 
-  const submitHandler = (
-    title: string,
-    content: string,
-    image: string,
-    jumboImage: string,
-    category: string
-  ): void => {
+  // todo now update this everywhere....
+  const submitHandler = (article: CreateArticle): void => {
     articlesService
-      .update(id!, title, content, image, jumboImage, category)
+      .update(
+        id!,
+        article.title,
+        article.content,
+        article.image,
+        article.jumboImage,
+        article.category
+      )
       .then((data) => {
         if (data.message) {
           setServerError(data.message);
