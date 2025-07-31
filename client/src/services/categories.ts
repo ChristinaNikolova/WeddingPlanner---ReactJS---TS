@@ -1,17 +1,16 @@
 import { api } from "./api";
 import { requester } from "./requester";
 import { httpMethods, serviceNames } from "../utils/constants/global";
-import type { CategoryProps } from "../interfaces/CategoryProps";
 import { handleServiceError } from "../utils/helpers/errorHandler";
+import type { CategoryProps } from "../interfaces/props/categories/CategoryProps";
+import type { CategoryModel } from "../interfaces/props/models/CategoryModel";
 
 export const create = async (
-  name: string,
-  image: string
+  category: CategoryModel
 ): Promise<CategoryProps> => {
   try {
     const response = await requester(api.admin.categories, httpMethods.POST, {
-      name,
-      image,
+      ...category,
     });
     return response.json();
   } catch (error) {
@@ -21,16 +20,14 @@ export const create = async (
 
 export const update = async (
   id: string,
-  name: string,
-  image: string
+  category: CategoryModel
 ): Promise<CategoryProps> => {
   try {
     const response = await requester(
       `${api.admin.categories}/${id}`,
       httpMethods.PUT,
       {
-        name,
-        image,
+        ...category,
       }
     );
     return response.json();

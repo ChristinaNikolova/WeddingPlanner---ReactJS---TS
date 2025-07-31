@@ -1,7 +1,7 @@
 import type { FormProps } from "../shared/FormProps";
-import type { CreateCategory } from "./CreateCategory";
+import type { CategoryModel } from "../models/CategoryModel";
 
 export interface FormCategoryProps extends FormProps {
   name: string;
-  onSubmitHandler: (category: CreateCategory) => void;
+  onSubmitHandler: (category: CategoryModel) => void;
 }

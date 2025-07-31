@@ -4,7 +4,7 @@ import FormCategory from "../Form/FormCategory";
 import * as categoriesService from "../../../../services/categories";
 import { formNames } from "../../../../utils/constants/global";
 import type { ErrorProps } from "../../../../interfaces/props/shared/ErrorProps";
-import type { CreateCategory } from "../../../../interfaces/props/categories/CreateCategory";
+import type { CategoryModel } from "../../../../interfaces/props/models/CategoryModel";
 
 const CreateCategory = () => {
   const formName = formNames.CREATE;
@@ -13,9 +13,9 @@ const CreateCategory = () => {
 
   useEffect(() => {}, [serverError]);
 
-  const submitHandler = (category: CreateCategory): void => {
+  const submitHandler = (category: CategoryModel): void => {
     categoriesService
-      .create(category.name, category.image)
+      .create(category)
       .then((data) => {
         if (data.message) {
           setServerError(data.message);

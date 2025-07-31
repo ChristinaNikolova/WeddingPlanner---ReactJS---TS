@@ -1,6 +1,5 @@
-export interface SingleCategoryProps {
-  id: string;
-  name: string;
-  image?: string;
+import type { CategoryProps } from "./CategoryProps";
+
+export interface SingleCategoryProps extends CategoryProps {
   onDeleteHandler: (id: string) => void;
 }

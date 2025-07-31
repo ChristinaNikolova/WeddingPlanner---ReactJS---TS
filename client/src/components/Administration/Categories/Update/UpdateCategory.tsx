@@ -5,7 +5,7 @@ import * as categoriesService from "../../../../services/categories";
 import { formNames } from "../../../../utils/constants/global";
 import type { ErrorProps } from "../../../../interfaces/props/shared/ErrorProps";
 import type { CategoryProps } from "../../../../interfaces/props/categories/CategoryProps";
-import type { CreateCategory } from "../../../../interfaces/props/categories/CreateCategory";
+import type { CategoryModel } from "../../../../interfaces/props/models/CategoryModel";
 
 const UpdateCategory = () => {
   const formName = formNames.UPDATE;
@@ -25,9 +25,9 @@ const UpdateCategory = () => {
 
   useEffect(() => {}, [serverError]);
 
-  const submitHandler = (category: CreateCategory): void => {
+  const submitHandler = (category: CategoryModel): void => {
     categoriesService
-      .update(id!, category.name, category.image)
+      .update(id!, category)
       .then((data) => {
         if (data.message) {
           setServerError(data.message);
