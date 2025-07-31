@@ -1,11 +1,7 @@
-import type { FormName } from "../../../utils/constants/global";
-import type { ErrorProps } from "../shared/ErrorProps";
+import type { FormProps } from "../shared/FormProps";
+import type { CreateCategory } from "./CreateCategory";
 
-export interface FormCategoryProps {
-  formName: FormName;
+export interface FormCategoryProps extends FormProps {
   name: string;
-  image: string;
-  serverError: ErrorProps[];
-  onSubmitHandler: (name: string, image: string) => void;
-  onCancelFormHandler: (event: React.MouseEvent<HTMLElement>) => void;
+  onSubmitHandler: (category: CreateCategory) => void;
 }
