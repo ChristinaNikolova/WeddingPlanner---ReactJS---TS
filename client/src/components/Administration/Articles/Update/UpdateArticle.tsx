@@ -5,7 +5,7 @@ import * as articlesService from "../../../../services/articles";
 import { formNames } from "../../../../utils/constants/global";
 import type { ErrorProps } from "../../../../interfaces/props/shared/ErrorProps";
 import type { ArticleDetailsProps } from "../../../../interfaces/props/articles/ArticleDetailsProps";
-import type { CreateArticle } from "../../../../interfaces/props/articles/CreateArticle";
+import type { ArticleModel } from "../../../../interfaces/props/models/ArticleModel";
 
 const UpdateArticle = () => {
   const formName = formNames.UPDATE;
@@ -27,16 +27,9 @@ const UpdateArticle = () => {
   useEffect(() => {}, [serverError]);
 
   // todo now update this everywhere....
-  const submitHandler = (article: CreateArticle): void => {
+  const submitHandler = (article: ArticleModel): void => {
     articlesService
-      .update(
-        id!,
-        article.title,
-        article.content,
-        article.image,
-        article.jumboImage,
-        article.category
-      )
+      .update(id!, article)
       .then((data) => {
         if (data.message) {
           setServerError(data.message);

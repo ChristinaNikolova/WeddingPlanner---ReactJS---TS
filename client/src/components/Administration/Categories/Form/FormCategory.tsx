@@ -9,6 +9,7 @@ import * as constants from "../../../../utils/constants/images";
 import * as validator from "../../../../utils/validators/category";
 import styles from "./FormCategory.module.css";
 import type { FormCategoryProps } from "../../../../interfaces/props/categories/FormCategoryProps";
+import type { CategoryModel } from "../../../../interfaces/props/models/CategoryModel";
 
 const FormCategory = ({
   formName,
@@ -18,9 +19,9 @@ const FormCategory = ({
   onSubmitHandler,
   onCancelFormHandler,
 }: FormCategoryProps) => {
-  const [values, setValues] = useState({
-    name: name,
-    image: image,
+  const [values, setValues] = useState<CategoryModel>({
+    name,
+    image,
   });
 
   const [isDisabled, setIsDisabled] = useState<boolean>(true);

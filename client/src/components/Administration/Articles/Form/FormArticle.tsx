@@ -13,7 +13,7 @@ import ServerError from "../../../shared/Errors/ServerError/ServerError";
 import FormButton from "../../../shared/Buttons/Form/FormButton";
 import type { FormArticleProps } from "../../../../interfaces/props/articles/FormArticleProps";
 import type { CategoryProps } from "../../../../interfaces/props/categories/CategoryProps";
-import type { CreateArticle } from "../../../../interfaces/props/articles/CreateArticle";
+import type { ArticleModel } from "../../../../interfaces/props/models/ArticleModel";
 
 const FormArticle = ({
   formName,
@@ -26,7 +26,7 @@ const FormArticle = ({
   onSubmitHandler,
   onCancelFormHandler,
 }: FormArticleProps) => {
-  const [values, setValues] = useState<CreateArticle>({
+  const [values, setValues] = useState<ArticleModel>({
     title,
     content,
     image,
@@ -132,7 +132,7 @@ const FormArticle = ({
       content: values.content,
       image: values.image,
       jumboImage: values.jumboImage,
-      category: values.category!,
+      category: values.category,
     };
     onSubmitHandler(article);
   };

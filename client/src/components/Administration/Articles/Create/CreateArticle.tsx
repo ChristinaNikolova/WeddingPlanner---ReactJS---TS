@@ -4,7 +4,7 @@ import FormArticle from "../Form/FormArticle";
 import * as articlesService from "../../../../services/articles";
 import { formNames } from "../../../../utils/constants/global";
 import type { ErrorProps } from "../../../../interfaces/props/shared/ErrorProps";
-import type { CreateArticle } from "../../../../interfaces/props/articles/CreateArticle";
+import type { ArticleModel } from "../../../../interfaces/props/models/ArticleModel";
 
 const CreateArticle = () => {
   const formName = formNames.CREATE;
@@ -13,15 +13,9 @@ const CreateArticle = () => {
 
   useEffect(() => {}, [serverError]);
 
-  const submitHandler = (article: CreateArticle): void => {
+  const submitHandler = (article: ArticleModel): void => {
     articlesService
-      .create(
-        article.title,
-        article.content,
-        article.image,
-        article.jumboImage,
-        article.category
-      )
+      .create(article)
       .then((data) => {
         if (data.message) {
           setServerError(data.message);
