@@ -13,7 +13,7 @@ import ServerError from "../../../shared/Errors/ServerError/ServerError";
 import FormButton from "../../../shared/Buttons/Form/FormButton";
 import type { FormArticleProps } from "../../../../interfaces/props/articles/FormArticleProps";
 import type { CategoryProps } from "../../../../interfaces/props/categories/CategoryProps";
-import type { ArticleModel } from "../../../../interfaces/props/models/ArticleModel";
+import type { ArticleModel } from "../../../../interfaces/models/ArticleModel";
 
 const FormArticle = ({
   formName,

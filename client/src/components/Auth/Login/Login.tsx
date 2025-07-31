@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Input from "../../shared/Tags/Input/Input";
+import type { ErrorProps } from "../../../interfaces/props/shared/Errors/ErrorProps";
+import type { LoginModel } from "../../../interfaces/models/LoginModel";
 import ClientError from "../../shared/Errors/ClientError/ClientError";
 import ServerError from "../../shared/Errors/ServerError/ServerError";
 import * as helpers from "../../../utils/helpers/form";
@@ -8,23 +10,15 @@ import * as validator from "../../../utils/validators/auth";
 import * as authService from "../../../services/auth";
 import { useAuth } from "../../../hooks/useAuth";
 import styles from "./Login.module.css";
-import type { ErrorProps } from "../../../interfaces/props/shared/Errors/ErrorProps";
-
-// todo interface
-interface LoginValues {
-  email: string;
-  password: string;
-}
 
 const Login = () => {
   const { userLogin } = useAuth();
   const navigate = useNavigate();
-  //todo update names of the interfaces Props/Values
-  const [values, setValues] = useState<LoginValues>({
+
+  const [values, setValues] = useState<LoginModel>({
     email: "",
     password: "",
   });
-
   const [isDisabled, setIsDisabled] = useState<boolean>(true);
   const [emailError, setEmailError] = useState<string>("");
   const [passwordError, setPasswordError] = useState<string>("");
@@ -34,7 +28,7 @@ const Login = () => {
     checkDisabled();
   }, [values, emailError, passwordError]);
 
-  const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
+  const submitHandler = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
 
     setEmailError(validator.validEmail(values.email));
@@ -44,11 +38,16 @@ const Login = () => {
       return;
     }
 
+    const loginData = {
+      email: values.email,
+      password: values.password,
+    };
+
     authService
-      .login(values.email, values.password)
+      .login(loginData)
       .then((data) => {
         if (!data.accessToken) {
-          setServerError(data.message);
+          setServerError(data.message!);
           return;
         }
 
@@ -58,22 +57,22 @@ const Login = () => {
       .catch((err) => console.error(err));
   };
 
-  const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const changeHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setValues((state) => ({
       ...state,
       [e.target.name]: e.target.value,
     }));
   };
 
-  const validateEmail = () => {
+  const validateEmail = (): void => {
     setEmailError(validator.validEmail(values.email));
   };
 
-  const validatePassword = () => {
+  const validatePassword = (): void => {
     setPasswordError(validator.validPassword(values.password));
   };
 
-  const checkDisabled = () => {
+  const checkDisabled = (): void => {
     setIsDisabled(
       helpers.isButtonDisabled(values, [emailError, passwordError])
     );

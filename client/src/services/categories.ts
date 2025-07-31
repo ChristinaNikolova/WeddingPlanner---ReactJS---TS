@@ -3,7 +3,7 @@ import { requester } from "./requester";
 import { httpMethods, serviceNames } from "../utils/constants/global";
 import { handleServiceError } from "../utils/helpers/errorHandler";
 import type { CategoryProps } from "../interfaces/props/categories/CategoryProps";
-import type { CategoryModel } from "../interfaces/props/models/CategoryModel";
+import type { CategoryModel } from "../interfaces/models/CategoryModel";
 
 export const create = async (
   category: CategoryModel

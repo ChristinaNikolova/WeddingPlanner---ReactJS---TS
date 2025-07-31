@@ -3,33 +3,25 @@ import { Link, useNavigate } from "react-router-dom";
 import Input from "../../shared/Tags/Input/Input";
 import ClientError from "../../shared/Errors/ClientError/ClientError";
 import ServerError from "../../shared/Errors/ServerError/ServerError";
+import type { ErrorProps } from "../../../interfaces/props/shared/Errors/ErrorProps";
+import type { RegisterModel } from "../../../interfaces/models/RegisterModel";
 import { useAuth } from "../../../hooks/useAuth";
 import * as authService from "../../../services/auth";
 import * as validator from "../../../utils/validators/auth";
 import * as helpers from "../../../utils/helpers/form";
 import styles from "./Register.module.css";
-import type { ErrorProps } from "../../../interfaces/props/shared/Errors/ErrorProps";
 
-// todo interface
-interface RegisterValues {
-  email: string;
-  firstName: string;
-  lastName: string;
-  password: string;
-  repass: string;
-}
 const Register = () => {
   const { userLogin } = useAuth();
   const navigate = useNavigate();
 
-  const [values, setValues] = useState<RegisterValues>({
+  const [values, setValues] = useState<RegisterModel>({
     email: "",
     firstName: "",
     lastName: "",
     password: "",
     repass: "",
   });
-
   const [isDisabled, setIsDisabled] = useState<boolean>(true);
   const [emailError, setEmailError] = useState<string>("");
   const [firstNameError, setFirstNameError] = useState<string>("");
@@ -50,7 +42,7 @@ const Register = () => {
     serverError,
   ]);
 
-  const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
+  const submitHandler = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
 
     setEmailError(validator.validEmail(values.email));
@@ -58,7 +50,7 @@ const Register = () => {
     setLastNameError(validator.validName(values.lastName));
     setPasswordError(validator.validPassword(values.password));
     setRepassError(
-      validator.validPasswordMatch(values.password, values.repass)
+      validator.validPasswordMatch(values.password, values.repass as string)
     );
 
     if (
@@ -71,16 +63,18 @@ const Register = () => {
       return;
     }
 
+    const registerData = {
+      firstName: values.firstName,
+      lastName: values.lastName,
+      email: values.email,
+      password: values.password,
+    };
+
     authService
-      .register(
-        values.firstName,
-        values.lastName,
-        values.email,
-        values.password
-      )
+      .register(registerData)
       .then((data) => {
         if (!data.accessToken) {
-          setServerError(data.message);
+          setServerError(data.message!);
           return;
         }
 
@@ -90,36 +84,36 @@ const Register = () => {
       .catch((err) => console.error(err));
   };
 
-  const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const changeHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setValues((state) => ({
       ...state,
       [e.target.name]: e.target.value,
     }));
   };
 
-  const validateEmail = () => {
+  const validateEmail = (): void => {
     setEmailError(validator.validEmail(values.email));
   };
 
-  const validateFirstName = () => {
+  const validateFirstName = (): void => {
     setFirstNameError(validator.validName(values.firstName));
   };
 
-  const validateLastName = () => {
+  const validateLastName = (): void => {
     setLastNameError(validator.validName(values.lastName));
   };
 
-  const validatePassword = () => {
+  const validatePassword = (): void => {
     setPasswordError(validator.validPassword(values.password));
   };
 
-  const validateRepass = () => {
+  const validateRepass = (): void => {
     setRepassError(
-      validator.validPasswordMatch(values.password, values.repass)
+      validator.validPasswordMatch(values.password, values.repass as string)
     );
   };
 
-  const checkDisabled = () => {
+  const checkDisabled = (): void => {
     setIsDisabled(
       helpers.isButtonDisabled(values, [
         emailError,

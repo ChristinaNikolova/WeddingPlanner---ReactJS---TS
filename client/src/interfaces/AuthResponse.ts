@@ -1,12 +1,9 @@
-// todo organise better ,
-// todo remove any
+import type { ErrorProps } from "./props/shared/Errors/ErrorProps";
 export interface AuthResponse {
   accessToken: string;
   user: User;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  message?: any;
+  message?: ErrorProps[];
 }
-
 interface User {
   _id: string;
   email: string;

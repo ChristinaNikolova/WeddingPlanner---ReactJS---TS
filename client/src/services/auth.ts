@@ -1,25 +1,20 @@
 import { api } from "./api";
 import { requester } from "./requester";
 import type { AuthResponse } from "../interfaces/AuthResponse";
+import type { LoginModel } from "../interfaces/models/LoginModel";
+import type { RegisterModel } from "../interfaces/models/RegisterModel";
 import { httpMethods, serviceNames } from "../utils/constants/global";
 import { handleServiceError } from "../utils/helpers/errorHandler";
 
-// todo register + login = interface???
 export const register = async (
-  firstName: string,
-  lastName: string,
-  email: string,
-  password: string
+  registerData: RegisterModel
 ): Promise<AuthResponse> => {
   try {
     const response = await requester(
       api.auth.register,
       httpMethods.POST,
       {
-        firstName,
-        lastName,
-        email,
-        password,
+        ...registerData,
       },
       false
     );
@@ -29,17 +24,13 @@ export const register = async (
   }
 };
 
-export const login = async (
-  email: string,
-  password: string
-): Promise<AuthResponse> => {
+export const login = async (loginData: LoginModel): Promise<AuthResponse> => {
   try {
     const response = await requester(
       api.auth.login,
       httpMethods.POST,
       {
-        email,
-        password,
+        ...loginData,
       },
       false
     );

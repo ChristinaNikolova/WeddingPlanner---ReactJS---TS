@@ -1,4 +1,4 @@
-import type { ArticleModel } from "../models/ArticleModel";
+import type { ArticleModel } from "../../models/ArticleModel";
 import type { CategoryProps } from "../categories/CategoryProps";
 import type { FormProps } from "../shared/Forms/FormProps";
 

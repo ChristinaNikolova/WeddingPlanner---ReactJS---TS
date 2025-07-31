@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../../hooks/useAuth";
 import * as authService from "../../../services/auth";
 
-// todo test dependencies in use effect
 const Logout = () => {
   const { userLogout } = useAuth();
   const navigate = useNavigate();

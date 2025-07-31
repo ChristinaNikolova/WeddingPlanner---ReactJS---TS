@@ -3,7 +3,7 @@ import { requester } from "./requester";
 import type { ArticleResponse } from "../interfaces/ArticleResponse";
 import { httpMethods, serviceNames } from "../utils/constants/global";
 import { handleServiceError } from "../utils/helpers/errorHandler";
-import type { ArticleModel } from "../interfaces/props/models/ArticleModel";
+import type { ArticleModel } from "../interfaces/models/ArticleModel";
 import type { ArticleProps } from "../interfaces/props/articles/ArticleProps";
 import type { ArticleDetailsProps } from "../interfaces/props/articles/ArticleDetailsProps";
 
