@@ -123,6 +123,7 @@ const Login = () => {
           className={`${styles["login-img"]} img-shadow`}
           src="./img/flowers-3992893_1920.jpg"
           alt="wedding_accessories"
+          loading="lazy"
         />
       </div>
     </section>

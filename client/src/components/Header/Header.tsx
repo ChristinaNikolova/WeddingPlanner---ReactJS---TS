@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useRef } from "react";
 import { Link, NavLink } from "react-router-dom";
+import HamburgerHeader from "./HamburgerHeader/HamburgerHeader";
 import { useAuth } from "../../hooks/useAuth";
 import { displayStyles } from "../../utils/constants/global";
-import HamburgerHeader from "./HamburgerHeader/HamburgerHeader";
 import styles from "./Header.module.css";
 
 const Header = () => {
@@ -42,7 +42,11 @@ const Header = () => {
     return () => window.removeEventListener("resize", setInitialCssStyles);
   }, [setInitialCssStyles]);
 
-  const setNavStyle = ({ isActive }: { isActive: boolean }) => {
+  const setNavStyle = ({
+    isActive,
+  }: {
+    isActive: boolean;
+  }): string | undefined => {
     return isActive ? styles["header-active-li"] : undefined;
   };
 

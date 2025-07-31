@@ -35,6 +35,7 @@ const ArticleSingle = ({
         className={`${styles["article-single-image"]} img img-shadow`}
         src={image}
         alt={title}
+        loading="lazy"
       />
     </article>
   );

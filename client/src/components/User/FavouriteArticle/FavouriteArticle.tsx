@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
+import ArticlesList from "../../Blog/ArticlesList/ArticlesList";
 import Jumbotron from "../../shared/Jumbotron/Jumbotron";
+import type { ArticleDetailsProps } from "../../../interfaces/props/articles/ArticleDetailsProps";
 import * as usersService from "../../../services/users";
 import styles from "./FavouriteArticle.module.css";
-import ArticlesList from "../../Blog/ArticlesList/ArticlesList";
-import type { ArticleDetailsProps } from "../../../interfaces/props/articles/ArticleDetailsProps";
 
 const FavouriteArticle = ({ pathToImage }: { pathToImage: string }) => {
   const [favArticles, setFavArticles] = useState<ArticleDetailsProps[]>([]);

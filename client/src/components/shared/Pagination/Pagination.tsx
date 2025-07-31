@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
+import type { PaginationProps } from "../../../interfaces/props/shared/PaginationProps";
 import { directions } from "../../../utils/constants/global";
 import styles from "./Pagination.module.css";
-import type { PaginationProps } from "../../../interfaces/props/shared/PaginationProps";
 
 // todo fix Number ()///
 const Pagination = ({

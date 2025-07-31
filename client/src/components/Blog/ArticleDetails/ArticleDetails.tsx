@@ -97,6 +97,7 @@ const ArticleDetails = () => {
             className={`${styles["article-details-image"]} img img-shadow`}
             src={article.image}
             alt={article.title}
+            loading="lazy"
           />
           <ul className={styles["article-details-ul"]}>
             <li className={styles["article-details-li"]}>
@@ -108,6 +109,7 @@ const ArticleDetails = () => {
                 className="img"
                 src={article.category?.image}
                 alt={article.category?.name}
+                loading="lazy"
               />
               {article.category?.name}
             </li>

@@ -15,6 +15,7 @@ const SingleCategory = ({
         src={image}
         alt={name}
         className={`${styles["all-categories-img"]} img`}
+        loading="lazy"
       />
       {name}
       <Link to={`/administration/categories/edit/${id}`}>

@@ -1,4 +1,4 @@
-import type { JumbotronProps } from "../../../interfaces/JumbotronProps";
+import type { JumbotronProps } from "../../../interfaces/props/shared/Images/JumbotronProps";
 import styles from "./Jumbotron.module.css";
 
 const Jumbotron = ({ pathToImage, isHomePage }: JumbotronProps) => {

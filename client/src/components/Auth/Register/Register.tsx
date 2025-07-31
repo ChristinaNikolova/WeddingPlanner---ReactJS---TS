@@ -149,6 +149,7 @@ const Register = () => {
           className={`${styles["register-img"]} img-shadow`}
           src="./img/wedding-634526_1280.jpg"
           alt="bride_accessories"
+          loading="lazy"
         />
         <form onSubmit={submitHandler} className="auth-form">
           <div className="form-wrapper">

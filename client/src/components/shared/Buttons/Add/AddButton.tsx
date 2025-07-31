@@ -1,4 +1,4 @@
-import type { AddButtonProps } from "../../../../interfaces/AddButtonProps";
+import type { AddButtonProps } from "../../../../interfaces/props/shared/Forms/AddButtonProps";
 
 const AddButton = ({
   classNames,
@@ -6,7 +6,7 @@ const AddButton = ({
   isEmptyString,
   onShowFormHandler,
 }: AddButtonProps) => {
-  const getStyles = () => {
+  const getStyles = (): string => {
     return [...classNames, "form-icon-wrapper"].join(" ");
   };
 

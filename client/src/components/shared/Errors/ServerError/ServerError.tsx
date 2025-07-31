@@ -1,4 +1,4 @@
-import type { ServerErrorProps } from "../../../../interfaces/ServerErrorProps";
+import type { ServerErrorProps } from "../../../../interfaces/props/shared/Errors/ServerErrorProps";
 import styles from "./ServerError.module.css";
 
 const ServerError = ({ errors }: ServerErrorProps) => {

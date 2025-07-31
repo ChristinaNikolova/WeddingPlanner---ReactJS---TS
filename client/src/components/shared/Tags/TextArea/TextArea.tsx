@@ -1,4 +1,4 @@
-import type { TextAreaProps } from "../../../../interfaces/TextAreaProps";
+import type { TextAreaProps } from "../../../../interfaces/props/shared/Tags/TextAreaProps";
 
 const TextArea = ({
   name,

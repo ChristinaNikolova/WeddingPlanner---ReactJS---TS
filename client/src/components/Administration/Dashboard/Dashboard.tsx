@@ -12,6 +12,7 @@ const Dashboard = () => {
           className={`${styles["dashboard-img"]} img-shadow`}
           src="./img/groom-505683_1920.jpg"
           alt="groom"
+          loading="lazy"
         />
         <ul className={styles["dashboard-ul"]}>
           <li className={`${styles["dashboard-li"]} ${styles["title-li"]}`}>
@@ -49,6 +50,7 @@ const Dashboard = () => {
           className={`${styles["dashboard-img"]} img-shadow`}
           src="./img/bride-428105_1920.jpg"
           alt="bride"
+          loading="lazy"
         />
       </div>
     </section>
