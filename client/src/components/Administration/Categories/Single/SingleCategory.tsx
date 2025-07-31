@@ -23,7 +23,7 @@ const SingleCategory = ({
       {id !== category.DEFAULT_CATEGORY_SELECTED_ID && (
         <i
           className="fa-solid fa-trash"
-          onClick={() => onDeleteHandler(id)}
+          onClick={() => onDeleteHandler(id!)}
         ></i>
       )}
     </li>

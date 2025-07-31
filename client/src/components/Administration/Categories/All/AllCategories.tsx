@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import SingleCategory from "../Single/SingleCategory";
 import ServerError from "../../../shared/Errors/ServerError/ServerError";
-import type { CategoryProps } from "../../../../interfaces/CategoryProps";
-import type { ErrorProps } from "../../../../interfaces/ErrorProps";
+import type { CategoryProps } from "../../../../interfaces/props/categories/CategoryProps";
+import type { ErrorProps } from "../../../../interfaces/props/shared/ErrorProps";
 import * as categoriesService from "../../../../services/categories";
 import styles from "./AllCategories.module.css";
 
@@ -46,7 +46,7 @@ const AllCategories = () => {
           {categories.map((c) => (
             <SingleCategory
               key={c.id}
-              id={c.id!}
+              id={c.id}
               name={c.name}
               image={c.image}
               onDeleteHandler={onDeleteHandler}

@@ -4,12 +4,12 @@ import ClientError from "../../../shared/Errors/ClientError/ClientError";
 import ServerError from "../../../shared/Errors/ServerError/ServerError";
 import FormButton from "../../../shared/Buttons/Form/FormButton";
 import Bottom from "../../../shared/Images/Bottom/Bottom";
+import type { FormCategoryProps } from "../../../../interfaces/props/categories/FormCategoryProps";
+import type { CategoryModel } from "../../../../interfaces/props/models/CategoryModel";
 import * as helpers from "../../../../utils/helpers/form";
 import * as constants from "../../../../utils/constants/images";
 import * as validator from "../../../../utils/validators/category";
 import styles from "./FormCategory.module.css";
-import type { FormCategoryProps } from "../../../../interfaces/props/categories/FormCategoryProps";
-import type { CategoryModel } from "../../../../interfaces/props/models/CategoryModel";
 
 const FormCategory = ({
   formName,

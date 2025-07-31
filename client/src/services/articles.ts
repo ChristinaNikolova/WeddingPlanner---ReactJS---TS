@@ -1,26 +1,15 @@
 import { api } from "./api";
 import { requester } from "./requester";
-import type { ArticleProps } from "../interfaces/ArticleProps";
 import type { ArticleResponse } from "../interfaces/ArticleResponse";
 import { httpMethods, serviceNames } from "../utils/constants/global";
 import { handleServiceError } from "../utils/helpers/errorHandler";
-import type { ArticleDetailsProps } from "../interfaces/ArticleDetailsProps";
+import type { ArticleModel } from "../interfaces/props/models/ArticleModel";
+import type { ArticleProps } from "../interfaces/props/articles/ArticleProps";
 
-// todo create + unpdate = interface???
-export const create = async (
-  title: string,
-  content: string,
-  image: string,
-  jumboImage: string,
-  category: string
-): Promise<ArticleProps> => {
+export const create = async (article: ArticleModel): Promise<ArticleProps> => {
   try {
     const response = await requester(api.admin.articles, httpMethods.POST, {
-      title,
-      content,
-      image,
-      jumboImage,
-      category,
+      ...article,
     });
     return response.json();
   } catch (error) {
@@ -30,22 +19,14 @@ export const create = async (
 
 export const update = async (
   id: string,
-  title: string,
-  content: string,
-  image: string,
-  jumboImage: string,
-  category: string
+  article: ArticleModel
 ): Promise<ArticleProps> => {
   try {
     const response = await requester(
       `${api.admin.articles}/${id}`,
       httpMethods.PUT,
       {
-        title,
-        content,
-        image,
-        jumboImage,
-        category,
+        ...article,
       }
     );
     return response.json();
