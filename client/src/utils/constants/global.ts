@@ -1,4 +1,3 @@
-// todo check all files +  add types!!!
 export const emails = {
   ADMIN: "admin@weddingplanner.com",
 } as const;
@@ -107,11 +106,5 @@ export const timespans = [
   "wedding day",
 ] as const;
 
-// тодо трябват ли ми ?
-// export type HttpMethod = (typeof httpMethods)[keyof typeof httpMethods];
-// export type FormName = (typeof formNames)[keyof typeof formNames];
-// export type Role = (typeof roles)[number];
-// export type Timespan = (typeof timespans)[number];
-// export type DisplayStyle = (typeof displayStyles)[keyof typeof displayStyles];
-// export type Gender = (typeof genders)[keyof typeof genders];
-// export type Dish = (typeof dishes)[keyof typeof dishes];
+// todo add more if needed
+export type FormName = (typeof formNames)[keyof typeof formNames];

@@ -13,9 +13,10 @@ import ServerError from "../../../shared/Errors/ServerError/ServerError";
 import FormButton from "../../../shared/Buttons/Form/FormButton";
 import type { CategoryProps } from "../../../../interfaces/CategoryProps";
 import type { ErrorProps } from "../../../../interfaces/ErrorProps";
+import type { FormName } from "../../../../utils/constants/global";
 
 interface FormArticleProps {
-  formName: string;
+  formName: FormName;
   title: string;
   content: string;
   image: string;

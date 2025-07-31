@@ -9,9 +9,10 @@ import * as helpers from "../../../../utils/helpers/form";
 import * as constants from "../../../../utils/constants/images";
 import * as validator from "../../../../utils/validators/category";
 import styles from "./FormCategory.module.css";
+import type { FormName } from "../../../../utils/constants/global";
 
 interface FormCategoryProps {
-  formName: string;
+  formName: FormName;
   name: string;
   image: string;
   serverError: ErrorProps[];
