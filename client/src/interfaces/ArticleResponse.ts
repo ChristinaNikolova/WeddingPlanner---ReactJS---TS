@@ -1,4 +1,4 @@
-import type { ArticleDetailsProps } from "./ArticleDetailsProps";
+import type { ArticleDetailsProps } from "./props/articles/ArticleDetailsProps";
 
 export interface ArticleResponse {
   articles: ArticleDetailsProps[];
