@@ -74,9 +74,8 @@ const ArticleDetails = () => {
     return likes.includes(userId);
   };
 
-  // todo remove this -> Loading Component
   if (!article) {
-    return <div>Loading...</div>;
+    return;
   }
 
   return (

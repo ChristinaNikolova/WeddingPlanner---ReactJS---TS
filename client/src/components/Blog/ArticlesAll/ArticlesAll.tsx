@@ -12,7 +12,7 @@ import ArticlesAllCategoryDropDown from "../ArticlesAllCategoryDropDown/Articles
 import styles from "./ArticlesAll.module.css";
 import ArticlesAllSearch from "../ArticlesAllSearch/ArticlesAllSearch";
 import ArticlesList from "../ArticlesList/ArticlesList";
-import type { ArticleDetailsProps } from "../../../interfaces/ArticleDetailsProps";
+import type { ArticleDetailsProps } from "../../../interfaces/props/articles/ArticleDetailsProps";
 
 // todo interface here
 // todo check return type everywhere
