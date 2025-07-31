@@ -1,4 +1,4 @@
-import type { FormName } from "../utils/constants/global";
+import type { FormName } from "../../../../utils/constants/global";
 
 export interface FormButtonProps {
   formName: FormName;

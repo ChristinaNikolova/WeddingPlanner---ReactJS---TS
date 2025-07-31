@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router";
 import FormArticle from "../Form/FormArticle";
 import * as articlesService from "../../../../services/articles";
 import { formNames } from "../../../../utils/constants/global";
-import type { ErrorProps } from "../../../../interfaces/props/shared/ErrorProps";
+import type { ErrorProps } from "../../../../interfaces/props/shared/Errors/ErrorProps";
 import type { ArticleDetailsProps } from "../../../../interfaces/props/articles/ArticleDetailsProps";
 import type { ArticleModel } from "../../../../interfaces/props/models/ArticleModel";
 

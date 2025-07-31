@@ -8,7 +8,7 @@ import * as validator from "../../../utils/validators/auth";
 import * as authService from "../../../services/auth";
 import { useAuth } from "../../../hooks/useAuth";
 import styles from "./Login.module.css";
-import type { ErrorProps } from "../../../interfaces/props/shared/ErrorProps";
+import type { ErrorProps } from "../../../interfaces/props/shared/Errors/ErrorProps";
 
 // todo interface
 interface LoginValues {

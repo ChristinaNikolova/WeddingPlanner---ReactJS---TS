@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import SingleCategory from "../Single/SingleCategory";
 import ServerError from "../../../shared/Errors/ServerError/ServerError";
 import type { CategoryProps } from "../../../../interfaces/props/categories/CategoryProps";
-import type { ErrorProps } from "../../../../interfaces/props/shared/ErrorProps";
+import type { ErrorProps } from "../../../../interfaces/props/shared/Errors/ErrorProps";
 import * as categoriesService from "../../../../services/categories";
 import styles from "./AllCategories.module.css";
 

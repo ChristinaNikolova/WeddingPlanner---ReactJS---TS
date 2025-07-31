@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import FormCategory from "../Form/FormCategory";
-import type { ErrorProps } from "../../../../interfaces/props/shared/ErrorProps";
+import type { ErrorProps } from "../../../../interfaces/props/shared/Errors/ErrorProps";
 import type { CategoryModel } from "../../../../interfaces/props/models/CategoryModel";
 import * as categoriesService from "../../../../services/categories";
 import { formNames } from "../../../../utils/constants/global";

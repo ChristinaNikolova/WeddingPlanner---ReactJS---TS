@@ -8,7 +8,7 @@ import * as authService from "../../../services/auth";
 import * as validator from "../../../utils/validators/auth";
 import * as helpers from "../../../utils/helpers/form";
 import styles from "./Register.module.css";
-import type { ErrorProps } from "../../../interfaces/props/shared/ErrorProps";
+import type { ErrorProps } from "../../../interfaces/props/shared/Errors/ErrorProps";
 
 // todo interface
 interface RegisterValues {

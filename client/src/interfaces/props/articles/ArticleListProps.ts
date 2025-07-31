@@ -6,3 +6,10 @@ export interface ArticlesListProps {
   selectedCategory?: string;
   pathToImage?: string;
 }
+
+// todo test and remove one
+// export interface ArticleResponse {
+//   articles: ArticleDetailsProps[];
+//   pagesCount: number;
+//   currentPage: string;
+// }

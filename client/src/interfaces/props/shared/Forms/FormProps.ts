@@ -1,5 +1,5 @@
-import type { FormName } from "../../../utils/constants/global";
-import type { ErrorProps } from "./ErrorProps";
+import type { FormName } from "../../../../utils/constants/global";
+import type { ErrorProps } from "../Errors/ErrorProps";
 
 export interface FormProps {
   formName: FormName;

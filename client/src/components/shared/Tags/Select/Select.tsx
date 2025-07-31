@@ -1,4 +1,4 @@
-import type { SelectProps } from "../../../../interfaces/props/shared/SelectProps";
+import type { SelectProps } from "../../../../interfaces/props/shared/Tags/SelectProps";
 
 const Select = ({
   name,
