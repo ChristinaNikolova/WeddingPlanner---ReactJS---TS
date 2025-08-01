@@ -12,7 +12,6 @@ interface CreateNoteProps {
   finish: () => void;
 }
 
-
 // interface FormNoteProps {
 //   description: string;
 //   serverError: ErrorProps[];
@@ -37,12 +36,12 @@ interface CreateNoteProps {
 //   finish: () => void;
 // }
 
-function CreateNote({
+const CreateNote = ({
   plannerId,
   isHidden,
   onCancelFormHandler,
   finish,
-}: CreateNoteProps) {
+}: CreateNoteProps) => {
   const formName = formNames.CREATE;
   const [serverError, setServerError] = useState<ErrorProps[]>([]);
   const [isDisabled, setIsDisabled] = useState<boolean>(true);
@@ -90,6 +89,6 @@ function CreateNote({
       )}
     </>
   );
-}
+};
 
 export default CreateNote;

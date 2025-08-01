@@ -11,7 +11,7 @@ import styles from "./NotesAll.module.css";
 import type { NoteProps } from "../../../interfaces/props/NoteProps";
 
 // todo check all useStates
-function NotesAll() {
+const NotesAll = () => {
   const { id: plannerId } = useParams();
   const [notes, setNotes] = useState<NoteProps[]>([]);
   const [noteId, setNoteId] = useState<string>("");
@@ -108,6 +108,6 @@ function NotesAll() {
       )}
     </section>
   );
-}
+};
 
 export default NotesAll;

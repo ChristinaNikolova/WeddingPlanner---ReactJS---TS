@@ -25,7 +25,7 @@ interface FormEventProps {
   checkIsDisabled: (disable: boolean) => void;
 }
 
-function FormEvent({
+const FormEvent = ({
   title,
   startTime,
   endTime,
@@ -34,7 +34,7 @@ function FormEvent({
   children,
   onSubmitHandler,
   checkIsDisabled,
-}: FormEventProps) {
+}: FormEventProps) => {
   // todo add interface
   const [values, setValues] = useState({
     title: title,
@@ -171,6 +171,6 @@ function FormEvent({
       </form>
     </div>
   );
-}
+};
 
 export default FormEvent;

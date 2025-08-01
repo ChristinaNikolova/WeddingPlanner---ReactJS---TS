@@ -14,12 +14,12 @@ interface UpdateNoteProps {
   finish: () => void;
 }
 
-function UpdateNote({
+const UpdateNote = ({
   noteId,
   plannerId,
   onCancelFormHandler,
   finish,
-}: UpdateNoteProps) {
+}: UpdateNoteProps) => {
   const formName = formNames.UPDATE;
   const [serverError, setServerError] = useState<ErrorProps[]>([]);
   const [note, setNote] = useState<NoteProps | undefined>(undefined);
@@ -70,6 +70,6 @@ function UpdateNote({
       />
     </FormNote>
   );
-}
+};
 
 export default UpdateNote;

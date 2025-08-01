@@ -9,14 +9,14 @@ interface SingleNoteProps {
   onShowFormHandler: (noteId: string) => void;
 }
 
-function SingleNote({
+const SingleNote = ({
   id,
   description,
   createdAt,
   isEditIconHidden,
   onDeleteHandler,
   onShowFormHandler,
-}: SingleNoteProps) {
+}: SingleNoteProps) => {
   return (
     <div className={styles["notes-all-info-wrapper"]}>
       <div className={styles["notes-all-info-left"]}>
@@ -41,6 +41,6 @@ function SingleNote({
       </div>
     </div>
   );
-}
+};
 
 export default SingleNote;

@@ -10,7 +10,7 @@ import { addButtonTexts } from "../../../utils/constants/global";
 import styles from "./EventsAll.module.css";
 import type { EventProps } from "../../../interfaces/props/EventProps";
 
-function EventsAll() {
+const EventsAll = () => {
   const { id: plannerId } = useParams();
   const [events, setEvents] = useState<EventProps[]>([]);
   const [eventId, setEventId] = useState<string>("");
@@ -120,6 +120,6 @@ function EventsAll() {
       )}
     </section>
   );
-}
+};
 
 export default EventsAll;

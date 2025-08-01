@@ -12,12 +12,12 @@ interface CreateEventProps {
   finish: () => void;
 }
 
-function CreateEvent({
+const CreateEvent = ({
   plannerId,
   isHidden,
   onCancelFormHandler,
   finish,
-}: CreateEventProps) {
+}: CreateEventProps) => {
   const formName = formNames.CREATE;
   const [serverError, setServerError] = useState<ErrorProps[]>([]);
   const [isDisabled, setIsDisabled] = useState<boolean>(true);
@@ -73,6 +73,6 @@ function CreateEvent({
       )}
     </>
   );
-}
+};
 
 export default CreateEvent;

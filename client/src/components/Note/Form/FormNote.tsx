@@ -15,13 +15,13 @@ interface FormNoteProps {
   checkIsDisabled: (isDisabled: boolean) => void;
 }
 
-function FormNote({
+const FormNote = ({
   description,
   serverError,
   children,
   onSubmitHandler,
   checkIsDisabled,
-}: FormNoteProps) {
+}: FormNoteProps) => {
   // todo add type
   const [values, setValues] = useState({
     description: description,
@@ -89,6 +89,6 @@ function FormNote({
       </form>
     </div>
   );
-}
+};
 
 export default FormNote;

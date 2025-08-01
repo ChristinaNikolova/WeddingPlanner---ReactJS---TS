@@ -13,12 +13,12 @@ interface UpdateEventProps {
   finish: () => void;
 }
 
-function UpdateEvent({
+const UpdateEvent = ({
   eventId,
   plannerId,
   onCancelFormHandler,
   finish,
-}: UpdateEventProps) {
+}: UpdateEventProps) => {
   const formName = formNames.UPDATE;
   const [serverError, setServerError] = useState<ErrorProps[]>([]);
   // todo add interface here
@@ -83,6 +83,6 @@ function UpdateEvent({
       />
     </FormEvent>
   );
-}
+};
 
 export default UpdateEvent;
