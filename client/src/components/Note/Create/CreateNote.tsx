@@ -12,6 +12,31 @@ interface CreateNoteProps {
   finish: () => void;
 }
 
+
+// interface FormNoteProps {
+//   description: string;
+//   serverError: ErrorProps[];
+//   children: ReactNode;
+//   onSubmitHandler: (description: string) => void;
+//   checkIsDisabled: (isDisabled: boolean) => void;
+// }
+
+// interface SingleNoteProps {
+//   id: string;
+//   description: string;
+//   createdAt: string;
+//   isEditIconHidden: boolean;
+//   onDeleteHandler: (noteId: string) => void;
+//   onShowFormHandler: (noteId: string) => void;
+// }
+
+// interface UpdateNoteProps {
+//   noteId: string;
+//   plannerId: string;
+//   onCancelFormHandler: (event: React.MouseEvent<HTMLElement>) => void;
+//   finish: () => void;
+// }
+
 function CreateNote({
   plannerId,
   isHidden,
