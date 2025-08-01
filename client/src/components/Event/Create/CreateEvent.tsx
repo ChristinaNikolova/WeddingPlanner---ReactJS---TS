@@ -4,33 +4,23 @@ import FormButton from "../../shared/Buttons/Form/FormButton";
 import * as eventsService from "../../../services/events";
 import { formNames } from "../../../utils/constants/global";
 import type { ErrorProps } from "../../../interfaces/props/shared/Errors/ErrorProps";
-import type { EventProps } from "../../../interfaces/props/EventProps";
 
-interface UpdateEventProps {
-  eventId: string;
+interface CreateEventProps {
   plannerId: string;
+  isHidden: boolean;
   onCancelFormHandler: () => void;
   finish: () => void;
 }
 
-function UpdateEvent({
-  eventId,
+function CreateEvent({
   plannerId,
+  isHidden,
   onCancelFormHandler,
   finish,
-}: UpdateEventProps) {
-  const formName = formNames.UPDATE;
+}: CreateEventProps) {
+  const formName = formNames.CREATE;
   const [serverError, setServerError] = useState<ErrorProps[]>([]);
-  // todo add interface here
-  const [event, setEvent] = useState<EventProps | undefined>(undefined);
   const [isDisabled, setIsDisabled] = useState<boolean>(true);
-
-  useEffect(() => {
-    eventsService
-      .getById(plannerId, eventId)
-      .then((res) => setEvent(res))
-      .catch((err) => console.error(err));
-  }, []);
 
   useEffect(() => {}, [serverError]);
 
@@ -41,7 +31,7 @@ function UpdateEvent({
     duration: number
   ): void => {
     eventsService
-      .update(eventId, title, startTime, endTime, duration)
+      .create(plannerId, title, startTime, endTime, duration)
       .then((data) => {
         if (data.message) {
           setServerError(data.message);
@@ -57,32 +47,32 @@ function UpdateEvent({
     setIsDisabled(!!disable);
   }
 
-  if (
-    !event?.title ||
-    !event?.startTime ||
-    !event?.endTime ||
-    !event?.duration
-  ) {
-    return null;
+  function onCancelForm(): void {
+    setServerError([]);
+    onCancelFormHandler();
   }
 
   return (
-    <FormEvent
-      title={event.title}
-      startTime={event.startTime}
-      endTime={event.endTime}
-      duration={event.duration}
-      serverError={serverError}
-      onSubmitHandler={onSubmitHandler}
-      checkIsDisabled={checkIsDisabled}
-    >
-      <FormButton
-        formName={formName}
-        isDisabled={isDisabled}
-        onCancelFormHandler={onCancelFormHandler}
-      />
-    </FormEvent>
+    <>
+      {!isHidden && (
+        <FormEvent
+          title={""}
+          startTime={""}
+          endTime={""}
+          duration={""}
+          serverError={serverError}
+          onSubmitHandler={onSubmitHandler}
+          checkIsDisabled={checkIsDisabled}
+        >
+          <FormButton
+            formName={formName}
+            isDisabled={isDisabled}
+            onCancelFormHandler={onCancelForm}
+          />
+        </FormEvent>
+      )}
+    </>
   );
 }
 
-export default UpdateEvent;
+export default CreateEvent;

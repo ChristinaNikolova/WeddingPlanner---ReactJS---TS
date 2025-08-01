@@ -19,8 +19,8 @@ export const all = async (plannerId: string): Promise<EventProps[]> => {
 export const create = async (
   plannerId: string,
   title: string,
-  startTime: string,
-  endTime: string,
+  startTime: Date,
+  endTime: Date,
   duration: number
 ): Promise<EventProps> => {
   try {

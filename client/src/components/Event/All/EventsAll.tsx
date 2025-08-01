@@ -111,7 +111,7 @@ function EventsAll() {
             onShowFormHandler={onShowFormHandler}
           />
           <CreateEvent
-            plannerId={plannerId}
+            plannerId={plannerId!}
             isHidden={isHidden}
             onCancelFormHandler={onCancelFormHandler}
             finish={finish}
