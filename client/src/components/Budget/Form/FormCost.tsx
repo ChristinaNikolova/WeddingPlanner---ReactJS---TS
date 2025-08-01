@@ -17,7 +17,8 @@ interface FormCostProps {
   formName: FormName;
   serverError: ErrorProps[];
   children: ReactNode;
-  formCanceled: boolean;
+  // todo do we need this??
+  formCanceled?: boolean;
   onSubmitHandler: (
     e: React.FormEvent<HTMLFormElement>,
     title: string,
