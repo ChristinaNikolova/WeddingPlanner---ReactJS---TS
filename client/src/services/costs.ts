@@ -1,11 +1,11 @@
+import { api } from "./api";
+import { requester } from "./requester";
 import type { ArticleProps } from "../interfaces/props/articles/ArticleProps";
 import type { CostProps } from "../interfaces/props/CostProps";
 import { httpMethods, serviceNames } from "../utils/constants/global";
 import { handleServiceError } from "../utils/helpers/errorHandler";
-import { api } from "./api";
-import { requester } from "./requester";
 
-export const all = async (plannerId: string): Promise<CostProps> => {
+export const all = async (plannerId: string): Promise<CostProps[]> => {
   try {
     const response = await requester(
       `${api.public.costs}/${plannerId}`,

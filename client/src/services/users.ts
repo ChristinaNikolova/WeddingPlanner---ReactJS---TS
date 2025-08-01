@@ -1,6 +1,6 @@
 import { api } from "./api";
-import type { ArticleDetailsProps } from "../interfaces/props/articles/ArticleDetailsProps";
 import { requester } from "./requester";
+import type { ArticleDetailsProps } from "../interfaces/props/articles/ArticleDetailsProps";
 import { httpMethods, serviceNames } from "../utils/constants/global";
 import { handleServiceError } from "../utils/helpers/errorHandler";
 
