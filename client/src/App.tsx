@@ -22,7 +22,7 @@ import FavouriteArticle from "./components/User/FavouriteArticle/FavouriteArticl
 // import AllCosts from "./components/Budget/All/AllCosts";
 // import ChecklistAll from "./components/Checklist/Task/All/TasksAll";
 // import EventsAll from "./components/Event/All/EventsAll";
-// import NotesAll from "./components/Note/All/NotesAll";
+import NotesAll from "./components/Note/All/NotesAll";
 import Loading from "./components/shared/Loading/Loading";
 
 import AdminRoute from "./components/common/AdminRoute";
@@ -73,6 +73,7 @@ const App = () => {
             element={<FavouriteArticle pathToImage={constants.jumbo.USER} />}
           />
           <Route path="/logout" element={<Logout />} />
+          <Route path="/:id/note" element={<NotesAll />} />
         </Route>
 
         <Route element={<AdminRoute />}>
