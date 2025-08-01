@@ -16,7 +16,7 @@ interface SingleEvent {
   onShowFormHandler: (eventId: string) => void;
 }
 
-function SingleEvent({
+const SingleEvent = ({
   id,
   title,
   startTime,
@@ -27,7 +27,7 @@ function SingleEvent({
   onHeightlightHandler,
   onDeleteHandler,
   onShowFormHandler,
-}: SingleEvent) {
+}: SingleEvent) => {
   const [isHovering, setIsHovering] = useState<boolean>(false);
 
   const getStyles = (): string => {
@@ -95,6 +95,6 @@ function SingleEvent({
       </div>
     </div>
   );
-}
+};
 
 export default SingleEvent;
