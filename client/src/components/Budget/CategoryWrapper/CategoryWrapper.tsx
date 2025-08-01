@@ -4,7 +4,7 @@ import styles from "./CategoryWrapper.module.css";
 interface CategoryWrapperProps {
   name: string;
   image: string;
-  categoryCosts: number;
+  categoryCosts: string;
 }
 
 const CategoryWrapper = ({

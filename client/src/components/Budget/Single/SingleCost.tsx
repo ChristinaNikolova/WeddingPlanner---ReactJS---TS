@@ -10,7 +10,7 @@ interface SingleCostProps {
   costId: string;
   id: string;
   title: string;
-  price: number;
+  price: string;
   onEditHandler: (id: string, index: number) => void;
   onDeleteHandler: (id: string) => void;
 }

@@ -14,11 +14,9 @@ const AddButton = ({
     if (isEmptyString) {
       (onShowFormHandler as (noteId: string) => void)("");
     } else {
-      (
-        onShowFormHandler as (
-          event: string | React.MouseEvent<HTMLElement, MouseEvent>
-        ) => void
-      )(event);
+      (onShowFormHandler as (event: React.MouseEvent<HTMLElement>) => void)(
+        event
+      );
     }
   };
 
