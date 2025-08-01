@@ -26,7 +26,7 @@ interface FormCostProps {
   checkIsDisabled: (isDisabled: boolean) => void;
 }
 
-function FormCost({
+const FormCost = ({
   title,
   price,
   formName,
@@ -35,7 +35,7 @@ function FormCost({
   formCanceled,
   onSubmitHandler,
   checkIsDisabled,
-}: FormCostProps) {
+}: FormCostProps) => {
   // todo add interface here
   const [values, setValues] = useState({
     title: title,
@@ -136,6 +136,6 @@ function FormCost({
       </form>
     </div>
   );
-}
+};
 
 export default FormCost;
