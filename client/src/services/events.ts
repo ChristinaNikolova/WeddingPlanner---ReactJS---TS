@@ -85,8 +85,8 @@ export const getById = async (
 export const update = async (
   id: string,
   title: string,
-  startTime: string,
-  endTime: string,
+  startTime: Date,
+  endTime: Date,
   duration: number
 ): Promise<EventProps> => {
   try {

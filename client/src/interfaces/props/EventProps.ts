@@ -5,7 +5,7 @@ export interface EventProps {
   title: string;
   startTime: string;
   endTime: string;
-  duration: number;
+  duration: string;
   isHighlighted: boolean;
   message?: ErrorProps[];
 }

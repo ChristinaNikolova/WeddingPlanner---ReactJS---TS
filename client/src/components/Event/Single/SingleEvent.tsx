@@ -8,7 +8,7 @@ interface SingleEvent {
   title: string;
   startTime: string;
   endTime: string;
-  duration: number;
+  duration: string;
   isHighlighted: boolean;
   isEditIconHidden: boolean;
   onHeightlightHandler: (eventId: string) => void;
