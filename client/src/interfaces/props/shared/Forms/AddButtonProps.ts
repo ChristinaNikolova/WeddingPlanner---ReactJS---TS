@@ -1,6 +1,8 @@
 export interface AddButtonProps {
-  classNames: string;
+  classNames: string[];
   text: string;
   isEmptyString: boolean;
-  onShowFormHandler: (event: React.MouseEvent<HTMLElement> | string) => void;
+  onShowFormHandler:
+    | ((noteId: string) => void)
+    | ((event: string | React.MouseEvent<HTMLElement, MouseEvent>) => void);
 }

@@ -10,14 +10,21 @@ const AddButton = ({
     return [...classNames, "form-icon-wrapper"].join(" ");
   };
 
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    if (isEmptyString) {
+      (onShowFormHandler as (noteId: string) => void)("");
+    } else {
+      (
+        onShowFormHandler as (
+          event: string | React.MouseEvent<HTMLElement, MouseEvent>
+        ) => void
+      )(event);
+    }
+  };
+
   return (
     <div className={getStyles()}>
-      <i
-        onClick={
-          isEmptyString ? () => onShowFormHandler("") : onShowFormHandler
-        }
-        className="fa-solid fa-plus"
-      ></i>
+      <i onClick={handleClick} className="fa-solid fa-plus"></i>
       Add {text}
     </div>
   );
