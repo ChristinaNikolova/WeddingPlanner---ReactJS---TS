@@ -74,7 +74,7 @@ export const update = async (
   role: string,
   table: string,
   mainDish: string,
-  confirmed: boolean
+  confirmed: string
 ): Promise<GuestProps> => {
   try {
     const response = await requester(

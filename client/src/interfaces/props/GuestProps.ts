@@ -1,5 +1,6 @@
 import type { ErrorProps } from "./shared/Errors/ErrorProps";
 
+// todo check confimmed
 export interface GuestProps {
   id: string;
   firstName: string;
@@ -10,7 +11,7 @@ export interface GuestProps {
   role: string;
   table: string;
   mainDish: string;
-  confirmed: boolean;
+  confirmed: string;
   message?: ErrorProps[];
 }
 
