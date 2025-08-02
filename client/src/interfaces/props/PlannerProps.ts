@@ -1,3 +1,5 @@
+import type { ErrorProps } from "./shared/Errors/ErrorProps";
+
 //todo extends PlannerViewModel
 export interface PlannerProps {
   // base
@@ -23,4 +25,5 @@ export interface PlannerProps {
   totalEvents: number;
   highlightedEvents: number;
   notes: number;
+  message?: ErrorProps[];
 }

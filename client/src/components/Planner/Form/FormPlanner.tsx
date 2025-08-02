@@ -14,7 +14,7 @@ interface FormPlannerProps {
   formName: FormName;
   description: string;
   date: string;
-  budget: number;
+  budget: string;
   location: string;
   bride: string;
   groom: string;
@@ -22,7 +22,7 @@ interface FormPlannerProps {
   onSubmitHandler: (
     description: string,
     date: string,
-    budget: number,
+    budget: string,
     location: string,
     bride: string,
     groom: string
@@ -30,6 +30,7 @@ interface FormPlannerProps {
   onCancelFormHandler: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
+// todo budget : string/number validatar -> parse?
 const FormPlanner = ({
   formName,
   description,
@@ -90,7 +91,7 @@ const FormPlanner = ({
   };
 
   const validateBudget = (): void => {
-    setBudgetError(validator.validBudget(values.budget));
+    setBudgetError(validator.validBudget(Number(values.budget)));
   };
 
   const validateLocation = (): void => {
@@ -123,7 +124,7 @@ const FormPlanner = ({
 
     setDescriptionError(validator.validDescription(values.description));
     setDateError(validator.validDate(values.date));
-    setBudgetError(validator.validBudget(values.budget));
+    setBudgetError(validator.validBudget(Number(values.budget)));
     setLocationError(validator.validLocation(values.location));
     setBrideError(validator.validName(values.bride));
     setGroomError(validator.validName(values.groom));
@@ -184,7 +185,7 @@ const FormPlanner = ({
               name="budget"
               type="number"
               label="Budget"
-              value={values.budget.toString()}
+              value={values.budget}
               onChangeHandler={changeHandler}
               onBlurHandler={validateBudget}
             />
