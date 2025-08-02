@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Icon from "../../shared/Images/Icons/Icon";
 import * as images from "../../../utils/constants/images";
 import { dishes, people, genders } from "../../../utils/constants/global";
 import styles from "./SingleGuest.module.css";
@@ -20,7 +21,7 @@ interface SingleGuestProps {
   onShowFormHandler: (id: string) => void;
 }
 
-function SingleGuest({
+const SingleGuest = ({
   id,
   firstName,
   lastName,
@@ -34,10 +35,10 @@ function SingleGuest({
   isEditIconHidden,
   onDeleteHandler,
   onShowFormHandler,
-}: SingleGuestProps) {
+}: SingleGuestProps) => {
   const [isHovering, setIsHovering] = useState(false);
 
-  const getPersonImage = (age: string, gender: string): string => {
+  const getPersonImage = (age: string, gender: string): React.JSX.Element => {
     let image = "";
 
     if (age === people.ADULT && gender === genders.MALE) {
@@ -52,10 +53,10 @@ function SingleGuest({
       image = images.personIcons.BABY;
     }
 
-    return image;
+    return <Icon iconClass={image} />;
   };
 
-  const getDishImage = (mainDish: string): string => {
+  const getDishImage = (mainDish: string): React.JSX.Element => {
     let image = "";
 
     if (mainDish === dishes.MEAT) {
@@ -66,7 +67,7 @@ function SingleGuest({
       image = images.dishIcons.VEGGIES;
     }
 
-    return image;
+    return <Icon iconClass={image} />;
   };
 
   const onMouseEnterHandler = (): void => {
@@ -132,6 +133,6 @@ function SingleGuest({
       </div>
     </div>
   );
-}
+};
 
 export default SingleGuest;
