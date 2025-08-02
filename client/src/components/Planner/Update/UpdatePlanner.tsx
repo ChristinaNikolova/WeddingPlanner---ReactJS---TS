@@ -1,0 +1,90 @@
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import FormPlanner from "../Form/FormPlanner";
+import * as plannersService from "../../../services/planners";
+import { formNames } from "../../../utils/constants/global";
+import type { PlannerProps } from "../../../interfaces/props/PlannerProps";
+import type { ErrorProps } from "../../../interfaces/props/shared/Errors/ErrorProps";
+
+const UpdatePlanner = () => {
+  const formName = formNames.UPDATE;
+  const navigate = useNavigate();
+  const { id } = useParams();
+  const [planner, setPlanner] = useState<PlannerProps | undefined>(undefined);
+  const [serverError, setServerError] = useState<ErrorProps[]>([]);
+
+  useEffect(() => {
+    plannersService
+      .getById(id!)
+      .then((data) => setPlanner(data))
+      .catch((err) => console.error(err));
+  }, []);
+
+  useEffect(() => {}, [serverError]);
+
+  // todo add type
+  const submitHandler = (
+    description: string,
+    date: string,
+    budget: string,
+    location: string,
+    bride: string,
+    groom: string
+  ) => {
+    plannersService
+      .update(
+        id!,
+        description,
+        date,
+        budget,
+        location,
+        bride,
+        planner!.brideId,
+        groom,
+        planner!.groomId
+      )
+      .then((data) => {
+        if (data.message) {
+          setServerError(data.message);
+          return;
+        }
+
+        onCancelFormHandler();
+      })
+      .catch((err) => console.error(err));
+  };
+
+  const onCancelFormHandler = (): void => {
+    navigate(`/plan/${id}`);
+  };
+
+  // todo 2 or 1 if
+  if (
+    !planner ||
+    !planner.description ||
+    !planner.date ||
+    !planner.budget ||
+    !planner.location ||
+    !planner.bride ||
+    !planner.groom
+  ) {
+    return null;
+  }
+
+  return (
+    <FormPlanner
+      formName={formName}
+      description={planner.description}
+      date={planner.date}
+      budget={planner.budget}
+      location={planner.location}
+      bride={planner.bride}
+      groom={planner.groom}
+      serverError={serverError}
+      onSubmitHandler={submitHandler}
+      onCancelFormHandler={onCancelFormHandler}
+    />
+  );
+};
+
+export default UpdatePlanner;
