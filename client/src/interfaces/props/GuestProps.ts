@@ -1,3 +1,5 @@
+import type { ErrorProps } from "./shared/Errors/ErrorProps";
+
 export interface GuestProps {
   id: string;
   firstName: string;
@@ -9,6 +11,7 @@ export interface GuestProps {
   table: string;
   mainDish: string;
   confirmed: boolean;
+  message?: ErrorProps[];
 }
 
 // todo check why the article returns objectId
