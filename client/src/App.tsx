@@ -14,7 +14,7 @@ import Logout from "./components/Auth/Logout/Logout";
 import ArticlesAll from "./components/Blog/ArticlesAll/ArticlesAll";
 import ArticleDetails from "./components/Blog/ArticleDetails/ArticleDetails";
 import FavouriteArticle from "./components/User/FavouriteArticle/FavouriteArticle";
-// import PlannerDashboard from "./components/Planner/Dashboard/Dashboard";
+import PlannerDashboard from "./components/Planner/Dashboard/Dashboard";
 // import CreatePlanner from "./components/Planner/Create/CreatePlanner";
 // import DetailsPlanner from "./components/Planner/Details/DetailsPlanner";
 // import UpdatePlanner from "./components/Planner/Update/UpdatePlanner";
@@ -72,6 +72,7 @@ const App = () => {
             path="/user/favourite-article"
             element={<FavouriteArticle pathToImage={constants.jumbo.USER} />}
           />
+          <Route path="/plan" element={<PlannerDashboard />} />
           <Route path="/logout" element={<Logout />} />
           <Route path="/:id/event" element={<EventsAll />} />
           <Route path="/:id/note" element={<NotesAll />} />

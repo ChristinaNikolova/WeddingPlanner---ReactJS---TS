@@ -1,5 +1,10 @@
-//extends PlannerViewModel
+//todo extends PlannerViewModel
 export interface PlannerProps {
+  // base
+  id: string;
+  title: string;
+
+  // extended
   description: string;
   date: string;
   budget: string;
