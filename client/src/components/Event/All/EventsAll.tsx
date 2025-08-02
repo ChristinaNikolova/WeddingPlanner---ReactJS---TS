@@ -11,6 +11,7 @@ import styles from "./EventsAll.module.css";
 import type { EventProps } from "../../../interfaces/props/EventProps";
 
 const EventsAll = () => {
+  // todo why no events
   const { id: plannerId } = useParams();
   const [events, setEvents] = useState<EventProps[]>([]);
   const [eventId, setEventId] = useState<string>("");

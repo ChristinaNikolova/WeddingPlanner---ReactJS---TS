@@ -15,11 +15,11 @@ import ArticlesAll from "./components/Blog/ArticlesAll/ArticlesAll";
 import ArticleDetails from "./components/Blog/ArticleDetails/ArticleDetails";
 import FavouriteArticle from "./components/User/FavouriteArticle/FavouriteArticle";
 import PlannerDashboard from "./components/Planner/Dashboard/Dashboard";
+import DetailsPlanner from "./components/Planner/Details/DetailsPlanner";
 // import CreatePlanner from "./components/Planner/Create/CreatePlanner";
-// import DetailsPlanner from "./components/Planner/Details/DetailsPlanner";
 // import UpdatePlanner from "./components/Planner/Update/UpdatePlanner";
 // import GuestsAll from "./components/Guest/All/GuestsAll";
-// import AllCosts from "./components/Budget/All/AllCosts";
+import AllCosts from "./components/Budget/All/AllCosts";
 // import ChecklistAll from "./components/Checklist/Task/All/TasksAll";
 import EventsAll from "./components/Event/All/EventsAll";
 import NotesAll from "./components/Note/All/NotesAll";
@@ -73,9 +73,11 @@ const App = () => {
             element={<FavouriteArticle pathToImage={constants.jumbo.USER} />}
           />
           <Route path="/plan" element={<PlannerDashboard />} />
-          <Route path="/logout" element={<Logout />} />
+          <Route path="/plan/:id" element={<DetailsPlanner />} />
+          <Route path="/:id/budget" element={<AllCosts />} />
           <Route path="/:id/event" element={<EventsAll />} />
           <Route path="/:id/note" element={<NotesAll />} />
+          <Route path="/logout" element={<Logout />} />
         </Route>
 
         <Route element={<AdminRoute />}>
