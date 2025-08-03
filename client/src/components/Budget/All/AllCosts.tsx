@@ -48,11 +48,7 @@ const AllCosts = () => {
     loadCosts();
   }, []);
 
-  // todo check the event here
-
-  // todo remove any * 2
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const onCancelFormHandler = (e: any): void => {
+  const onCancelFormHandler = (e: React.SyntheticEvent<HTMLElement>): void => {
     cancelForm(e.target as HTMLElement);
     setCostId("");
     setCurrentIndex("");
@@ -99,8 +95,7 @@ const AllCosts = () => {
       .toFixed(2);
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const finish = (e: any): void => {
+  const finish = (e: React.FormEvent<HTMLFormElement>): void => {
     onCancelFormHandler(e);
     loadCosts();
   };

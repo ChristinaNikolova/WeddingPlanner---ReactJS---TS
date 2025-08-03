@@ -10,7 +10,6 @@ import type { CostProps } from "../../../interfaces/props/CostProps";
 interface UpdateCostProps {
   plannerId: string;
   costId: string;
-  // todo check elements here
   onCancelFormHandler: (e: React.MouseEvent<HTMLButtonElement>) => void;
   finish: (e: React.FormEvent<HTMLFormElement>) => void;
 }

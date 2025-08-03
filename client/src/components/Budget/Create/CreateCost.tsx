@@ -8,7 +8,6 @@ import type { ErrorProps } from "../../../interfaces/props/shared/Errors/ErrorPr
 interface CreateCostProps {
   plannerId: string;
   category: string;
-  // todo check elements here
   onCancelFormHandler: (e: React.MouseEvent<HTMLButtonElement>) => void;
   finish: (e: React.FormEvent<HTMLFormElement>) => void;
 }
