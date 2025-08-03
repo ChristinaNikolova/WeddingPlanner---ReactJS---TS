@@ -23,5 +23,3 @@ export const dishIcons = {
   FISH: "fa-solid fa-fish",
   VEGGIES: "fa-solid fa-seedling",
 } as const;
-
-// todo <Icon iconClass={personIcons.BABY} className="text-blue" />
