@@ -1,25 +1,13 @@
-import { useState, useEffect, useRef, type ReactNode } from "react";
+import { useState, useEffect, useRef } from "react";
 import ServerError from "../../shared/Errors/ServerError/ServerError";
 import ClientError from "../../shared/Errors/ClientError/ClientError";
 import Input from "../../shared/Tags/Input/Input";
-import type { ErrorProps } from "../../../interfaces/props/shared/Errors/ErrorProps";
+import type { FormEventProps } from "../../../interfaces/props/events/FormEventProps";
 import type { EventModel } from "../../../interfaces/models/EventModel";
 import { getDifference, parseDate } from "../../../utils/helpers/datetime";
 import * as validator from "../../../utils/validators/event";
 import * as helpers from "../../../utils/helpers/form";
 import styles from "./FormEvent.module.css";
-
-// todo add interfeca for submit handler
-interface FormEventProps {
-  title: string;
-  startTime: string;
-  endTime: string;
-  duration: string;
-  serverError: ErrorProps[];
-  children: ReactNode;
-  onSubmitHandler: (event: EventModel) => void;
-  checkIsDisabled: (disable: boolean) => void;
-}
 
 const FormEvent = ({
   title,
@@ -31,19 +19,18 @@ const FormEvent = ({
   onSubmitHandler,
   checkIsDisabled,
 }: FormEventProps) => {
+  const durationRef = useRef<HTMLInputElement | null>(null);
+  const formRef = useRef<HTMLDivElement | null>(null);
+
   const [values, setValues] = useState<EventModel>({
     title,
     startTime,
     endTime,
     duration,
   });
-
   const [titleError, setTitleError] = useState<string>("");
   const [startTimeError, setStartTimeError] = useState<string>("");
   const [endTimeError, setEndTimeError] = useState<string>("");
-
-  const durationRef = useRef<HTMLInputElement | null>(null);
-  const formRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     if (!formRef.current) return;

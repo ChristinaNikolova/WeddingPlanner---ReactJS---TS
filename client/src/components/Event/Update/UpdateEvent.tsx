@@ -1,18 +1,12 @@
 import { useState, useEffect } from "react";
 import FormEvent from "../Form/FormEvent";
 import FormButton from "../../shared/Buttons/Form/FormButton";
-import * as eventsService from "../../../services/events";
-import { formNames } from "../../../utils/constants/global";
 import type { ErrorProps } from "../../../interfaces/props/shared/Errors/ErrorProps";
 import type { EventProps } from "../../../interfaces/props/EventProps";
 import type { EventModel } from "../../../interfaces/models/EventModel";
-
-interface UpdateEventProps {
-  eventId: string;
-  plannerId: string;
-  onCancelFormHandler: () => void;
-  finish: () => void;
-}
+import type { UpdateEventProps } from "../../../interfaces/props/events/UpdateEventProps";
+import * as eventsService from "../../../services/events";
+import { formNames } from "../../../utils/constants/global";
 
 const UpdateEvent = ({
   eventId,
@@ -22,7 +16,6 @@ const UpdateEvent = ({
 }: UpdateEventProps) => {
   const formName = formNames.UPDATE;
   const [serverError, setServerError] = useState<ErrorProps[]>([]);
-  // todo add interface here
   const [event, setEvent] = useState<EventProps | undefined>(undefined);
   const [isDisabled, setIsDisabled] = useState<boolean>(true);
 

@@ -3,15 +3,9 @@ import FormEvent from "../Form/FormEvent";
 import FormButton from "../../shared/Buttons/Form/FormButton";
 import type { ErrorProps } from "../../../interfaces/props/shared/Errors/ErrorProps";
 import type { EventModel } from "../../../interfaces/models/EventModel";
+import type { CreateEventProps } from "../../../interfaces/props/events/CreateEventProps";
 import * as eventsService from "../../../services/events";
 import { formNames } from "../../../utils/constants/global";
-
-interface CreateEventProps {
-  plannerId: string;
-  isHidden: boolean;
-  onCancelFormHandler: () => void;
-  finish: () => void;
-}
 
 const CreateEvent = ({
   plannerId,
