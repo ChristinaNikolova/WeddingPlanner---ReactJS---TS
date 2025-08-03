@@ -1,3 +1,4 @@
+import type { ErrorProps } from "./shared/Errors/ErrorProps";
 import type { SubtaskProps } from "./SubtaskProps";
 
 export interface TaskProps {
@@ -8,4 +9,5 @@ export interface TaskProps {
   progress: number;
   target: number;
   subtasks: SubtaskProps[];
+  message?: ErrorProps[];
 }
