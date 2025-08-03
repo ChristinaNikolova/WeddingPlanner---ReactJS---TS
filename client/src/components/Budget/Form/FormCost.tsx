@@ -3,6 +3,7 @@ import ClientError from "../../shared/Errors/ClientError/ClientError";
 import ServerError from "../../shared/Errors/ServerError/ServerError";
 import Input from "../../shared/Tags/Input/Input";
 import type { ErrorProps } from "../../../interfaces/props/shared/Errors/ErrorProps";
+import type { CostModel } from "../../../interfaces/models/CostModel";
 import * as validator from "../../../utils/validators/cost";
 import * as helpers from "../../../utils/helpers/form";
 import {
@@ -37,10 +38,9 @@ const FormCost = ({
   onSubmitHandler,
   checkIsDisabled,
 }: FormCostProps) => {
-  // todo add interface here
-  const [values, setValues] = useState({
-    title: title,
-    price: price,
+  const [values, setValues] = useState<CostModel>({
+    title,
+    price,
   });
 
   const [titleError, setTitleError] = useState<string>("");

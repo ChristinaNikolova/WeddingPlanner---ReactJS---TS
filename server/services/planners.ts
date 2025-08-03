@@ -21,7 +21,7 @@ async function allByUserId(userId: InputObjectId): Promise<PlannerViewModel[]> {
 async function create(
   description: string,
   date: string,
-  budget: number,
+  budget: string,
   location: string,
   bride: string,
   groom: string,

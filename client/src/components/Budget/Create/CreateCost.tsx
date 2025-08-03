@@ -44,7 +44,6 @@ const CreateCost = ({
       .catch((err) => console.error(err));
   };
 
-  // here was function... check code
   const checkIsDisabled = (disable: boolean): void => {
     setFormCanceled(false);
     setIsDisabled(!!disable);

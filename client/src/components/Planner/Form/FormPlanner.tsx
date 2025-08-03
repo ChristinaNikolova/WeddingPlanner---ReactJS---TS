@@ -4,33 +4,11 @@ import ServerError from "../../shared/Errors/ServerError/ServerError";
 import Input from "../../shared/Tags/Input/Input";
 import TextArea from "../../shared/Tags/TextArea/TextArea";
 import FormButton from "../../shared/Buttons/Form/FormButton";
-import type { ErrorProps } from "../../../interfaces/props/shared/Errors/ErrorProps";
+import type { PlannerModel } from "../../../interfaces/models/PlannerModel";
+import type { FormPlannerProps } from "../../../interfaces/props/planners/FormPlannerProps";
 import * as validator from "../../../utils/validators/planner";
 import * as helpers from "../../../utils/helpers/form";
-import type { FormName } from "../../../utils/constants/global";
 
-interface FormPlannerProps {
-  // todo formName type
-  formName: FormName;
-  description: string;
-  date: string;
-  budget: string;
-  location: string;
-  bride: string;
-  groom: string;
-  serverError: ErrorProps[];
-  onSubmitHandler: (
-    description: string,
-    date: string,
-    budget: string,
-    location: string,
-    bride: string,
-    groom: string
-  ) => void;
-  onCancelFormHandler: (event: React.MouseEvent<HTMLButtonElement>) => void;
-}
-
-// todo budget : string/number validatar -> parse?
 const FormPlanner = ({
   formName,
   description,
@@ -43,14 +21,13 @@ const FormPlanner = ({
   onSubmitHandler,
   onCancelFormHandler,
 }: FormPlannerProps) => {
-  // todo add type here
-  const [values, setValues] = useState({
-    description: description,
-    date: date,
-    budget: budget,
-    location: location,
-    bride: bride,
-    groom: groom,
+  const [values, setValues] = useState<PlannerModel>({
+    description,
+    date,
+    budget,
+    location,
+    bride,
+    groom,
   });
 
   const [isDisabled, setIsDisabled] = useState<boolean>(true);
@@ -140,14 +117,16 @@ const FormPlanner = ({
       return;
     }
 
-    onSubmitHandler(
-      values.description,
-      values.date,
-      values.budget,
-      values.location,
-      values.bride,
-      values.groom
-    );
+    const planner = {
+      description: values.description,
+      date: values.date,
+      budget: values.budget,
+      location: values.location,
+      bride: values.bride,
+      groom: values.groom,
+    };
+
+    onSubmitHandler(planner);
   };
 
   return (
