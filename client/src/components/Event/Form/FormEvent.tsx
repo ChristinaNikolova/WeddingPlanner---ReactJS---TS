@@ -20,7 +20,7 @@ interface FormEventProps {
     title: string,
     startTime: Date,
     endTime: Date,
-    duration: number
+    duration: string
   ) => void;
   checkIsDisabled: (disable: boolean) => void;
 }
@@ -110,7 +110,7 @@ const FormEvent = ({
       values.title,
       parseDate(values.startTime),
       parseDate(values.endTime),
-      Number(values.duration)
+      values.duration
     );
   };
 

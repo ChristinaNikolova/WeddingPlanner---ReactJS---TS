@@ -63,7 +63,6 @@ function extractTimeFromDate(date: Date): string {
 }
 
 function getTotalMinutes(duration: string): number {
-  console.log(duration);
   const [hours, minutes] = duration.split(":");
   const result = Number(hours) * 60 + Number(minutes);
   return result;

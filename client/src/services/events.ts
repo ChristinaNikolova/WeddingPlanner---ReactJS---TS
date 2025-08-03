@@ -21,7 +21,7 @@ export const create = async (
   title: string,
   startTime: Date,
   endTime: Date,
-  duration: number
+  duration: string
 ): Promise<EventProps> => {
   try {
     const response = await requester(

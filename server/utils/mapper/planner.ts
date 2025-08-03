@@ -42,11 +42,7 @@ function plannerViewModel(planner: PlannerDocument): PlannerExtendedViewModel {
 }
 
 function getTotalTasks(tasks: TaskDocument[]): number {
-  const result = tasks.reduce((acc, curr) => {
-    return (acc += curr.subtasks.length);
-  }, 0);
-
-  return result;
+  return tasks.reduce((acc, task) => acc + (task.subtasks?.length ?? 0), 0);
 }
 
 function getTotalDoneTasks(tasks: TaskDocument[]): number {

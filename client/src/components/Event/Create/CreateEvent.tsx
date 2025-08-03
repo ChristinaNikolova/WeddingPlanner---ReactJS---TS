@@ -28,7 +28,7 @@ const CreateEvent = ({
     title: string,
     startTime: Date,
     endTime: Date,
-    duration: number
+    duration: string
   ): void => {
     eventsService
       .create(plannerId, title, startTime, endTime, duration)
