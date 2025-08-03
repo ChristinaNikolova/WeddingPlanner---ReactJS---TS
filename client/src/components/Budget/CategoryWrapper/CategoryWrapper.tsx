@@ -1,11 +1,6 @@
+import type { CategoryWrapperProps } from "../../../interfaces/props/categories/CategoryWrapperProps";
 import { toggleWithTargetContent } from "../../../utils/helpers/dropdown";
 import styles from "./CategoryWrapper.module.css";
-
-interface CategoryWrapperProps {
-  name: string;
-  image: string;
-  categoryCosts: string;
-}
 
 const CategoryWrapper = ({
   name,

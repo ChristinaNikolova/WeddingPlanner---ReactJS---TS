@@ -1,8 +1,7 @@
 import type { ErrorProps } from "../shared/Errors/ErrorProps";
+import type { CategoryBaseProps } from "./CategoryBaseProps";
 
-export interface CategoryProps {
+export interface CategoryProps extends CategoryBaseProps {
   id: string;
-  name: string;
-  image: string;
   message?: ErrorProps[];
 }
