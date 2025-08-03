@@ -62,14 +62,14 @@ const CreateNote = ({
       .catch((err) => console.error(err));
   };
 
-  function onCancelForm(): void {
+  const onCancelForm = (): void => {
     setServerError([]);
     onCancelFormHandler();
-  }
+  };
 
-  function checkIsDisabled(disable: boolean): void {
+  const checkIsDisabled = (disable: boolean): void => {
     setIsDisabled(!!disable);
-  }
+  };
 
   return (
     <>

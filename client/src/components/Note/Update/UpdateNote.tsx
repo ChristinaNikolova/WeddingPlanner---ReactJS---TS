@@ -48,9 +48,9 @@ const UpdateNote = ({
       .catch((err) => console.error(err));
   };
 
-  function checkIsDisabled(disable: boolean): void {
+  const checkIsDisabled = (disable: boolean): void => {
     setIsDisabled(!!disable);
-  }
+  };
 
   if (!note?.description) {
     return null;

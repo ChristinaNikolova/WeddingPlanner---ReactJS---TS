@@ -52,9 +52,9 @@ const UpdateCost = ({
       .catch((err) => console.error(err));
   };
 
-  function checkIsDisabled(disable: boolean): void {
+  const checkIsDisabled = (disable: boolean): void => {
     setIsDisabled(!!disable);
-  }
+  };
 
   if (!cost?.title || !cost?.price) {
     return null;

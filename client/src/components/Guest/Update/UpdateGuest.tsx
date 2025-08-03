@@ -69,9 +69,9 @@ const UpdateGuest = ({
       .catch((err) => console.error(err));
   };
 
-  function checkIsDisabled(disable: boolean): void {
+  const checkIsDisabled = (disable: boolean): void => {
     setIsDisabled(!!disable);
-  }
+  };
 
   // todo 1 /2 ifs
   if (!guest) {

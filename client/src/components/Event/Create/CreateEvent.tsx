@@ -43,14 +43,14 @@ const CreateEvent = ({
       .catch((err) => console.error(err));
   };
 
-  function checkIsDisabled(disable: boolean): void {
+  const checkIsDisabled = (disable: boolean): void => {
     setIsDisabled(!!disable);
-  }
+  };
 
-  function onCancelForm(): void {
+  const onCancelForm = (): void => {
     setServerError([]);
     onCancelFormHandler();
-  }
+  };
 
   return (
     <>

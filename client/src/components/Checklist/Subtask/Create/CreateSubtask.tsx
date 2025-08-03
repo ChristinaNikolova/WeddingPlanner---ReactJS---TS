@@ -44,10 +44,10 @@ const CreateSubtask = ({
       .catch((err) => console.error(err));
   };
 
-  function checkIsDisabled(disable: boolean): void {
+  const checkIsDisabled = (disable: boolean): void => {
     setFormCanceled(false);
     setIsDisabled(!!disable);
-  }
+  };
 
   // todo any
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

@@ -13,12 +13,12 @@ interface CreateGuestProps {
   finish: () => void;
 }
 
-function CreateGuest({
+const CreateGuest = ({
   plannerId,
   isHidden,
   onCancelFormHandler,
   finish,
-}: CreateGuestProps) {
+}: CreateGuestProps) => {
   const formName = formNames.CREATE;
   const [serverError, setServerError] = useState<ErrorProps[]>([]);
   const [isDisabled, setIsDisabled] = useState<boolean>(true);
@@ -61,14 +61,14 @@ function CreateGuest({
       .catch((err) => console.error(err));
   };
 
-  function checkIsDisabled(disable: boolean): void {
+  const checkIsDisabled = (disable: boolean): void => {
     setIsDisabled(!!disable);
-  }
+  };
 
-  function onCancelForm(): void {
+  const onCancelForm = (): void => {
     setServerError([]);
     onCancelFormHandler();
-  }
+  };
 
   return (
     <>
@@ -96,6 +96,6 @@ function CreateGuest({
       )}
     </>
   );
-}
+};
 
 export default CreateGuest;
