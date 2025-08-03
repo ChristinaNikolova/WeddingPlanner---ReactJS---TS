@@ -1,8 +1,6 @@
 import { displayStyles, tagNames } from "../../../utils/constants/global";
-
 import styles from "./SingleCost.module.css";
 
-// todo const ....
 // todo interfaces
 
 interface SingleCostProps {

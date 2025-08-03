@@ -108,3 +108,5 @@ export const timespans = [
 
 // todo add more if needed
 export type FormName = (typeof formNames)[keyof typeof formNames];
+export type DishName = (typeof dishes)[keyof typeof dishes];
+export type RoleName = (typeof roles)[keyof typeof roles];

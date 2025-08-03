@@ -4,11 +4,11 @@ import CreateGuest from "../Create/CreateGuest";
 import UpdateGuest from "../Update/UpdateGuest";
 import SingleGuest from "../Single/SingleGuest";
 import AddButton from "../../shared/Buttons/Add/AddButton";
+import type { GuestProps } from "../../../interfaces/props/GuestProps";
 import * as guestsService from "../../../services/guests";
 import { scrollToTop } from "../../../utils/helpers/form";
 import { addButtonTexts } from "../../../utils/constants/global";
 import styles from "./GuestsAll.module.css";
-import type { GuestProps } from "../../../interfaces/props/GuestProps";
 
 const GuestsAll = () => {
   const { id: plannerId } = useParams();
@@ -30,7 +30,6 @@ const GuestsAll = () => {
   const onShowFormHandler = (guestId: string): void => {
     setIsHidden(!isHidden);
     setGuestId(guestId || "");
-
     setIsEditIconHidden(!isEditIconHidden);
   };
 
