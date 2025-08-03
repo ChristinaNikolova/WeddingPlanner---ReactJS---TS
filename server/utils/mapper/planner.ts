@@ -50,13 +50,9 @@ function getTotalTasks(tasks: TaskDocument[]): number {
 }
 
 function getTotalDoneTasks(tasks: TaskDocument[]): number {
-  const result = tasks.reduce((acc, curr) => {
-    return (acc += (curr.subtasks as SubtaskDocument[]).filter(
-      (s) => s.isDone
-    ).length);
-  }, 0);
-
-  return result;
+  return tasks
+    .flatMap((task) => (task.subtasks as SubtaskDocument[]) ?? [])
+    .filter((subtask: SubtaskDocument) => subtask.isDone).length;
 }
 
 function getHighlightedEventsCount(events: EventDocument[]): number {
