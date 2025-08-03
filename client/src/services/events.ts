@@ -1,6 +1,7 @@
 import { api } from "./api";
 import { requester } from "./requester";
 import type { EventProps } from "../interfaces/props/EventProps";
+import type { EventModel } from "../interfaces/models/EventModel";
 import { httpMethods, serviceNames } from "../utils/constants/global";
 import { handleServiceError } from "../utils/helpers/errorHandler";
 
@@ -18,20 +19,14 @@ export const all = async (plannerId: string): Promise<EventProps[]> => {
 
 export const create = async (
   plannerId: string,
-  title: string,
-  startTime: Date,
-  endTime: Date,
-  duration: string
+  event: EventModel
 ): Promise<EventProps> => {
   try {
     const response = await requester(
       `${api.public.events}/${plannerId}`,
       httpMethods.POST,
       {
-        title,
-        startTime,
-        endTime,
-        duration,
+        ...event,
       }
     );
     return response.json();
@@ -81,23 +76,17 @@ export const getById = async (
     return handleServiceError(error, serviceNames.EVENTS);
   }
 };
-
+// todo event model / event props
 export const update = async (
   id: string,
-  title: string,
-  startTime: Date,
-  endTime: Date,
-  duration: number
+  event: EventModel
 ): Promise<EventProps> => {
   try {
     const response = await requester(
       `${api.public.events}/${id}`,
       httpMethods.PUT,
       {
-        title,
-        startTime,
-        endTime,
-        duration,
+        ...event,
       }
     );
     return response.json();

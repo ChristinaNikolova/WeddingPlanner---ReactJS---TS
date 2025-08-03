@@ -3,6 +3,7 @@ import ServerError from "../../shared/Errors/ServerError/ServerError";
 import ClientError from "../../shared/Errors/ClientError/ClientError";
 import Input from "../../shared/Tags/Input/Input";
 import type { ErrorProps } from "../../../interfaces/props/shared/Errors/ErrorProps";
+import type { EventModel } from "../../../interfaces/models/EventModel";
 import { getDifference, parseDate } from "../../../utils/helpers/datetime";
 import * as validator from "../../../utils/validators/event";
 import * as helpers from "../../../utils/helpers/form";
@@ -16,12 +17,7 @@ interface FormEventProps {
   duration: string;
   serverError: ErrorProps[];
   children: ReactNode;
-  onSubmitHandler: (
-    title: string,
-    startTime: Date,
-    endTime: Date,
-    duration: string
-  ) => void;
+  onSubmitHandler: (event: EventModel) => void;
   checkIsDisabled: (disable: boolean) => void;
 }
 
@@ -35,12 +31,11 @@ const FormEvent = ({
   onSubmitHandler,
   checkIsDisabled,
 }: FormEventProps) => {
-  // todo add interface
-  const [values, setValues] = useState({
-    title: title,
-    startTime: startTime,
-    endTime: endTime,
-    duration: duration,
+  const [values, setValues] = useState<EventModel>({
+    title,
+    startTime,
+    endTime,
+    duration,
   });
 
   const [titleError, setTitleError] = useState<string>("");
@@ -57,7 +52,10 @@ const FormEvent = ({
 
   useEffect(() => {
     if (values.startTime && values.endTime) {
-      const [hours, minutes] = getDifference(values.startTime, values.endTime);
+      const [hours, minutes] = getDifference(
+        values.startTime as string,
+        values.endTime as string
+      );
 
       if (!durationRef.current) return;
       durationRef.current.value = `${hours}:${minutes}`;
@@ -79,11 +77,15 @@ const FormEvent = ({
   };
 
   const validateStartTime = (): void => {
-    setStartTimeError(validator.validTime(values.startTime, values.endTime));
+    setStartTimeError(
+      validator.validTime(values.startTime as string, values.endTime as string)
+    );
   };
 
   const validateEndTime = (): void => {
-    setEndTimeError(validator.validTime(values.startTime, values.endTime));
+    setEndTimeError(
+      validator.validTime(values.startTime as string, values.endTime as string)
+    );
   };
 
   const checkDisabled = (): void => {
@@ -99,19 +101,25 @@ const FormEvent = ({
     e.preventDefault();
 
     setTitleError(validator.validTitle(values.title));
-    setStartTimeError(validator.validTime(values.startTime, values.endTime));
-    setEndTimeError(validator.validTime(values.startTime, values.endTime));
+    setStartTimeError(
+      validator.validTime(values.startTime as string, values.endTime as string)
+    );
+    setEndTimeError(
+      validator.validTime(values.startTime as string, values.endTime as string)
+    );
 
     if (titleError || startTimeError || endTimeError) {
       return;
     }
 
-    onSubmitHandler(
-      values.title,
-      parseDate(values.startTime),
-      parseDate(values.endTime),
-      values.duration
-    );
+    const event: EventModel = {
+      title: values.title,
+      startTime: parseDate(values.startTime as string),
+      endTime: parseDate(values.endTime as string),
+      duration: values.duration,
+    };
+
+    onSubmitHandler(event);
   };
 
   return (
@@ -137,7 +145,7 @@ const FormEvent = ({
             name="startTime"
             type="time"
             label="Start Time"
-            value={values.startTime}
+            value={values.startTime as string}
             onChangeHandler={changeHandler}
             onBlurHandler={validateStartTime}
           />
@@ -148,7 +156,7 @@ const FormEvent = ({
             name="endTime"
             type="time"
             label="End Time"
-            value={values.endTime}
+            value={values.endTime as string}
             onChangeHandler={changeHandler}
             onBlurHandler={validateEndTime}
           />

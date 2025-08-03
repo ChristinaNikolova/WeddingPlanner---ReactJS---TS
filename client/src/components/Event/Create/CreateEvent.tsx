@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import FormEvent from "../Form/FormEvent";
 import FormButton from "../../shared/Buttons/Form/FormButton";
+import type { ErrorProps } from "../../../interfaces/props/shared/Errors/ErrorProps";
+import type { EventModel } from "../../../interfaces/models/EventModel";
 import * as eventsService from "../../../services/events";
 import { formNames } from "../../../utils/constants/global";
-import type { ErrorProps } from "../../../interfaces/props/shared/Errors/ErrorProps";
 
 interface CreateEventProps {
   plannerId: string;
@@ -24,14 +25,9 @@ const CreateEvent = ({
 
   useEffect(() => {}, [serverError]);
 
-  const onSubmitHandler = (
-    title: string,
-    startTime: Date,
-    endTime: Date,
-    duration: string
-  ): void => {
+  const onSubmitHandler = (event: EventModel): void => {
     eventsService
-      .create(plannerId, title, startTime, endTime, duration)
+      .create(plannerId, event)
       .then((data) => {
         if (data.message) {
           setServerError(data.message);

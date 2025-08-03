@@ -5,6 +5,7 @@ import * as eventsService from "../../../services/events";
 import { formNames } from "../../../utils/constants/global";
 import type { ErrorProps } from "../../../interfaces/props/shared/Errors/ErrorProps";
 import type { EventProps } from "../../../interfaces/props/EventProps";
+import type { EventModel } from "../../../interfaces/models/EventModel";
 
 interface UpdateEventProps {
   eventId: string;
@@ -34,14 +35,9 @@ const UpdateEvent = ({
 
   useEffect(() => {}, [serverError]);
 
-  const onSubmitHandler = (
-    title: string,
-    startTime: Date,
-    endTime: Date,
-    duration: number
-  ): void => {
+  const onSubmitHandler = (event: EventModel): void => {
     eventsService
-      .update(eventId, title, startTime, endTime, duration)
+      .update(eventId, event)
       .then((data) => {
         if (data.message) {
           setServerError(data.message);
