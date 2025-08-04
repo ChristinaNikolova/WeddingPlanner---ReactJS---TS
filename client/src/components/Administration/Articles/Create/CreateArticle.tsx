@@ -13,9 +13,9 @@ const CreateArticle = () => {
 
   useEffect(() => {}, [serverError]);
 
-  const submitHandler = (article: ArticleModel): void => {
+  const submitHandler = (inputArticle: ArticleModel): void => {
     articlesService
-      .create(article)
+      .create(inputArticle)
       .then((data) => {
         if (data.message) {
           setServerError(data.message);

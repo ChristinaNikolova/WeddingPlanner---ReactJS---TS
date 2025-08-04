@@ -1,12 +1,7 @@
 import type { PlannerModel } from "../../models/PlannerModel";
-import type { FormProps } from "../shared/Forms/FormProps";
+import type { BaseForm } from "../costs/BaseForm";
 
-export interface FormPlannerProps extends FormProps {
-  description: string;
-  date: string;
-  budget: string;
-  location: string;
-  bride: string;
-  groom: string;
+export interface FormPlannerProps extends BaseForm, PlannerModel {
   onSubmitHandler: (planner: PlannerModel) => void;
+  onCancelFormHandler: (event: React.MouseEvent<HTMLElement>) => void;
 }

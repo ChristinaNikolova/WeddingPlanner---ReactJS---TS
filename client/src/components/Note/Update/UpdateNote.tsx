@@ -28,9 +28,9 @@ const UpdateNote = ({
 
   useEffect(() => {}, [serverError]);
 
-  const onSubmitHandler = (note: NoteModel): void => {
+  const onSubmitHandler = (inputNote: NoteModel): void => {
     notesService
-      .update(noteId, note)
+      .update(noteId, inputNote)
       .then((data) => {
         if (data.message) {
           setServerError(data.message);

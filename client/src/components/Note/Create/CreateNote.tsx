@@ -19,9 +19,9 @@ const CreateNote = ({
 
   useEffect(() => {}, [serverError]);
 
-  const onSubmitHandler = (note: NoteModel): void => {
+  const onSubmitHandler = (inputNote: NoteModel): void => {
     notesService
-      .create(plannerId, note)
+      .create(plannerId, inputNote)
       .then((data) => {
         if (data.message) {
           setServerError(data.message);

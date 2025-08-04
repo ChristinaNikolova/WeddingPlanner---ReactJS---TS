@@ -28,9 +28,9 @@ const UpdateEvent = ({
 
   useEffect(() => {}, [serverError]);
 
-  const onSubmitHandler = (event: EventModel): void => {
+  const onSubmitHandler = (inputEvent: EventModel): void => {
     eventsService
-      .update(eventId, event)
+      .update(eventId, inputEvent)
       .then((data) => {
         if (data.message) {
           setServerError(data.message);

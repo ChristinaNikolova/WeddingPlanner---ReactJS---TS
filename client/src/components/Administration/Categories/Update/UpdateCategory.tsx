@@ -25,9 +25,9 @@ const UpdateCategory = () => {
 
   useEffect(() => {}, [serverError]);
 
-  const submitHandler = (category: CategoryModel): void => {
+  const submitHandler = (inputCategory: CategoryModel): void => {
     categoriesService
-      .update(id!, category)
+      .update(id!, inputCategory)
       .then((data) => {
         if (data.message) {
           setServerError(data.message);

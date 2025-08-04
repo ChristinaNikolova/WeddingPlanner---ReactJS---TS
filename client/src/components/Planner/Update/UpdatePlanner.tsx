@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import FormPlanner from "../Form/FormPlanner";
-import * as plannersService from "../../../services/planners";
-import { formNames } from "../../../utils/constants/global";
 import type { PlannerProps } from "../../../interfaces/props/PlannerProps";
 import type { ErrorProps } from "../../../interfaces/props/shared/Errors/ErrorProps";
+import type { PlannerModel } from "../../../interfaces/models/PlannerModel";
+import * as plannersService from "../../../services/planners";
+import { formNames } from "../../../utils/constants/global";
 
 const UpdatePlanner = () => {
   const formName = formNames.UPDATE;
@@ -22,33 +23,14 @@ const UpdatePlanner = () => {
 
   useEffect(() => {}, [serverError]);
 
-  // todo add type
-  const submitHandler = (
-    description: string,
-    date: string,
-    budget: string,
-    location: string,
-    bride: string,
-    groom: string
-  ) => {
+  const submitHandler = (plannerInput: PlannerModel) => {
     plannersService
-      .update(
-        id!,
-        description,
-        date,
-        budget,
-        location,
-        bride,
-        planner!.brideId,
-        groom,
-        planner!.groomId
-      )
+      .update(id!, plannerInput, planner!.brideId, planner!.groomId)
       .then((data) => {
         if (data.message) {
           setServerError(data.message);
           return;
         }
-
         onCancelFormHandler();
       })
       .catch((err) => console.error(err));
@@ -58,7 +40,6 @@ const UpdatePlanner = () => {
     navigate(`/plan/${id}`);
   };
 
-  // todo 2 or 1 if
   if (
     !planner ||
     !planner.description ||

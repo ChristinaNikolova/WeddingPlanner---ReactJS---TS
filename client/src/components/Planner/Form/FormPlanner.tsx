@@ -29,7 +29,6 @@ const FormPlanner = ({
     bride,
     groom,
   });
-
   const [isDisabled, setIsDisabled] = useState<boolean>(true);
   const [descriptionError, setDescriptionError] = useState<string>("");
   const [dateError, setDateError] = useState<string>("");
@@ -50,9 +49,9 @@ const FormPlanner = ({
     groomError,
   ]);
 
-  // todo remove any
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const changeHandler = (e: any): void => {
+  const changeHandler = (
+    e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
+  ): void => {
     setValues((state) => ({
       ...state,
       [e.target.name]: e.target.value,

@@ -22,10 +22,10 @@ const CreateCost = ({
 
   const onSubmitHandler = (
     e: React.FormEvent<HTMLFormElement>,
-    cost: CostModel
+    inputCost: CostModel
   ): void => {
     costsService
-      .create(plannerId, cost, category)
+      .create(plannerId, inputCost, category)
       .then((data) => {
         if (data.message) {
           setServerError(data.message);

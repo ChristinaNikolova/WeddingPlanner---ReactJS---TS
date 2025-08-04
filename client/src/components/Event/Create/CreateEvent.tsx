@@ -19,9 +19,9 @@ const CreateEvent = ({
 
   useEffect(() => {}, [serverError]);
 
-  const onSubmitHandler = (event: EventModel): void => {
+  const onSubmitHandler = (inputEvent: EventModel): void => {
     eventsService
-      .create(plannerId, event)
+      .create(plannerId, inputEvent)
       .then((data) => {
         if (data.message) {
           setServerError(data.message);

@@ -30,10 +30,10 @@ const UpdateCost = ({
 
   const onSubmitHandler = (
     e: React.FormEvent<HTMLFormElement>,
-    cost: CostModel
+    inputCost: CostModel
   ): void => {
     costsService
-      .update(costId, cost)
+      .update(costId, inputCost)
       .then((data) => {
         if (data.message) {
           setServerError(data.message);

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import FormPlanner from "../Form/FormPlanner";
 import type { ErrorProps } from "../../../interfaces/props/shared/Errors/ErrorProps";
+import type { PlannerModel } from "../../../interfaces/models/PlannerModel";
 import * as plannersService from "../../../services/planners";
 import { formNames } from "../../../utils/constants/global";
 
@@ -11,32 +12,22 @@ const CreatePlanner = () => {
   const [serverError, setServerError] = useState<ErrorProps[]>([]);
 
   useEffect(() => {}, [serverError]);
-  // todo add type
-  const submitHandler = (
-    description: string,
-    date: string,
-    budget: string,
-    location: string,
-    bride: string,
-    groom: string
-  ) => {
+
+  const submitHandler = (inputPlanner: PlannerModel): void => {
     plannersService
-      .create(description, date, budget, location, bride, groom)
+      .create(inputPlanner)
       .then((data) => {
         if (data.message) {
           setServerError(data.message);
           return;
         }
-
-        // todo test
         navigate(`/plan/${data.id}`);
       })
       .catch((err) => console.error(err));
   };
 
-  // todo redirect to data for the planner!!!
-  const onCancelFormHandler = () => {
-    navigate(`/plan`);
+  const onCancelFormHandler = (): void => {
+    navigate("/plan");
   };
 
   return (

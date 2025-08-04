@@ -13,9 +13,9 @@ const CreateCategory = () => {
 
   useEffect(() => {}, [serverError]);
 
-  const submitHandler = (category: CategoryModel): void => {
+  const submitHandler = (inputCategory: CategoryModel): void => {
     categoriesService
-      .create(category)
+      .create(inputCategory)
       .then((data) => {
         if (data.message) {
           setServerError(data.message);

@@ -27,9 +27,9 @@ const UpdateArticle = () => {
   useEffect(() => {}, [serverError]);
 
   // todo now update this everywhere....
-  const submitHandler = (article: ArticleModel): void => {
+  const submitHandler = (inputArticle: ArticleModel): void => {
     articlesService
-      .update(id!, article)
+      .update(id!, inputArticle)
       .then((data) => {
         if (data.message) {
           setServerError(data.message);

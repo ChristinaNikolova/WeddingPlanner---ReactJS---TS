@@ -1,8 +1,8 @@
 import { useEffect, useState, useRef } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
+import type { PlannerProps } from "../../../interfaces/props/PlannerProps";
 import * as plannersService from "../../../services/planners";
 import styles from "./DetailsPlanner.module.css";
-import type { PlannerProps } from "../../../interfaces/props/PlannerProps";
 
 const DetailsPlanner = () => {
   const { id } = useParams();
@@ -43,7 +43,6 @@ const DetailsPlanner = () => {
       .catch((err) => console.error(err));
   };
 
-  // todo check this
   if (!planner) {
     return;
   }
