@@ -1,19 +1,11 @@
-import { useState, useEffect, useRef, type ReactNode } from "react";
+import { useState, useEffect, useRef } from "react";
 import ClientError from "../../shared/Errors/ClientError/ClientError";
 import ServerError from "../../shared/Errors/ServerError/ServerError";
 import TextArea from "../../shared/Tags/TextArea/TextArea";
-import type { ErrorProps } from "../../../interfaces/props/shared/Errors/ErrorProps";
+import type { FormNoteProps } from "../../../interfaces/props/notes/FormNoteProps";
+import type { NoteModel } from "../../../interfaces/models/NoteModel";
 import * as validator from "../../../utils/validators/note";
 import * as helpers from "../../../utils/helpers/form";
-
-// todo add interface
-interface FormNoteProps {
-  description: string;
-  serverError: ErrorProps[];
-  children: ReactNode;
-  onSubmitHandler: (description: string) => void;
-  checkIsDisabled: (isDisabled: boolean) => void;
-}
 
 const FormNote = ({
   description,
@@ -22,13 +14,11 @@ const FormNote = ({
   onSubmitHandler,
   checkIsDisabled,
 }: FormNoteProps) => {
-  // todo add type
-  const [values, setValues] = useState({
-    description: description,
+  const formRef = useRef<HTMLDivElement | null>(null);
+  const [values, setValues] = useState<NoteModel>({
+    description,
   });
   const [descriptionError, setDescriptionError] = useState<string>("");
-
-  const formRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     if (!formRef.current) return;
@@ -64,7 +54,11 @@ const FormNote = ({
       return;
     }
 
-    onSubmitHandler(values.description);
+    const note = {
+      description: values.description,
+    };
+
+    onSubmitHandler(note);
   };
 
   return (

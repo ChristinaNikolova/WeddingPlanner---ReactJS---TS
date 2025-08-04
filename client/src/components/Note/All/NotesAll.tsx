@@ -4,13 +4,12 @@ import SingleNote from "../Single/SingleNote";
 import CreateNote from "../Create/CreateNote";
 import UpdateNote from "../Update/UpdateNote";
 import AddButton from "../../shared/Buttons/Add/AddButton";
+import type { NoteProps } from "../../../interfaces/props/NoteProps";
 import * as notesService from "../../../services/notes";
 import { scrollToTop } from "../../../utils/helpers/form";
 import { addButtonTexts } from "../../../utils/constants/global";
 import styles from "./NotesAll.module.css";
-import type { NoteProps } from "../../../interfaces/props/NoteProps";
 
-// todo check all useStates
 const NotesAll = () => {
   const { id: plannerId } = useParams();
   const [notes, setNotes] = useState<NoteProps[]>([]);

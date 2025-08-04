@@ -1,13 +1,5 @@
+import type { SingleNoteProps } from "../../../interfaces/props/notes/SingleNoteProps";
 import styles from "./SingleNote.module.css";
-
-interface SingleNoteProps {
-  id: string;
-  description: string;
-  createdAt: string;
-  isEditIconHidden: boolean;
-  onDeleteHandler: (noteId: string) => void;
-  onShowFormHandler: (noteId: string) => void;
-}
 
 const SingleNote = ({
   id,

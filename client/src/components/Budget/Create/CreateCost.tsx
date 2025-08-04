@@ -38,9 +38,9 @@ const CreateCost = ({
       .catch((err) => console.error(err));
   };
 
-  const checkIsDisabled = (disable: boolean): void => {
+  const checkIsDisabled = (isDisabled: boolean): void => {
     setFormCanceled(false);
-    setIsDisabled(!!disable);
+    setIsDisabled(!!isDisabled);
   };
 
   const onCancelForm = (e: React.MouseEvent<HTMLButtonElement>): void => {

@@ -3,16 +3,10 @@ import FormNote from "../Form/FormNote";
 import FormButton from "../../shared/Buttons/Form/FormButton";
 import type { ErrorProps } from "../../../interfaces/props/shared/Errors/ErrorProps";
 import type { NoteProps } from "../../../interfaces/props/NoteProps";
+import type { UpdateNoteProps } from "../../../interfaces/props/notes/UpdateNoteProps";
+import type { NoteModel } from "../../../interfaces/models/NoteModel";
 import * as notesService from "../../../services/notes";
 import { formNames } from "../../../utils/constants/global";
-
-// todo reorder interfaces
-interface UpdateNoteProps {
-  noteId: string;
-  plannerId: string;
-  onCancelFormHandler: (event: React.MouseEvent<HTMLElement>) => void;
-  finish: () => void;
-}
 
 const UpdateNote = ({
   noteId,
@@ -34,9 +28,9 @@ const UpdateNote = ({
 
   useEffect(() => {}, [serverError]);
 
-  const onSubmitHandler = (description: string): void => {
+  const onSubmitHandler = (note: NoteModel): void => {
     notesService
-      .update(noteId, description)
+      .update(noteId, note)
       .then((data) => {
         if (data.message) {
           setServerError(data.message);
@@ -52,7 +46,7 @@ const UpdateNote = ({
     setIsDisabled(!!disable);
   };
 
-  if (!note?.description) {
+  if (!note || !note?.description) {
     return null;
   }
 

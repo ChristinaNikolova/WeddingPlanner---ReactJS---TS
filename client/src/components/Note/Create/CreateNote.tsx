@@ -2,39 +2,10 @@ import { useState, useEffect } from "react";
 import FormNote from "../Form/FormNote";
 import FormButton from "../../shared/Buttons/Form/FormButton";
 import type { ErrorProps } from "../../../interfaces/props/shared/Errors/ErrorProps";
+import type { CreateNoteProps } from "../../../interfaces/props/notes/CreateNoteProps";
+import type { NoteModel } from "../../../interfaces/models/NoteModel";
 import * as notesService from "../../../services/notes";
 import { formNames } from "../../../utils/constants/global";
-
-interface CreateNoteProps {
-  plannerId: string;
-  isHidden: boolean;
-  onCancelFormHandler: () => void;
-  finish: () => void;
-}
-
-// interface FormNoteProps {
-//   description: string;
-//   serverError: ErrorProps[];
-//   children: ReactNode;
-//   onSubmitHandler: (description: string) => void;
-//   checkIsDisabled: (isDisabled: boolean) => void;
-// }
-
-// interface SingleNoteProps {
-//   id: string;
-//   description: string;
-//   createdAt: string;
-//   isEditIconHidden: boolean;
-//   onDeleteHandler: (noteId: string) => void;
-//   onShowFormHandler: (noteId: string) => void;
-// }
-
-// interface UpdateNoteProps {
-//   noteId: string;
-//   plannerId: string;
-//   onCancelFormHandler: (event: React.MouseEvent<HTMLElement>) => void;
-//   finish: () => void;
-// }
 
 const CreateNote = ({
   plannerId,
@@ -48,9 +19,9 @@ const CreateNote = ({
 
   useEffect(() => {}, [serverError]);
 
-  const onSubmitHandler = (description: string): void => {
+  const onSubmitHandler = (note: NoteModel): void => {
     notesService
-      .create(plannerId, description)
+      .create(plannerId, note)
       .then((data) => {
         if (data.message) {
           setServerError(data.message);

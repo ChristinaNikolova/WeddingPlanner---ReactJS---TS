@@ -1,6 +1,7 @@
 import { api } from "./api";
 import { requester } from "./requester";
 import type { NoteProps } from "../interfaces/props/NoteProps";
+import type { NoteModel } from "../interfaces/models/NoteModel";
 import { httpMethods, serviceNames } from "../utils/constants/global";
 import { handleServiceError } from "../utils/helpers/errorHandler";
 
@@ -18,14 +19,14 @@ export const all = async (plannerId: string): Promise<NoteProps[]> => {
 
 export const create = async (
   plannerId: string,
-  description: string
+  note: NoteModel
 ): Promise<NoteProps> => {
   try {
     const response = await requester(
       `${api.public.notes}/${plannerId}`,
       httpMethods.POST,
       {
-        description,
+        ...note,
       }
     );
     return response.json();
@@ -63,13 +64,13 @@ export const getById = async (
 
 export const update = async (
   id: string,
-  description: string
+  note: NoteModel
 ): Promise<NoteProps> => {
   try {
     const response = await requester(
       `${api.public.notes}/${id}`,
       httpMethods.PUT,
-      { description }
+      { ...note }
     );
     return response.json();
   } catch (error) {
