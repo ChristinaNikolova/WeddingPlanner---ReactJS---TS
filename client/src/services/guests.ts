@@ -1,6 +1,7 @@
 import { api } from "./api";
 import { requester } from "./requester";
-import type { GuestProps } from "../interfaces/props/GuestProps";
+import type { GuestProps } from "../interfaces/props/guests/GuestProps";
+import type { GuestModel } from "../interfaces/models/GuestModel";
 import { httpMethods, serviceNames } from "../utils/constants/global";
 import { handleServiceError } from "../utils/helpers/errorHandler";
 
@@ -16,33 +17,16 @@ export const all = async (plannerId: string): Promise<GuestProps[]> => {
   }
 };
 
-// todo use the types here??
 export const create = async (
   plannerId: string,
-  firstName: string,
-  lastName: string,
-  gender: string,
-  age: string,
-  side: string,
-  role: string,
-  table: string,
-  mainDish: string,
-  confirmed: string
+  guest: GuestModel
 ): Promise<GuestProps> => {
   try {
     const response = await requester(
       `${api.public.guests}/${plannerId}`,
       httpMethods.POST,
       {
-        firstName,
-        lastName,
-        gender,
-        age,
-        side,
-        role,
-        table,
-        mainDish,
-        confirmed,
+        ...guest,
       }
     );
     return response.json();
@@ -63,33 +47,16 @@ export const deleteById = async (id: string): Promise<GuestProps> => {
   }
 };
 
-// todo use types here??
 export const update = async (
   id: string,
-  firstName: string,
-  lastName: string,
-  gender: string,
-  age: string,
-  side: string,
-  role: string,
-  table: string,
-  mainDish: string,
-  confirmed: string
+  guest: GuestModel
 ): Promise<GuestProps> => {
   try {
     const response = await requester(
       `${api.public.guests}/${id}`,
       httpMethods.PUT,
       {
-        firstName,
-        lastName,
-        gender,
-        age,
-        side,
-        role,
-        table,
-        mainDish,
-        confirmed,
+        ...guest,
       }
     );
     return response.json();

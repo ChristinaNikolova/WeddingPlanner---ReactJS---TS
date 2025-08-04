@@ -4,7 +4,7 @@ import CreateGuest from "../Create/CreateGuest";
 import UpdateGuest from "../Update/UpdateGuest";
 import SingleGuest from "../Single/SingleGuest";
 import AddButton from "../../shared/Buttons/Add/AddButton";
-import type { GuestProps } from "../../../interfaces/props/GuestProps";
+import type { GuestProps } from "../../../interfaces/props/guests/GuestProps";
 import * as guestsService from "../../../services/guests";
 import { scrollToTop } from "../../../utils/helpers/form";
 import { addButtonTexts } from "../../../utils/constants/global";
