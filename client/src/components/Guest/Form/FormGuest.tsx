@@ -1,41 +1,15 @@
-import { useState, useEffect, useRef, type ReactNode } from "react";
+import { useState, useEffect, useRef } from "react";
 import ClientError from "../../shared/Errors/ClientError/ClientError";
 import ServerError from "../../shared/Errors/ServerError/ServerError";
 import Input from "../../shared/Tags/Input/Input";
 import Select from "../../shared/Tags/Select/Select";
-import type { ErrorProps } from "../../../interfaces/props/shared/Errors/ErrorProps";
+import type { FormGuestProps } from "../../../interfaces/props/guests/FormGuestProps";
+import type { GuestModel } from "../../../interfaces/models/GuestModel";
 import * as global from "../../../utils/constants/global";
 import * as helpers from "../../../utils/helpers/form";
 import * as validator from "../../../utils/validators/guest";
 import styles from "./FormGuest.module.css";
 
-// todo interface
-// todo add types
-interface FormGuestProps {
-  firstName: string;
-  lastName: string;
-  gender: string;
-  age: string;
-  side: string;
-  role: string;
-  table: string;
-  mainDish: string;
-  confirmed: string;
-  serverError: ErrorProps[];
-  children: ReactNode;
-  onSubmitHandler: (
-    firstName: string,
-    lastName: string,
-    gender: string,
-    age: string,
-    side: string,
-    role: string,
-    table: string,
-    mainDish: string,
-    confirmed: string
-  ) => void;
-  checkIsDisabled: (disable: boolean) => void;
-}
 const FormGuest = ({
   firstName,
   lastName,
@@ -51,19 +25,17 @@ const FormGuest = ({
   onSubmitHandler,
   checkIsDisabled,
 }: FormGuestProps) => {
-  // todo add type
-  const [values, setValues] = useState({
-    firstName: firstName,
-    lastName: lastName,
-    gender: gender,
-    age: age,
-    side: side,
-    role: role,
-    table: table,
-    mainDish: mainDish,
+  const [values, setValues] = useState<GuestModel>({
+    firstName,
+    lastName,
+    gender,
+    age,
+    side,
+    role,
+    table,
+    mainDish,
     confirmed: confirmed ? "yes" : "no",
   });
-
   const [firstNameError, setFirstNameError] = useState<string>("");
   const [lastNameError, setLastNameError] = useState<string>("");
   const formRef = useRef<HTMLDivElement | null>(null);
@@ -77,9 +49,9 @@ const FormGuest = ({
     checkDisabled();
   }, [values, firstNameError, lastNameError]);
 
-  // todo remove any
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const changeHandler = (e: any): void => {
+  const changeHandler = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ): void => {
     setValues((state) => ({
       ...state,
       [e.target.name]: e.target.value,
@@ -104,12 +76,10 @@ const FormGuest = ({
       firstNameError,
       lastNameError,
     ]);
-    checkIsDisabled(isDisabled);
+    checkIsDisabled!(isDisabled);
   };
 
-  // todo remove any
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const onSubmitHelperHandler = (e: any): void => {
+  const onSubmitHelperHandler = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
 
     setFirstNameError(validator.validName(values.firstName));
@@ -119,17 +89,19 @@ const FormGuest = ({
       return;
     }
 
-    onSubmitHandler(
-      values.firstName,
-      values.lastName,
-      values.gender,
-      values.age,
-      values.side,
-      values.role,
-      values.table,
-      values.mainDish,
-      values.confirmed
-    );
+    const guest = {
+      firstName: values.firstName,
+      lastName: values.lastName,
+      gender: values.gender,
+      age: values.age,
+      side: values.side,
+      role: values.role,
+      table: values.table,
+      mainDish: values.mainDish,
+      confirmed: values.confirmed,
+    };
+
+    onSubmitHandler(guest);
   };
   //todo check null | undefinded
   return (

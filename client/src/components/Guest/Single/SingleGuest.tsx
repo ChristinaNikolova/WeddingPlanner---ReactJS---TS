@@ -1,26 +1,11 @@
 import { useState } from "react";
 import Icon from "../../shared/Images/Icons/Icon";
+import type { SingleGuestProps } from "../../../interfaces/props/guests/SingleGuestProps";
 import * as images from "../../../utils/constants/images";
 import { dishes, people, genders } from "../../../utils/constants/global";
 import styles from "./SingleGuest.module.css";
 
-// todo interface
-interface SingleGuestProps {
-  id: string;
-  firstName: string;
-  lastName: string;
-  gender: string;
-  age: string;
-  role: string;
-  side: string;
-  table: string;
-  mainDish: string;
-  confirmed: string;
-  isEditIconHidden: boolean;
-  onDeleteHandler: (id: string) => void;
-  onShowFormHandler: (id: string) => void;
-}
-
+// todo types
 const SingleGuest = ({
   id,
   firstName,

@@ -1,17 +1,12 @@
 import { useState, useEffect } from "react";
 import FormGuest from "../Form/FormGuest";
 import FormButton from "../../shared/Buttons/Form/FormButton";
+import type { ErrorProps } from "../../../interfaces/props/shared/Errors/ErrorProps";
+import type { GuestProps } from "../../../interfaces/props/guests/GuestProps";
+import type { UpdateGuestProps } from "../../../interfaces/props/guests/UpdateGuestProps";
+import type { GuestModel } from "../../../interfaces/models/GuestModel";
 import * as guestsService from "../../../services/guests";
 import { formNames } from "../../../utils/constants/global";
-import type { ErrorProps } from "../../../interfaces/props/shared/Errors/ErrorProps";
-import type { GuestProps } from "../../../interfaces/props/GuestProps";
-
-interface UpdateGuestProps {
-  guestId: string;
-  plannerId: string;
-  onCancelFormHandler: (event: React.MouseEvent<HTMLButtonElement>) => void;
-  finish: () => void;
-}
 
 const UpdateGuest = ({
   guestId,
@@ -33,31 +28,9 @@ const UpdateGuest = ({
 
   useEffect(() => {}, [serverError]);
 
-  // todo type..
-  const onSubmitHandler = (
-    firstName: string,
-    lastName: string,
-    gender: string,
-    age: string,
-    side: string,
-    role: string,
-    table: string,
-    mainDish: string,
-    confirmed: string
-  ): void => {
+  const onSubmitHandler = (guestInput: GuestModel): void => {
     guestsService
-      .update(
-        guestId,
-        firstName,
-        lastName,
-        gender,
-        age,
-        side,
-        role,
-        table,
-        mainDish,
-        confirmed
-      )
+      .update(guestId, guestInput)
       .then((data) => {
         if (data.message) {
           setServerError(data.message);
@@ -73,12 +46,8 @@ const UpdateGuest = ({
     setIsDisabled(!!disable);
   };
 
-  // todo 1 /2 ifs
-  if (!guest) {
-    return null;
-  }
-
   if (
+    !guest ||
     !guest.firstName ||
     !guest.lastName ||
     !guest.gender ||

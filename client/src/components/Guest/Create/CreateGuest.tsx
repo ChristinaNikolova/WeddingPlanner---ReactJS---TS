@@ -2,16 +2,10 @@ import { useState, useEffect } from "react";
 import FormGuest from "../Form/FormGuest";
 import FormButton from "../../shared/Buttons/Form/FormButton";
 import type { ErrorProps } from "../../../interfaces/props/shared/Errors/ErrorProps";
+import type { CreateGuestProps } from "../../../interfaces/props/guests/CreateGuestProps";
 import * as guestsService from "../../../services/guests";
 import { formNames } from "../../../utils/constants/global";
-
-interface CreateGuestProps {
-  plannerId: string;
-  isHidden: boolean;
-  // todo check elements here
-  onCancelFormHandler: () => void;
-  finish: () => void;
-}
+import type { GuestModel } from "../../../interfaces/models/GuestModel";
 
 const CreateGuest = ({
   plannerId,
@@ -25,31 +19,9 @@ const CreateGuest = ({
 
   useEffect(() => {}, [serverError]);
 
-  // todo add type here
-  const onSubmitHandler = (
-    firstName: string,
-    lastName: string,
-    gender: string,
-    age: string,
-    side: string,
-    role: string,
-    table: string,
-    mainDish: string,
-    confirmed: string
-  ): void => {
+  const onSubmitHandler = (guestInput: GuestModel): void => {
     guestsService
-      .create(
-        plannerId,
-        firstName,
-        lastName,
-        gender,
-        age,
-        side,
-        role,
-        table,
-        mainDish,
-        confirmed
-      )
+      .create(plannerId, guestInput)
       .then((data) => {
         if (data.message) {
           setServerError(data.message);
