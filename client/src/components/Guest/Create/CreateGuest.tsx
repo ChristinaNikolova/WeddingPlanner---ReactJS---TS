@@ -3,9 +3,9 @@ import FormGuest from "../Form/FormGuest";
 import FormButton from "../../shared/Buttons/Form/FormButton";
 import type { ErrorProps } from "../../../interfaces/props/shared/Errors/ErrorProps";
 import type { CreateGuestProps } from "../../../interfaces/props/guests/CreateGuestProps";
+import type { GuestModel } from "../../../interfaces/models/GuestModel";
 import * as guestsService from "../../../services/guests";
 import { formNames } from "../../../utils/constants/global";
-import type { GuestModel } from "../../../interfaces/models/GuestModel";
 
 const CreateGuest = ({
   plannerId,

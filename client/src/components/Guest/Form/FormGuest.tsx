@@ -103,7 +103,6 @@ const FormGuest = ({
 
     onSubmitHandler(guest);
   };
-  //todo check null | undefinded
   return (
     <div ref={formRef} className="form-wrapper-center">
       <form
