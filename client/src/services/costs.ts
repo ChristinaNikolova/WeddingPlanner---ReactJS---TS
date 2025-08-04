@@ -2,6 +2,7 @@ import { api } from "./api";
 import { requester } from "./requester";
 import type { ArticleProps } from "../interfaces/props/articles/ArticleProps";
 import type { CostProps } from "../interfaces/props/CostProps";
+import type { CostModel } from "../interfaces/models/CostModel";
 import { httpMethods, serviceNames } from "../utils/constants/global";
 import { handleServiceError } from "../utils/helpers/errorHandler";
 
@@ -19,8 +20,7 @@ export const all = async (plannerId: string): Promise<CostProps[]> => {
 
 export const create = async (
   plannerId: string,
-  title: string,
-  price: string,
+  cost: CostModel,
   category: string
 ): Promise<ArticleProps> => {
   try {
@@ -28,8 +28,7 @@ export const create = async (
       `${api.public.costs}/${plannerId}`,
       httpMethods.POST,
       {
-        title,
-        price,
+        ...cost,
         category,
       }
     );
@@ -68,16 +67,14 @@ export const getById = async (
 
 export const update = async (
   id: string,
-  title: string,
-  price: string
+  cost: CostModel
 ): Promise<CostProps> => {
   try {
     const response = await requester(
       `${api.public.costs}/${id}`,
       httpMethods.PUT,
       {
-        title,
-        price,
+        ...cost,
       }
     );
     return response.json();

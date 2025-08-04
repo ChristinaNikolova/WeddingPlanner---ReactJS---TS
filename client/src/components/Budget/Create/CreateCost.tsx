@@ -1,16 +1,11 @@
 import { useState, useEffect } from "react";
 import FormCost from "../Form/FormCost";
 import FormButton from "../../shared/Buttons/Form/FormButton";
+import type { ErrorProps } from "../../../interfaces/props/shared/Errors/ErrorProps";
+import type { CostModel } from "../../../interfaces/models/CostModel";
+import type { CreateCostProps } from "../../../interfaces/props/costs/CreateCostProps";
 import * as costsService from "../../../services/costs";
 import { formNames } from "../../../utils/constants/global";
-import type { ErrorProps } from "../../../interfaces/props/shared/Errors/ErrorProps";
-
-interface CreateCostProps {
-  plannerId: string;
-  category: string;
-  onCancelFormHandler: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  finish: (e: React.FormEvent<HTMLFormElement>) => void;
-}
 
 const CreateCost = ({
   plannerId,
@@ -27,11 +22,10 @@ const CreateCost = ({
 
   const onSubmitHandler = (
     e: React.FormEvent<HTMLFormElement>,
-    title: string,
-    price: string
+    cost: CostModel
   ): void => {
     costsService
-      .create(plannerId, title, price, category)
+      .create(plannerId, cost, category)
       .then((data) => {
         if (data.message) {
           setServerError(data.message);

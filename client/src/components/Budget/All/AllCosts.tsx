@@ -6,14 +6,14 @@ import CreateCost from "../Create/CreateCost";
 import InfoWrapper from "../InfoWrapper/InfoWrapper";
 import SingleCost from "../Single/SingleCost";
 import UpdateCost from "../Update/UpdateCost";
+import type { CostProps } from "../../../interfaces/props/CostProps";
+import type { CategoryProps } from "../../../interfaces/props/categories/CategoryProps";
 import * as categoriesService from "../../../services/categories";
 import * as costsService from "../../../services/costs";
 import { addButtonTexts, displayStyles } from "../../../utils/constants/global";
 import { category } from "../../../utils/constants/model";
 import { cancelForm } from "../../../utils/helpers/form";
 import styles from "./AllCosts.module.css";
-import type { CostProps } from "../../../interfaces/props/CostProps";
-import type { CategoryProps } from "../../../interfaces/props/categories/CategoryProps";
 
 const AllCosts = () => {
   const { id: plannerId } = useParams();
@@ -25,7 +25,7 @@ const AllCosts = () => {
   const [costs, setCosts] = useState<CostProps[]>([]);
   const [costId, setCostId] = useState<string>("");
   const [currentIndex, setCurrentIndex] = useState<string>("");
-  // todo index, current index types
+
   useEffect(() => {
     categoriesService
       .all()
@@ -54,8 +54,7 @@ const AllCosts = () => {
     setCurrentIndex("");
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const onShowFormHandler = (e: any): void => {
+  const onShowFormHandler = (e: React.MouseEvent<HTMLElement>): void => {
     const target = e.target as HTMLElement;
     const targetFormElement = target.parentElement?.parentElement
       ?.children[0] as HTMLElement;
@@ -79,9 +78,9 @@ const AllCosts = () => {
       .catch((err) => console.error(err));
   };
 
-  const onEditHandler = (id: string, index: number): void => {
+  const onEditHandler = (id: string, index: string): void => {
     setCostId(id);
-    setCurrentIndex(index.toString());
+    setCurrentIndex(index);
   };
 
   const calculateActualCosts = (): string => {
@@ -167,7 +166,7 @@ const AllCosts = () => {
                   .map((cost) => (
                     <SingleCost
                       key={cost.id}
-                      index={index}
+                      index={index.toString()}
                       costId={costId}
                       id={cost.id}
                       title={cost.title}

@@ -2,8 +2,6 @@ import ArticleSingle from "../ArticleSingle/ArticleSingle";
 import type { ArticlesListProps } from "../../../interfaces/props/articles/ArticleListProps";
 import styles from "./ArticlesList.module.css";
 
-// todo create sub interfaces
-
 const ArticlesList = ({
   articles,
   currentPage,

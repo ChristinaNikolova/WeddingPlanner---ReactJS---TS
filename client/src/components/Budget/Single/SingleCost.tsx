@@ -1,17 +1,7 @@
+import type { SingleCostProps } from "../../../interfaces/props/costs/SingleCostProps";
 import { displayStyles, tagNames } from "../../../utils/constants/global";
 import styles from "./SingleCost.module.css";
 
-// todo interfaces
-
-interface SingleCostProps {
-  index: number;
-  costId: string;
-  id: string;
-  title: string;
-  price: string;
-  onEditHandler: (id: string, index: number) => void;
-  onDeleteHandler: (id: string) => void;
-}
 const SingleCost = ({
   index,
   costId,

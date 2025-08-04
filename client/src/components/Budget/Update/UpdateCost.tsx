@@ -2,17 +2,11 @@ import { useState, useEffect } from "react";
 import FormCost from "../Form/FormCost";
 import FormButton from "../../shared/Buttons/Form/FormButton";
 import type { ErrorProps } from "../../../interfaces/props/shared/Errors/ErrorProps";
+import type { CostProps } from "../../../interfaces/props/CostProps";
+import type { UpdateCostProps } from "../../../interfaces/props/costs/UpdateCostProps";
+import type { CostModel } from "../../../interfaces/models/CostModel";
 import * as costsService from "../../../services/costs";
 import { formNames } from "../../../utils/constants/global";
-import type { CostProps } from "../../../interfaces/props/CostProps";
-
-// todo interface...
-interface UpdateCostProps {
-  plannerId: string;
-  costId: string;
-  onCancelFormHandler: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  finish: (e: React.FormEvent<HTMLFormElement>) => void;
-}
 
 const UpdateCost = ({
   plannerId,
@@ -36,11 +30,10 @@ const UpdateCost = ({
 
   const onSubmitHandler = (
     e: React.FormEvent<HTMLFormElement>,
-    title: string,
-    price: string
+    cost: CostModel
   ): void => {
     costsService
-      .update(costId, title, price)
+      .update(costId, cost)
       .then((data) => {
         if (data.message) {
           setServerError(data.message);
@@ -56,7 +49,7 @@ const UpdateCost = ({
     setIsDisabled(!!disable);
   };
 
-  if (!cost?.title || !cost?.price) {
+  if (!cost || !cost?.title || !cost?.price) {
     return null;
   }
 

@@ -1,9 +1,5 @@
+import type { InfoWrapperProps } from "../../../interfaces/props/costs/InfoWrapperProps";
 import styles from "./InfoWrapper.module.css";
-
-interface InfoWrapperProps {
-  budget: number;
-  actualCosts: string;
-}
 
 const InfoWrapper = ({ budget, actualCosts }: InfoWrapperProps) => {
   return (

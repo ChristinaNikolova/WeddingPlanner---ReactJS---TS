@@ -1,32 +1,12 @@
-import { useState, useEffect, type ReactNode } from "react";
+import { useState, useEffect } from "react";
 import ClientError from "../../shared/Errors/ClientError/ClientError";
 import ServerError from "../../shared/Errors/ServerError/ServerError";
 import Input from "../../shared/Tags/Input/Input";
-import type { ErrorProps } from "../../../interfaces/props/shared/Errors/ErrorProps";
 import type { CostModel } from "../../../interfaces/models/CostModel";
+import type { FormCostProps } from "../../../interfaces/props/costs/FormCostProps";
 import * as validator from "../../../utils/validators/cost";
 import * as helpers from "../../../utils/helpers/form";
-import {
-  formNames,
-  displayStyles,
-  type FormName,
-} from "../../../utils/constants/global";
-
-interface FormCostProps {
-  title: string;
-  price: string;
-  formName: FormName;
-  serverError: ErrorProps[];
-  children: ReactNode;
-  // todo do we need this??
-  formCanceled?: boolean;
-  onSubmitHandler: (
-    e: React.FormEvent<HTMLFormElement>,
-    title: string,
-    price: string
-  ) => void;
-  checkIsDisabled: (isDisabled: boolean) => void;
-}
+import { formNames, displayStyles } from "../../../utils/constants/global";
 
 const FormCost = ({
   title,
@@ -42,7 +22,6 @@ const FormCost = ({
     title,
     price,
   });
-
   const [titleError, setTitleError] = useState<string>("");
   const [priceError, setPriceError] = useState<string>("");
   const [currentStyle, setCurrentStyle] = useState<string>(displayStyles.NONE);
@@ -101,7 +80,12 @@ const FormCost = ({
       return;
     }
 
-    onSubmitHandler(e, values.title, values.price);
+    const cost = {
+      title: values.title,
+      price: values.price,
+    };
+
+    onSubmitHandler(e, cost);
   };
 
   return (
