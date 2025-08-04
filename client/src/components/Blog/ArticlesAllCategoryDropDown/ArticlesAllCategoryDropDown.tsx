@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
+import type { ArticlesAllCategoryDropDownProps } from "../../../interfaces/props/articles/ArticlesAllCategoryDropDown";
+import type { CategoryProps } from "../../../interfaces/props/categories/CategoryProps";
 import * as categoriesService from "../../../services/categories";
 import { classNames } from "../../../utils/constants/global";
 import { category } from "../../../utils/constants/model";
 import { toggle } from "../../../utils/helpers/dropdown";
 import styles from "./ArticlesAllCategoryDropDown.module.css";
-import type { ArticlesAllCategoryDropDownProps } from "../../../interfaces/props/articles/ArticlesAllCategoryDropDown";
-import type { CategoryProps } from "../../../interfaces/props/categories/CategoryProps";
 
 const ArticlesAllCategoryDropDown = ({
   selectedCategoryName,
@@ -26,7 +26,7 @@ const ArticlesAllCategoryDropDown = ({
       .catch((err) => console.error(err));
   }, []);
 
-  const onToggleHandler = (e: React.MouseEvent<HTMLElement>) => {
+  const onToggleHandler = (e: React.MouseEvent<HTMLElement>): void => {
     const target = e.currentTarget as HTMLElement;
     const dropdownElement = target.nextElementSibling as HTMLElement;
 
@@ -39,7 +39,7 @@ const ArticlesAllCategoryDropDown = ({
     }
   };
 
-  const onClickCategoryHandler = (e: React.MouseEvent<HTMLElement>) => {
+  const onClickCategoryHandler = (e: React.MouseEvent<HTMLElement>): void => {
     const target = e.currentTarget as HTMLElement;
     toggle(target.parentElement!, classNames.SHOW, classNames.HIDE);
     onCategoryHandler(e);

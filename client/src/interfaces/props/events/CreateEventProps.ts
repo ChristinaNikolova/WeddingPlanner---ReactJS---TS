@@ -1,6 +1,5 @@
-export interface CreateEventProps {
-  plannerId: string;
+import type { BaseEventFormProps } from "./BaseEventFormProps";
+
+export interface CreateEventProps extends BaseEventFormProps {
   isHidden: boolean;
-  onCancelFormHandler: () => void;
-  finish: () => void;
 }

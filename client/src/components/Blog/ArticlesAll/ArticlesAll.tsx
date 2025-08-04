@@ -68,22 +68,22 @@ const ArticlesAll = ({ pathToImage }: { pathToImage: string }) => {
     setHasToScroll(true);
   };
 
-  const onShowSearchForm = () => {
+  const onShowSearchForm = (): void => {
     setIsSearchIconClicked(!isSearchIconClicked);
     setIsSearched(false);
     setQuery("");
   };
 
-  const onSearch = () => {
+  const onSearch = (): void => {
     setIsSearched(true);
     startPageHelper();
   };
 
-  const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setQuery(e.target.value);
   };
 
-  const onCategoryHandler = (e: React.MouseEvent<HTMLElement>) => {
+  const onCategoryHandler = (e: React.MouseEvent<HTMLElement>): void => {
     const target = e.currentTarget as HTMLElement;
     setSelectedCategory({
       id: target.id,
@@ -92,7 +92,7 @@ const ArticlesAll = ({ pathToImage }: { pathToImage: string }) => {
     setHasToNavigate(true);
   };
 
-  const onRemoveCategotyHandler = (e: React.MouseEvent<HTMLElement>) => {
+  const onRemoveCategotyHandler = (e: React.MouseEvent<HTMLElement>): void => {
     e.stopPropagation();
     setSelectedCategory({
       id: "default",
@@ -101,7 +101,7 @@ const ArticlesAll = ({ pathToImage }: { pathToImage: string }) => {
     setHasToNavigate(true);
   };
 
-  const startPageHelper = () => {
+  const startPageHelper = (): void => {
     navigate(`/blog?page=1&category=${selectedCategory.name}`);
     setCurrentPage("1");
   };

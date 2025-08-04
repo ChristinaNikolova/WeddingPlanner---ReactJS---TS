@@ -4,14 +4,13 @@ import CreateEvent from "../Create/CreateEvent";
 import SingleEvent from "../Single/SingleEvent";
 import UpdateEvent from "../Update/UpdateEvent";
 import AddButton from "../../shared/Buttons/Add/AddButton";
+import type { EventProps } from "../../../interfaces/props/EventProps";
 import * as eventsService from "../../../services/events";
 import { scrollToTop } from "../../../utils/helpers/form";
 import { addButtonTexts } from "../../../utils/constants/global";
 import styles from "./EventsAll.module.css";
-import type { EventProps } from "../../../interfaces/props/EventProps";
 
 const EventsAll = () => {
-  // todo why no events
   const { id: plannerId } = useParams();
   const [events, setEvents] = useState<EventProps[]>([]);
   const [eventId, setEventId] = useState<string>("");

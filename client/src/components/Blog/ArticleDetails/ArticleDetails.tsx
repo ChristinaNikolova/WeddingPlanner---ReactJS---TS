@@ -8,6 +8,7 @@ import { scrollToTop } from "../../../utils/helpers/form";
 import styles from "./ArticleDetails.module.css";
 import type { ArticleDetailsProps } from "../../../interfaces/props/articles/ArticleDetailsProps";
 
+// fix read more article new when already read article!!!
 const ArticleDetails = () => {
   const { userId, isAdmin } = useAuth();
   const { id } = useParams();
@@ -45,7 +46,7 @@ const ArticleDetails = () => {
     // todo isLiked in []
   }, [id]);
 
-  const onDeleteHandler = () => {
+  const onDeleteHandler = (): void => {
     articlesService
       .deleteById(id!)
       .then(() => {
@@ -55,7 +56,7 @@ const ArticleDetails = () => {
   };
 
   // todo try catsch ot then. catch
-  const like = () => {
+  const like = (): void => {
     articlesService
       .like(id!)
       .then((res) => {
@@ -70,7 +71,7 @@ const ArticleDetails = () => {
       .catch((err) => console.error(err));
   };
 
-  const setIsLikedHelper = (likes: string[]) => {
+  const setIsLikedHelper = (likes: string[]): boolean => {
     return likes.includes(userId);
   };
 

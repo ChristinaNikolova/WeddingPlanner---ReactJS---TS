@@ -1,20 +1,6 @@
 import { useState } from "react";
+import type { SingleEventProps } from "../../../interfaces/props/events/SingleEventProps";
 import styles from "./SingleEvent.module.css";
-
-// todo interfaces...
-// todo start/end time types
-interface SingleEvent {
-  id: string;
-  title: string;
-  startTime: string;
-  endTime: string;
-  duration: string;
-  isHighlighted: boolean;
-  isEditIconHidden: boolean;
-  onHeightlightHandler: (eventId: string) => void;
-  onDeleteHandler: (eventId: string) => void;
-  onShowFormHandler: (eventId: string) => void;
-}
 
 const SingleEvent = ({
   id,
@@ -27,7 +13,7 @@ const SingleEvent = ({
   onHeightlightHandler,
   onDeleteHandler,
   onShowFormHandler,
-}: SingleEvent) => {
+}: SingleEventProps) => {
   const [isHovering, setIsHovering] = useState<boolean>(false);
 
   const getStyles = (): string => {
@@ -53,7 +39,7 @@ const SingleEvent = ({
       >
         <div className={styles["events-all-info-left"]}>
           <p className={styles["events-all-time"]}>
-            {startTime} - {endTime}
+            {startTime as string} - {endTime as string}
           </p>
           <p className={styles["events-all-duration"]}>
             {duration}

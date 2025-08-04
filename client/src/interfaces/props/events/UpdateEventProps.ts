@@ -1,6 +1,5 @@
-export interface UpdateEventProps {
+import type { BaseEventFormProps } from "./BaseEventFormProps";
+
+export interface UpdateEventProps extends BaseEventFormProps {
   eventId: string;
-  plannerId: string;
-  onCancelFormHandler: () => void;
-  finish: () => void;
 }

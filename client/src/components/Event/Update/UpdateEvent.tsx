@@ -47,6 +47,7 @@ const UpdateEvent = ({
   };
 
   if (
+    !event ||
     !event?.title ||
     !event?.startTime ||
     !event?.endTime ||
