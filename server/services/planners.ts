@@ -71,7 +71,10 @@ async function create(
 
   await planner.save();
 
-  return planner;
+  return {
+    ...planner.toObject(),
+    id: planner._id.toString(),
+  } as unknown as PlannerDocument;
 }
 
 async function getById(
