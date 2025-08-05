@@ -17,7 +17,6 @@ export const all = async (plannerId: string): Promise<TaskProps[]> => {
   }
 };
 
-// todo timespan??
 export const create = async (
   plannerId: string,
   task: TaskModel,

@@ -38,12 +38,10 @@ const ArticleDetails = () => {
 
         if (hasToScroll) {
           scrollToTop();
-          // todo true/false
           setHasToScroll(false);
         }
       })
       .catch((err) => console.error(err));
-    // todo isLiked in []
   }, [id]);
 
   const onDeleteHandler = (): void => {
