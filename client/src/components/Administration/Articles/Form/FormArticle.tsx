@@ -68,7 +68,6 @@ const FormArticle = ({
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
     >
   ): void => {
-    // todo check in code for more !!!
     const { name, value } = e.target;
     setValues((state) => ({
       ...state,

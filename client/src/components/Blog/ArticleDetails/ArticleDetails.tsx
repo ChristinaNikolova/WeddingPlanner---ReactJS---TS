@@ -21,7 +21,6 @@ const ArticleDetails = () => {
     ? state.category
     : { id: "default", name: "all" };
 
-  // todo state type
   const [article, setArticle] = useState<ArticleDetailsProps | undefined>(
     undefined
   );

@@ -1,5 +1,3 @@
-// todo generic??
-
 export interface BaseCostFormProps {
   plannerId: string;
   onCancelFormHandler: (e: React.MouseEvent<HTMLButtonElement>) => void;

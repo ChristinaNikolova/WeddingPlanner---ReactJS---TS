@@ -21,7 +21,6 @@ const CreateArticle = () => {
           setServerError(data.message);
           return;
         }
-        // todo test _id
         navigate(`/blog/${data.id}`);
       })
       .catch((err) => console.error(err));

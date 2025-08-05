@@ -20,7 +20,7 @@ const SingleGuest = ({
   onDeleteHandler,
   onShowFormHandler,
 }: SingleGuestProps) => {
-  const [isHovering, setIsHovering] = useState(false);
+  const [isHovering, setIsHovering] = useState<boolean>(false);
 
   const getPersonImage = (age: string, gender: string): React.JSX.Element => {
     let image = "";

@@ -26,7 +26,6 @@ const UpdateArticle = () => {
 
   useEffect(() => {}, [serverError]);
 
-  // todo now update this everywhere....
   const submitHandler = (inputArticle: ArticleModel): void => {
     articlesService
       .update(id!, inputArticle)

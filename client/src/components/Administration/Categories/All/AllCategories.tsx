@@ -34,7 +34,6 @@ const AllCategories = () => {
       .catch((err) => console.error(err));
   };
 
-  // todo optional, not optional
   return (
     <section className="section-background">
       {serverError && <ServerError errors={serverError} />}

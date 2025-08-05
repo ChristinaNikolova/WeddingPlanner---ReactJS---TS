@@ -26,18 +26,19 @@ const ArticlesAll = ({ pathToImage }: { pathToImage: string }) => {
   const navigate = useNavigate();
 
   const [articles, setArticles] = useState<ArticleDetailsProps[]>([]);
+  // todo add type here
   const [selectedCategory, setSelectedCategory] = useState({
     id: state?.category.id ? state.category.id : "default",
     name: state?.category.name ? state.category.name : "all",
   });
-  const [currentPage, setCurrentPage] = useState(page!);
-  const [pagesCount, setPagesCount] = useState(1);
-  const [hasToScroll, setHasToScroll] = useState(false);
-  const [hasToNavigate, setHasToNavigate] = useState(false);
-
-  const [isSearchIconClicked, setIsSearchIconClicked] = useState(false);
-  const [query, setQuery] = useState("");
-  const [isSearched, setIsSearched] = useState(false);
+  const [currentPage, setCurrentPage] = useState<string>(page!);
+  const [pagesCount, setPagesCount] = useState<number>(1);
+  const [hasToScroll, setHasToScroll] = useState<boolean>(false);
+  const [hasToNavigate, setHasToNavigate] = useState<boolean>(false);
+  const [isSearchIconClicked, setIsSearchIconClicked] =
+    useState<boolean>(false);
+  const [query, setQuery] = useState<string>("");
+  const [isSearched, setIsSearched] = useState<boolean>(false);
 
   useEffect(() => {
     articlesService

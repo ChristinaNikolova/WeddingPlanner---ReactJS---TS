@@ -76,7 +76,7 @@ export const getById = async (
     return handleServiceError(error, serviceNames.EVENTS);
   }
 };
-// todo event model / event props
+
 export const update = async (
   id: string,
   event: EventModel
