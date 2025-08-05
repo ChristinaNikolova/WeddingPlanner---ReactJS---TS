@@ -77,6 +77,7 @@ const DetailsPlanner = () => {
               className="img"
               src="/img/Bride-PNG-Image-30858.png"
               alt="bride"
+              loading="lazy"
             />
           </div>
           <div className={styles["details-planner-img-wrapper"]}>
@@ -84,6 +85,7 @@ const DetailsPlanner = () => {
               className="img"
               src="/img/Groom-PNG-Image-95770.png"
               alt="groom"
+              loading="lazy"
             />
           </div>
         </div>

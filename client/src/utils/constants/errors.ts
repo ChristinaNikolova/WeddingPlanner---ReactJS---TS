@@ -2,6 +2,7 @@ export const global = {
   SERVER_ERROR(serviceName = ""): string {
     return serviceName ? `${serviceName} service error:` : "Service error:";
   },
+  AUTH: "useAuth must be used within an AuthProvider",
   TITLE(min: number, max: number): string {
     return `Title should be between ${min} and ${max} characters long`;
   },

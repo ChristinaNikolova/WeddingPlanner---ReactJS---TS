@@ -21,7 +21,6 @@ const ArticleDetails = () => {
     ? state.category
     : { id: "default", name: "all" };
 
-  // todo interface LocationState
   // todo state type
   const [article, setArticle] = useState<ArticleDetailsProps | undefined>(
     undefined

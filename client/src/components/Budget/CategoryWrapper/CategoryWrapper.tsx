@@ -26,6 +26,7 @@ const CategoryWrapper = ({
             className={`${styles["budget-main-current-category-info-image"]} img`}
             src={image}
             alt={name}
+            loading="lazy"
           />
           <span className={styles["budget-main-current-category-info-name"]}>
             {name}

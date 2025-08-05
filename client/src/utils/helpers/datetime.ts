@@ -2,13 +2,11 @@ export const parseTime = (time: string): string => {
   return parseDate(time).toLocaleTimeString();
 };
 
-// todo test here!!!
 export const parseDate = (time: string): Date => {
   const [hour, minutes] = time.split(":");
   return new Date(0, 0, 0, Number(hour), Number(minutes));
 };
 
-// todo check return type here, and new if here
 export const getDifference = (start: string, end: string): string[] => {
   const difference =
     new Date("01/01/2007 " + end).getTime() -
@@ -16,11 +14,6 @@ export const getDifference = (start: string, end: string): string[] => {
 
   let hours = formatTime(Math.floor((difference / (1000 * 60 * 60)) % 24));
   let minutes = formatTime(Math.floor((difference / (1000 * 60)) % 60));
-
-  //   if (hours.toString().includes("-") || minutes.toString().includes("-")) {
-  //     hours = "00";
-  //     minutes = "00";
-  //   }
 
   if (difference < 0) {
     hours = "00";
