@@ -88,6 +88,7 @@ async function update(
   guest.role = validateEnum(role, Role, "role");
   guest.table = table;
   guest.mainDish = validateEnum(mainDish, MainDish, "mainDish");
+  guest.confirmed = confirmed;
 
   await guest.save();
 
