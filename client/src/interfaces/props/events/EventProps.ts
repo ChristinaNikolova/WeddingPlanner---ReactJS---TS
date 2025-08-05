@@ -1,8 +1,6 @@
+import type { BaseModel } from "../../models/BaseModel";
 import type { EventModel } from "../../models/EventModel";
-import type { ErrorProps } from "../shared/Errors/ErrorProps";
 
-export interface EventProps extends EventModel {
-  id: string;
+export interface EventProps extends BaseModel, EventModel {
   isHighlighted: boolean;
-  message?: ErrorProps[];
 }

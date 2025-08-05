@@ -1,8 +1,6 @@
+import type { BaseModel } from "../../models/BaseModel";
 import type { SubtaskModel } from "../../models/SubtaskModel";
-import type { ErrorProps } from "../shared/Errors/ErrorProps";
 
-export interface SubtaskProps extends SubtaskModel {
-  id: string;
+export interface SubtaskProps extends BaseModel, SubtaskModel {
   isDone: boolean;
-  message?: ErrorProps[];
 }

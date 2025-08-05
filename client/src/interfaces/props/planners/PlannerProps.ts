@@ -1,9 +1,7 @@
+import type { BaseModel } from "../../models/BaseModel";
 import type { PlannerModel } from "../../models/PlannerModel";
-import type { ErrorProps } from "../shared/Errors/ErrorProps";
 
-export interface PlannerProps extends PlannerModel {
-  // base
-  id: string;
+export interface PlannerProps extends BaseModel, PlannerModel {
   title: string;
   brideId: string;
   groomId: string;
@@ -17,5 +15,4 @@ export interface PlannerProps extends PlannerModel {
   totalEvents: number;
   highlightedEvents: number;
   notes: number;
-  message?: ErrorProps[];
 }

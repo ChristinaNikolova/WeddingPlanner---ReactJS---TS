@@ -1,8 +1,6 @@
+import type { BaseModel } from "../../models/BaseModel";
 import type { CostModel } from "../../models/CostModel";
-import type { ErrorProps } from "../shared/Errors/ErrorProps";
 
-export interface CostProps extends CostModel {
-  id: string;
+export interface CostProps extends BaseModel, CostModel {
   category: string;
-  message?: ErrorProps[];
 }
