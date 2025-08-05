@@ -1,9 +1,10 @@
 import type { RequestData } from "../interfaces/types/RequestData";
+import type { MethodName } from "../utils/constants/global";
 import { getToken } from "./auth";
 
 export const requester = (
   url: string,
-  method: string,
+  method: MethodName,
   data?: RequestData,
   isAuth = true
 ): Promise<Response> => {

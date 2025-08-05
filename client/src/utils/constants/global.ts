@@ -112,9 +112,9 @@ export const timespans = [
   "wedding day",
 ] as const;
 
-// todo all needed?
-// todo check if new needed!!!!
+export type MethodName = (typeof httpMethods)[keyof typeof httpMethods];
 export type FormName = (typeof formNames)[keyof typeof formNames];
+export type ButtonText = (typeof addButtonTexts)[keyof typeof addButtonTexts];
 export type PeopleName = (typeof people)[keyof typeof people];
 export type GenderName = (typeof genders)[keyof typeof genders];
 export type DishName = (typeof dishes)[keyof typeof dishes];

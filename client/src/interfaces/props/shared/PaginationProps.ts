@@ -1,4 +1,4 @@
-import type { CategoryProps } from "../categories/CategoryDetailsProps";
+import type { CategoryProps } from "../categories/CategoryProps";
 
 export interface PaginationProps {
   currentPage: string;
