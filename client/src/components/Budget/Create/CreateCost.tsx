@@ -21,8 +21,8 @@ const CreateCost = ({
   useEffect(() => {}, [serverError]);
 
   const onSubmitHandler = (
-    e: React.FormEvent<HTMLFormElement>,
-    inputCost: CostModel
+    inputCost: CostModel,
+    e?: React.FormEvent<HTMLFormElement>
   ): void => {
     costsService
       .create(plannerId, inputCost, category)
@@ -33,7 +33,7 @@ const CreateCost = ({
         }
         setFormCanceled(true);
         setServerError([]);
-        finish(e);
+        finish(e!);
       })
       .catch((err) => console.error(err));
   };

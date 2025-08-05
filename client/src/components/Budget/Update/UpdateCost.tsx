@@ -29,8 +29,8 @@ const UpdateCost = ({
   useEffect(() => {}, [serverError]);
 
   const onSubmitHandler = (
-    e: React.FormEvent<HTMLFormElement>,
-    inputCost: CostModel
+    inputCost: CostModel,
+    e?: React.FormEvent<HTMLFormElement>
   ): void => {
     costsService
       .update(costId, inputCost)
@@ -40,7 +40,7 @@ const UpdateCost = ({
           return;
         }
         setServerError([]);
-        finish(e);
+        finish(e!);
       })
       .catch((err) => console.error(err));
   };

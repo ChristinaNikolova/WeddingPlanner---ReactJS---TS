@@ -20,8 +20,8 @@ const CreateSubtask = ({
   useEffect(() => {}, [serverError]);
 
   const onSubmitHandler = (
-    e: React.FormEvent<HTMLFormElement>,
-    inputSubtask: SubtaskModel
+    inputSubtask: SubtaskModel,
+    e?: React.FormEvent<HTMLFormElement>
   ): void => {
     subtasksService
       .create(taskId, inputSubtask)
@@ -32,7 +32,7 @@ const CreateSubtask = ({
         }
         setFormCanceled(true);
         setServerError([]);
-        finish(e);
+        finish(e!);
       })
       .catch((err) => console.error(err));
   };

@@ -28,8 +28,8 @@ const UpdateSubtask = ({
   useEffect(() => {}, [serverError]);
 
   const onSubmitHandler = (
-    e: React.FormEvent<HTMLFormElement>,
-    subtaskInput: SubtaskModel
+    subtaskInput: SubtaskModel,
+    e?: React.FormEvent<HTMLFormElement>
   ): void => {
     subtasksService
       .update(subtaskId, subtaskInput)
@@ -39,7 +39,7 @@ const UpdateSubtask = ({
           return;
         }
         setServerError([]);
-        finish(e);
+        finish(e!);
       })
       .catch((err) => console.error(err));
   };

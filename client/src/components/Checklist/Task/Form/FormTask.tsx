@@ -88,7 +88,7 @@ const FormTask = ({
       description: values.description,
     };
 
-    onSubmitHandler(e, task);
+    onSubmitHandler(task, e);
   };
 
   return (

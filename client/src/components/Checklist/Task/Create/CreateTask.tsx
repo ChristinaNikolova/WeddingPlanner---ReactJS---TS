@@ -21,8 +21,8 @@ const CreateTask = ({
   useEffect(() => {}, [serverError]);
 
   const onSubmitHandler = (
-    e: React.FormEvent<HTMLFormElement>,
-    inputTask: TaskModel
+    inputTask: TaskModel,
+    e?: React.FormEvent<HTMLFormElement>
   ): void => {
     tasksService
       .create(plannerId, inputTask, timespan)
@@ -33,7 +33,7 @@ const CreateTask = ({
         }
         setFormCanceled(true);
         setServerError([]);
-        finish(e);
+        finish(e!);
       })
       .catch((err) => console.error(err));
   };

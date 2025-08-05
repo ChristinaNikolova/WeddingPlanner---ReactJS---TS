@@ -71,7 +71,7 @@ const FormSubtask = ({
       description: values.description,
     };
 
-    onSubmitHandler(e, subtask);
+    onSubmitHandler(subtask, e);
   };
 
   return (

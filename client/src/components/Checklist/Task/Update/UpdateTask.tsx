@@ -29,8 +29,8 @@ const UpdateTask = ({
   useEffect(() => {}, [serverError]);
 
   const onSubmitHandler = (
-    e: React.FormEvent<HTMLFormElement>,
-    taskInput: TaskModel
+    taskInput: TaskModel,
+    e?: React.FormEvent<HTMLFormElement>
   ): void => {
     tasksService
       .update(taskId, taskInput)
@@ -40,7 +40,7 @@ const UpdateTask = ({
           return;
         }
         setServerError([]);
-        finish(e);
+        finish(e!);
       })
       .catch((err) => console.error(err));
   };

@@ -1,9 +1,9 @@
 import type { CostModel } from "../../models/CostModel";
 
 export interface SingleCostProps extends CostModel {
-  index: string;
+  index: number;
   costId: string;
   id: string;
-  onEditHandler: (id: string, index: string) => void;
+  onEditHandler: (id: string, index: number) => void;
   onDeleteHandler: (id: string) => void;
 }

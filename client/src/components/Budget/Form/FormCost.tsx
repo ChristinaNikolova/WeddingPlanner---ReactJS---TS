@@ -67,7 +67,7 @@ const FormCost = ({
       titleError,
       priceError,
     ]);
-    checkIsDisabled(isDisabled);
+    checkIsDisabled!(isDisabled);
   };
 
   const onSubmitHelperHandler = (e: React.FormEvent<HTMLFormElement>): void => {
@@ -85,7 +85,7 @@ const FormCost = ({
       price: values.price,
     };
 
-    onSubmitHandler(e, cost);
+    onSubmitHandler(cost, e);
   };
 
   return (
