@@ -1,16 +1,6 @@
+import type { SingleSubtaskProps } from "../../../../interfaces/props/subtasks/SingleSubtaskProps";
 import { displayStyles, tagNames } from "../../../../utils/constants/global";
 import styles from "./SingleSubtask.module.css";
-
-interface SingleSubtaskProps {
-  taskId: string;
-  subtaskId: string;
-  id: string;
-  description: string;
-  isDone: boolean;
-  onDoneSubtask: (taskId: string, id: string) => void;
-  onEditHandler: (id: string) => void;
-  onDeleteHandler: (taskId: string, id: string) => void;
-}
 
 const SingleSubtask = ({
   taskId,
@@ -22,14 +12,17 @@ const SingleSubtask = ({
   onEditHandler,
   onDeleteHandler,
 }: SingleSubtaskProps) => {
-  // todo any
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const onMouseEnterHandler = (e: any): void => {
-    if (e.target.nodeName !== tagNames.P) {
+  const onMouseEnterHandler = (
+    e: React.MouseEvent<HTMLParagraphElement>
+  ): void => {
+    const target = e.target as HTMLElement;
+
+    if (target.nodeName !== tagNames.P) {
       return;
     }
 
-    e.target.children[0].style.display = displayStyles.INLINE_BLOCK;
+    const childElement = target.children[0] as HTMLElement;
+    childElement.style.display = displayStyles.INLINE_BLOCK;
   };
 
   const onMouseLeaveHandler = (): void => {

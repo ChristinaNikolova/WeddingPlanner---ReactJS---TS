@@ -1,19 +1,11 @@
 import { useState, useEffect } from "react";
 import FormSubtask from "../Form/FormSubtask";
 import FormButton from "../../../shared/Buttons/Form/FormButton";
+import type { ErrorProps } from "../../../../interfaces/props/shared/Errors/ErrorProps";
+import type { CreateSubtaskProps } from "../../../../interfaces/props/subtasks/CreateSubtaskProps";
 import * as subtasksService from "../../../../services/subtasks";
 import { formNames } from "../../../../utils/constants/global";
-import type { ErrorProps } from "../../../../interfaces/props/shared/Errors/ErrorProps";
-
-interface CreateSubtaskProps {
-  taskId: string;
-  // todo any
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  onCancelFormHandler: (e: any) => void;
-  // todo any
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  finish: (e: any) => void;
-}
+import type { SubtaskModel } from "../../../../interfaces/models/SubtaskModel";
 
 const CreateSubtask = ({
   taskId,
@@ -27,11 +19,12 @@ const CreateSubtask = ({
 
   useEffect(() => {}, [serverError]);
 
-  // todo any
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const onSubmitHandler = (e: any, description: string): void => {
+  const onSubmitHandler = (
+    e: React.FormEvent<HTMLFormElement>,
+    subtask: SubtaskModel
+  ): void => {
     subtasksService
-      .create(taskId, description)
+      .create(taskId, subtask)
       .then((data) => {
         if (data.message) {
           setServerError(data.message);
@@ -49,12 +42,10 @@ const CreateSubtask = ({
     setIsDisabled(!!disable);
   };
 
-  // todo any
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const onCancelForm = (e: any): void => {
+  const onCancelForm = (e: React.MouseEvent<HTMLButtonElement>): void => {
     setFormCanceled(true);
     setServerError([]);
-    onCancelFormHandler(e);
+    onCancelFormHandler!(e);
   };
 
   return (

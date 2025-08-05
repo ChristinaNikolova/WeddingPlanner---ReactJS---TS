@@ -3,22 +3,13 @@ import AddButton from "../../../shared/Buttons/Add/AddButton";
 import CreateSubtask from "../Create/CreateSubtask";
 import SingleSubtask from "../Single/SingleSubtask";
 import UpdateSubtask from "../Update/UpdateSubtask";
+import type { SubtasksAllProps } from "../../../../interfaces/props/subtasks/SubtasksAllProps";
 import * as subtasksService from "../../../../services/subtasks";
 import {
   addButtonTexts,
   displayStyles,
 } from "../../../../utils/constants/global";
 import styles from "./SubtasksAll.module.css";
-import type { SubtaskProps } from "../../../../interfaces/props/SubtaskProps";
-
-interface SubtasksAllProps {
-  taskId: string;
-  subtasks: SubtaskProps[];
-  loadTasks: () => void;
-  // todo any
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  onCancelFormHandler: (e: any) => void;
-}
 
 const SubtasksAll = ({
   taskId,
@@ -28,12 +19,12 @@ const SubtasksAll = ({
 }: SubtasksAllProps) => {
   const [subtaskId, setSubtaskId] = useState<string>("");
 
-  // todo any
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const onShowSubTaskFormHandler = (e: any): void => {
-    const targetFormElement =
-      e.target.parentElement.parentElement.parentElement.children[1]
-        .children[0];
+  const onShowSubTaskFormHandler = (
+    e: React.SyntheticEvent<HTMLElement>
+  ): void => {
+    const target = e.target as HTMLElement;
+    const targetFormElement = target?.parentElement?.parentElement
+      ?.parentElement?.children[1].children[0] as HTMLElement;
     targetFormElement.style.display = displayStyles.FLEX;
   };
 
@@ -63,9 +54,7 @@ const SubtasksAll = ({
     setSubtaskId("");
   };
 
-  // todo any
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const finish = (e: any): void => {
+  const finish = (e: React.FormEvent<HTMLFormElement>): void => {
     onCancelFormHelperHandler();
     onCancelFormHandler(e);
     loadTasks();
