@@ -103,6 +103,7 @@ const FormGuest = ({
 
     onSubmitHandler(guest);
   };
+
   return (
     <div ref={formRef} className="form-wrapper-center">
       <form
@@ -228,7 +229,7 @@ const FormGuest = ({
           <Select
             name="role"
             label="Role"
-            value={values.role}
+            value={values.role as string}
             onChangeHandler={changeHandler}
             onBlurHandler={undefined}
             categories={global.roles.map((r) => r.toString())}

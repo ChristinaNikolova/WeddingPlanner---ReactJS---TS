@@ -1,11 +1,19 @@
+import type {
+  DishName,
+  GenderName,
+  PeopleName,
+  RoleName,
+  SideName,
+} from "../../utils/constants/global";
+
 export interface GuestModel {
   firstName: string;
   lastName: string;
-  gender: string;
-  age: string;
-  side: string;
-  role: string;
+  gender: GenderName;
+  age: PeopleName;
+  role: RoleName;
+  mainDish: DishName;
+  side: SideName;
   table: string;
-  mainDish: string;
   confirmed: string;
 }

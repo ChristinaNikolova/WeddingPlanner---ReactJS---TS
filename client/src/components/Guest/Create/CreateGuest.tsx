@@ -5,7 +5,7 @@ import type { ErrorProps } from "../../../interfaces/props/shared/Errors/ErrorPr
 import type { CreateGuestProps } from "../../../interfaces/props/guests/CreateGuestProps";
 import type { GuestModel } from "../../../interfaces/models/GuestModel";
 import * as guestsService from "../../../services/guests";
-import { formNames } from "../../../utils/constants/global";
+import { formNames, dishes } from "../../../utils/constants/global";
 
 const CreateGuest = ({
   plannerId,
@@ -53,7 +53,7 @@ const CreateGuest = ({
           side={"bride"}
           role={"bride"}
           table={""}
-          mainDish={"no info"}
+          mainDish={dishes.NO_INFO}
           confirmed={""}
           serverError={serverError}
           onSubmitHandler={onSubmitHandler}

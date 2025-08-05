@@ -5,7 +5,6 @@ import * as images from "../../../utils/constants/images";
 import { dishes, people, genders } from "../../../utils/constants/global";
 import styles from "./SingleGuest.module.css";
 
-// todo types
 const SingleGuest = ({
   id,
   firstName,
@@ -66,7 +65,7 @@ const SingleGuest = ({
   return (
     <div className={styles["guests-all-info-wrapper"]}>
       <div className={styles["guests-all-info-left"]}>
-        <p className={styles["guests-all-role"]}>{role}</p>
+        <p className={styles["guests-all-role"]}>{role as string}</p>
         <p
           onMouseEnter={onMouseEnterHandler}
           onMouseLeave={onMouseLeaveHandler}

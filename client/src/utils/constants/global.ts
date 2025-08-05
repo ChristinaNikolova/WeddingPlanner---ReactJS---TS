@@ -63,6 +63,7 @@ export const dishes = {
   MEAT: "meat",
   FISH: "fish",
   VEGGIES: "veggies",
+  NO_INFO: "no info",
 } as const;
 
 export const addButtonTexts = {
@@ -78,6 +79,11 @@ export const tagNames = {
   P: "P",
   H4: "H4",
 } as const;
+
+export const sides = {
+  BRIDE: "bride",
+  GROOM: "groom",
+};
 
 export const roles = [
   "bride",
@@ -106,7 +112,11 @@ export const timespans = [
   "wedding day",
 ] as const;
 
-// todo add more if needed
+// todo all needed?
+// todo check if new needed!!!!
 export type FormName = (typeof formNames)[keyof typeof formNames];
+export type PeopleName = (typeof people)[keyof typeof people];
+export type GenderName = (typeof genders)[keyof typeof genders];
 export type DishName = (typeof dishes)[keyof typeof dishes];
 export type RoleName = (typeof roles)[keyof typeof roles];
+export type SideName = (typeof sides)[keyof typeof sides];
