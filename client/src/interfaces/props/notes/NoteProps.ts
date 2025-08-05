@@ -1,8 +1,8 @@
+import type { NoteModel } from "../../models/NoteModel";
 import type { ErrorProps } from "../shared/Errors/ErrorProps";
 
-export interface NoteProps {
+export interface NoteProps extends NoteModel {
   id: string;
-  description: string;
   createdAt: string;
   message?: ErrorProps[];
 }

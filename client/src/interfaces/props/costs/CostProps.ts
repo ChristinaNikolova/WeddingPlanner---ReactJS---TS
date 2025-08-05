@@ -1,10 +1,8 @@
+import type { CostModel } from "../../models/CostModel";
 import type { ErrorProps } from "../shared/Errors/ErrorProps";
 
-export interface CostProps {
+export interface CostProps extends CostModel {
   id: string;
-  title: string;
-  price: string;
   category: string;
   message?: ErrorProps[];
 }
-// todo rename?

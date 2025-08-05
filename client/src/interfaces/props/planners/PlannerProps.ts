@@ -1,20 +1,12 @@
+import type { PlannerModel } from "../../models/PlannerModel";
 import type { ErrorProps } from "../shared/Errors/ErrorProps";
 
-//todo extends PlannerViewModel
-export interface PlannerProps {
+export interface PlannerProps extends PlannerModel {
   // base
   id: string;
   title: string;
-
-  // extended
-  description: string;
-  date: string;
-  budget: string;
-  bride: string;
   brideId: string;
-  groom: string;
   groomId: string;
-  location: string;
   actualCosts: string;
   totalGuests: number;
   brideGuests: number;

@@ -1,11 +1,8 @@
+import type { EventModel } from "../../models/EventModel";
 import type { ErrorProps } from "../shared/Errors/ErrorProps";
 
-export interface EventProps {
+export interface EventProps extends EventModel {
   id: string;
-  title: string;
-  startTime: string;
-  endTime: string;
-  duration: string;
   isHighlighted: boolean;
   message?: ErrorProps[];
 }

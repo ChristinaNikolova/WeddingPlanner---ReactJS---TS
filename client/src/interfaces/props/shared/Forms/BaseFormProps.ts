@@ -24,6 +24,6 @@ export interface BaseFormProps<
   serverError: ErrorProps[];
   children?: ReactNode;
   checkIsDisabled?: (isDisabled: boolean) => void;
-  onCancelFormHandler: (event: React.MouseEvent<HTMLElement>) => void;
-  onSubmitHandler: (e: React.FormEvent<HTMLFormElement>, input: T) => void;
+  onCancelFormHandler: (e?: React.MouseEvent<HTMLElement>) => void;
+  onSubmitHandler: (input: T) => void;
 }
