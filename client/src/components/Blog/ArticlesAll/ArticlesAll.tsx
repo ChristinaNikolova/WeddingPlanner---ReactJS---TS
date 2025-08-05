@@ -14,7 +14,6 @@ import ArticlesAllSearch from "../ArticlesAllSearch/ArticlesAllSearch";
 import ArticlesList from "../ArticlesList/ArticlesList";
 import type { ArticleDetailsProps } from "../../../interfaces/props/articles/ArticleDetailsProps";
 
-// todo interface here
 // todo check return type everywhere
 // todo test pagination + search + categories
 const ArticlesAll = ({ pathToImage }: { pathToImage: string }) => {
@@ -62,7 +61,7 @@ const ArticlesAll = ({ pathToImage }: { pathToImage: string }) => {
       .catch((err) => console.error(err));
   }, [currentPage, selectedCategory, isSearched, isSearchIconClicked]);
 
-  const onPaginationHandler = (direction: string) => {
+  const onPaginationHandler = (direction: string): void => {
     const value = direction === directions.PREV ? -1 : 1;
     setCurrentPage((Number(currentPage) + value).toString());
     setHasToScroll(true);

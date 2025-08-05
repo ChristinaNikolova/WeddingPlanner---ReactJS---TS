@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import FormNote from "../Form/FormNote";
 import FormButton from "../../shared/Buttons/Form/FormButton";
 import type { ErrorProps } from "../../../interfaces/props/shared/Errors/ErrorProps";
-import type { NoteProps } from "../../../interfaces/props/NoteProps";
+import type { NoteProps } from "../../../interfaces/props/notes/NoteProps";
 import type { UpdateNoteProps } from "../../../interfaces/props/notes/UpdateNoteProps";
 import type { NoteModel } from "../../../interfaces/models/NoteModel";
 import * as notesService from "../../../services/notes";

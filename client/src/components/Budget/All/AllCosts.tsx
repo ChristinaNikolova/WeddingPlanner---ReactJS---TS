@@ -6,7 +6,7 @@ import CreateCost from "../Create/CreateCost";
 import InfoWrapper from "../InfoWrapper/InfoWrapper";
 import SingleCost from "../Single/SingleCost";
 import UpdateCost from "../Update/UpdateCost";
-import type { CostProps } from "../../../interfaces/props/CostProps";
+import type { CostProps } from "../../../interfaces/props/costs/CostProps";
 import type { CategoryProps } from "../../../interfaces/props/categories/CategoryProps";
 import * as categoriesService from "../../../services/categories";
 import * as costsService from "../../../services/costs";

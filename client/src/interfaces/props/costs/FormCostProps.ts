@@ -1,13 +1,6 @@
-import type { ReactNode } from "react";
 import type { CostModel } from "../../models/CostModel";
-import type { BaseForm } from "./BaseForm";
+import type { BaseFormProps } from "../shared/Forms/BaseFormProps";
 
-export interface FormCostProps extends BaseForm, CostModel {
-  children: ReactNode;
+export interface FormCostProps extends BaseFormProps<CostModel>, CostModel {
   formCanceled?: boolean;
-  onSubmitHandler: (
-    e: React.FormEvent<HTMLFormElement>,
-    cost: CostModel
-  ) => void;
-  checkIsDisabled: (isDisabled: boolean) => void;
 }

@@ -1,7 +1,4 @@
 import type { GuestModel } from "../../models/GuestModel";
-import type { BaseForm } from "../costs/BaseForm";
+import type { BaseFormProps } from "../shared/Forms/BaseFormProps";
 
-export interface FormGuestProps extends BaseForm, GuestModel {
-  // todo make it generic
-  onSubmitHandler: (guest: GuestModel) => void;
-}
+export interface FormGuestProps extends BaseFormProps<GuestModel>, GuestModel {}

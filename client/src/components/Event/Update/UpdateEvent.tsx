@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import FormEvent from "../Form/FormEvent";
 import FormButton from "../../shared/Buttons/Form/FormButton";
 import type { ErrorProps } from "../../../interfaces/props/shared/Errors/ErrorProps";
-import type { EventProps } from "../../../interfaces/props/EventProps";
+import type { EventProps } from "../../../interfaces/props/events/EventProps";
 import type { EventModel } from "../../../interfaces/models/EventModel";
 import type { UpdateEventProps } from "../../../interfaces/props/events/UpdateEventProps";
 import * as eventsService from "../../../services/events";

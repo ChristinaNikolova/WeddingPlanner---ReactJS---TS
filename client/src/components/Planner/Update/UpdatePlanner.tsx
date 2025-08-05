@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import FormPlanner from "../Form/FormPlanner";
-import type { PlannerProps } from "../../../interfaces/props/PlannerProps";
+import type { PlannerProps } from "../../../interfaces/props/planners/PlannerProps";
 import type { ErrorProps } from "../../../interfaces/props/shared/Errors/ErrorProps";
 import type { PlannerModel } from "../../../interfaces/models/PlannerModel";
 import * as plannersService from "../../../services/planners";

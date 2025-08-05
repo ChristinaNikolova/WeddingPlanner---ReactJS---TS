@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
-import type { PlannerProps } from "../../../interfaces/props/PlannerProps";
+import type { PlannerProps } from "../../../interfaces/props/planners/PlannerProps";
 import * as plannersService from "../../../services/planners";
 import styles from "./DetailsPlanner.module.css";
 

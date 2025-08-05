@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import FormCost from "../Form/FormCost";
 import FormButton from "../../shared/Buttons/Form/FormButton";
 import type { ErrorProps } from "../../../interfaces/props/shared/Errors/ErrorProps";
-import type { CostProps } from "../../../interfaces/props/CostProps";
+import type { CostProps } from "../../../interfaces/props/costs/CostProps";
 import type { UpdateCostProps } from "../../../interfaces/props/costs/UpdateCostProps";
 import type { CostModel } from "../../../interfaces/models/CostModel";
 import * as costsService from "../../../services/costs";

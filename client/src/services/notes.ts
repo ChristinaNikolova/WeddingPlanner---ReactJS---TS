@@ -1,6 +1,6 @@
 import { api } from "./api";
 import { requester } from "./requester";
-import type { NoteProps } from "../interfaces/props/NoteProps";
+import type { NoteProps } from "../interfaces/props/notes/NoteProps";
 import type { NoteModel } from "../interfaces/models/NoteModel";
 import { httpMethods, serviceNames } from "../utils/constants/global";
 import { handleServiceError } from "../utils/helpers/errorHandler";

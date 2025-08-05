@@ -1,6 +1,6 @@
 import { api } from "./api";
 import { requester } from "./requester";
-import type { PlannerProps } from "../interfaces/props/PlannerProps";
+import type { PlannerProps } from "../interfaces/props/planners/PlannerProps";
 import type { PlannerModel } from "../interfaces/models/PlannerModel";
 import { httpMethods, serviceNames } from "../utils/constants/global";
 import { handleServiceError } from "../utils/helpers/errorHandler";

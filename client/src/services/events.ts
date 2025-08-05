@@ -1,6 +1,6 @@
 import { api } from "./api";
 import { requester } from "./requester";
-import type { EventProps } from "../interfaces/props/EventProps";
+import type { EventProps } from "../interfaces/props/events/EventProps";
 import type { EventModel } from "../interfaces/models/EventModel";
 import { httpMethods, serviceNames } from "../utils/constants/global";
 import { handleServiceError } from "../utils/helpers/errorHandler";

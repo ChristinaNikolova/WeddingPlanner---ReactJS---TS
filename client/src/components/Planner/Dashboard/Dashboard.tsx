@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Bottom from "../../shared/Images/Bottom/Bottom";
-import type { PlannerProps } from "../../../interfaces/props/PlannerProps";
+import type { PlannerProps } from "../../../interfaces/props/planners/PlannerProps";
 import * as plannersService from "../../../services/planners";
 import * as constants from "../../../utils/constants/images";
 import styles from "./Dashboard.module.css";

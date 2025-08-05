@@ -1,4 +1,4 @@
-import type { ErrorProps } from "./shared/Errors/ErrorProps";
+import type { ErrorProps } from "../shared/Errors/ErrorProps";
 
 export interface EventProps {
   id: string;

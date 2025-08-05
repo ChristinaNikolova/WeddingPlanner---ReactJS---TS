@@ -4,7 +4,7 @@ import CreateEvent from "../Create/CreateEvent";
 import SingleEvent from "../Single/SingleEvent";
 import UpdateEvent from "../Update/UpdateEvent";
 import AddButton from "../../shared/Buttons/Add/AddButton";
-import type { EventProps } from "../../../interfaces/props/EventProps";
+import type { EventProps } from "../../../interfaces/props/events/EventProps";
 import * as eventsService from "../../../services/events";
 import { scrollToTop } from "../../../utils/helpers/form";
 import { addButtonTexts } from "../../../utils/constants/global";

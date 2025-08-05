@@ -1,10 +1,8 @@
 import type { SubtaskModel } from "../../models/SubtaskModel";
-import type { BaseForm } from "../costs/BaseForm";
+import type { BaseFormProps } from "../shared/Forms/BaseFormProps";
 
-export interface FormSubtaskProps extends BaseForm, SubtaskModel {
-  onSubmitHandler: (
-    e: React.FormEvent<HTMLFormElement>,
-    subtask: SubtaskModel
-  ) => void;
+export interface FormSubtaskProps
+  extends BaseFormProps<SubtaskModel>,
+    SubtaskModel {
   formCanceled?: boolean;
 }

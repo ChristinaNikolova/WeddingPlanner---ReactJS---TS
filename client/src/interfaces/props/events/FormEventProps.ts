@@ -1,6 +1,4 @@
 import type { EventModel } from "../../models/EventModel";
-import type { BaseForm } from "../costs/BaseForm";
+import type { BaseFormProps } from "../shared/Forms/BaseFormProps";
 
-export interface FormEventProps extends BaseForm, EventModel {
-  onSubmitHandler: (event: EventModel) => void;
-}
+export interface FormEventProps extends BaseFormProps<EventModel>, EventModel {}

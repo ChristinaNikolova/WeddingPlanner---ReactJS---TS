@@ -1,7 +1,7 @@
 import { api } from "./api";
 import { requester } from "./requester";
 import type { ArticleProps } from "../interfaces/props/articles/ArticleProps";
-import type { CostProps } from "../interfaces/props/CostProps";
+import type { CostProps } from "../interfaces/props/costs/CostProps";
 import type { CostModel } from "../interfaces/models/CostModel";
 import { httpMethods, serviceNames } from "../utils/constants/global";
 import { handleServiceError } from "../utils/helpers/errorHandler";

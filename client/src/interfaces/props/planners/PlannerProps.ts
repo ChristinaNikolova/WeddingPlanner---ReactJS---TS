@@ -1,4 +1,4 @@
-import type { ErrorProps } from "./shared/Errors/ErrorProps";
+import type { ErrorProps } from "../shared/Errors/ErrorProps";
 
 //todo extends PlannerViewModel
 export interface PlannerProps {

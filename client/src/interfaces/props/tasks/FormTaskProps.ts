@@ -1,10 +1,6 @@
 import type { TaskModel } from "../../models/TaskModel";
-import type { BaseForm } from "../costs/BaseForm";
+import type { BaseFormProps } from "../shared/Forms/BaseFormProps";
 
-export interface FormTaskProps extends BaseForm, TaskModel {
-  onSubmitHandler: (
-    e: React.FormEvent<HTMLFormElement>,
-    task: TaskModel
-  ) => void;
+export interface FormTaskProps extends BaseFormProps<TaskModel>, TaskModel {
   formCanceled?: boolean;
 }
