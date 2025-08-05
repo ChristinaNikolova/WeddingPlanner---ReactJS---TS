@@ -137,7 +137,7 @@ const ArticlesAll = ({ pathToImage }: { pathToImage: string }) => {
         selectedCategory={selectedCategory.name}
       />
       <Pagination
-        currentPage={currentPage}
+        currentPage={Number(currentPage)}
         pagesCount={pagesCount}
         selectedCategory={selectedCategory}
         onClickHandler={onPaginationHandler}

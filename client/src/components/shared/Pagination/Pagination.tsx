@@ -3,7 +3,6 @@ import type { PaginationProps } from "../../../interfaces/props/shared/Paginatio
 import { directions } from "../../../utils/constants/global";
 import styles from "./Pagination.module.css";
 
-// todo fix Number ()///
 const Pagination = ({
   currentPage,
   pagesCount,
@@ -12,18 +11,16 @@ const Pagination = ({
 }: PaginationProps) => {
   return (
     <div className={styles["pagination-wrapper"]}>
-      {Number(currentPage) !== 1 && (
+      {currentPage !== 1 && (
         <Link
           onClick={() => onClickHandler(directions.PREV)}
           className={styles["pagination"]}
-          to={`/blog?page=${Number(currentPage) - 1}&category=${
-            selectedCategory.name
-          }`}
+          to={`/blog?page=${currentPage - 1}&category=${selectedCategory.name}`}
         >
           Newer posts
         </Link>
       )}
-      {Number(currentPage) !== pagesCount && (
+      {currentPage !== pagesCount && (
         <Link
           onClick={() => onClickHandler(directions.NEXT)}
           className={styles["pagination"]}

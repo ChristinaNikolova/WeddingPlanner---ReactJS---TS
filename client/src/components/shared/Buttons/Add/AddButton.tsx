@@ -10,7 +10,7 @@ const AddButton = ({
     return [...classNames, "form-icon-wrapper"].join(" ");
   };
 
-  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+  const handleClick = (event: React.MouseEvent<HTMLElement>): void => {
     if (isEmptyString) {
       (onShowFormHandler as (noteId: string) => void)("");
     } else {

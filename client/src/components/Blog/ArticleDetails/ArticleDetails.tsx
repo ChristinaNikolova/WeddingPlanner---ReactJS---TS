@@ -51,7 +51,6 @@ const ArticleDetails = () => {
       .catch((err) => console.error(err));
   };
 
-  // todo try catsch ot then. catch
   const like = (): void => {
     articlesService
       .like(id!)

@@ -23,7 +23,7 @@ const UpdatePlanner = () => {
 
   useEffect(() => {}, [serverError]);
 
-  const submitHandler = (plannerInput: PlannerModel) => {
+  const submitHandler = (plannerInput: PlannerModel): void => {
     plannersService
       .update(id!, plannerInput, planner!.brideId, planner!.groomId)
       .then((data) => {

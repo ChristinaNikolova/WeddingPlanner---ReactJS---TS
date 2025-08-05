@@ -50,7 +50,7 @@ const SubtasksAll = ({
       .catch((err) => console.error(err));
   };
 
-  const onCancelFormHelperHandler = () => {
+  const onCancelFormHelperHandler = ():void => {
     setSubtaskId("");
   };
 
