@@ -1,29 +1,13 @@
-import { useEffect, useState, type ReactNode } from "react";
+import { useEffect, useState } from "react";
 import ServerError from "../../../shared/Errors/ServerError/ServerError";
 import ClientError from "../../../shared/Errors/ClientError/ClientError";
 import Input from "../../../shared/Tags/Input/Input";
 import TextArea from "../../../shared/Tags/TextArea/TextArea";
+import type { FormTaskProps } from "../../../../interfaces/props/tasks/FormTaskProps";
+import type { TaskModel } from "../../../../interfaces/models/TaskModel";
 import * as validator from "../../../../utils/validators/task";
 import * as helpers from "../../../../utils/helpers/form";
-import {
-  formNames,
-  displayStyles,
-  type FormName,
-} from "../../../../utils/constants/global";
-import type { ErrorProps } from "../../../../interfaces/props/shared/Errors/ErrorProps";
-
-interface FormTaskProps {
-  title: string;
-  description: string;
-  formName: FormName;
-  serverError: ErrorProps[];
-  children: ReactNode;
-  // todo any
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  onSubmitHandler: (e: any, title: string, description: string) => void;
-  checkIsDisabled: (isDisabled: boolean) => void;
-  formCanceled?: boolean;
-}
+import { formNames, displayStyles } from "../../../../utils/constants/global";
 
 const FormTask = ({
   title,
@@ -35,15 +19,12 @@ const FormTask = ({
   checkIsDisabled,
   formCanceled,
 }: FormTaskProps) => {
-  // todo add type here
-  const [values, setValues] = useState({
-    title: title,
-    description: description,
+  const [values, setValues] = useState<TaskModel>({
+    title,
+    description,
   });
-
   const [titleError, setTitleError] = useState<string>("");
   const [descriptionError, setDescriptionError] = useState<string>("");
-  // todo add type here
   const [currentStyle, setCurrentStyle] = useState<string>(displayStyles.NONE);
 
   useEffect(() => {
@@ -67,9 +48,9 @@ const FormTask = ({
     checkDisabled();
   }, [values, titleError, descriptionError]);
 
-  // todo any
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const changeHandler = (e: any): void => {
+  const changeHandler = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ): void => {
     setValues((state) => ({
       ...state,
       [e.target.name]: e.target.value,
@@ -89,12 +70,10 @@ const FormTask = ({
       titleError,
       descriptionError,
     ]);
-    checkIsDisabled(isDisabled);
+    checkIsDisabled!(isDisabled);
   };
 
-  // todo any
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const onSubmitHelperHandler = (e: any): void => {
+  const onSubmitHelperHandler = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
 
     setTitleError(validator.validTitle(values.title));
@@ -104,7 +83,12 @@ const FormTask = ({
       return;
     }
 
-    onSubmitHandler(e, values.title, values.description);
+    const task = {
+      title: values.title,
+      description: values.description,
+    };
+
+    onSubmitHandler(e, task);
   };
 
   return (

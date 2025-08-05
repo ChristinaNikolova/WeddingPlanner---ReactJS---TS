@@ -1,6 +1,7 @@
 import { api } from "./api";
 import { requester } from "./requester";
-import type { TaskProps } from "../interfaces/props/TaskProps";
+import type { TaskProps } from "../interfaces/props/tasks/TaskProps";
+import type { TaskModel } from "../interfaces/models/TaskModel";
 import { httpMethods, serviceNames } from "../utils/constants/global";
 import { handleServiceError } from "../utils/helpers/errorHandler";
 
@@ -16,10 +17,10 @@ export const all = async (plannerId: string): Promise<TaskProps[]> => {
   }
 };
 
+// todo timespan??
 export const create = async (
   plannerId: string,
-  title: string,
-  description: string,
+  task: TaskModel,
   timespan: string
 ): Promise<TaskProps> => {
   try {
@@ -27,8 +28,7 @@ export const create = async (
       `${api.public.tasks}/${plannerId}`,
       httpMethods.POST,
       {
-        title,
-        description,
+        ...task,
         timespan,
       }
     );
@@ -67,16 +67,14 @@ export const getById = async (
 
 export const update = async (
   id: string,
-  title: string,
-  description: string
+  task: TaskModel
 ): Promise<TaskProps> => {
   try {
     const response = await requester(
       `${api.public.tasks}/${id}`,
       httpMethods.PUT,
       {
-        title,
-        description,
+        ...task,
       }
     );
     return response.json();

@@ -1,20 +1,11 @@
 import { useState, useEffect } from "react";
 import FormTask from "../Form/FormTask";
 import FormButton from "../../../shared/Buttons/Form/FormButton";
+import type { ErrorProps } from "../../../../interfaces/props/shared/Errors/ErrorProps";
+import type { TaskModel } from "../../../../interfaces/models/TaskModel";
+import type { CreateTaskProps } from "../../../../interfaces/props/tasks/CreateTaskProps";
 import * as tasksService from "../../../../services/tasks";
 import { formNames } from "../../../../utils/constants/global";
-import type { ErrorProps } from "../../../../interfaces/props/shared/Errors/ErrorProps";
-
-interface CreateTaskProps {
-  plannerId: string;
-  timespan: string;
-  // todo any
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  onCancelFormHandler: (e: any) => void;
-  // todo any
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  finish: (e: any) => void;
-}
 
 const CreateTask = ({
   plannerId,
@@ -30,14 +21,11 @@ const CreateTask = ({
   useEffect(() => {}, [serverError]);
 
   const onSubmitHandler = (
-    // todo any
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    e: any,
-    title: string,
-    description: string
+    e: React.FormEvent<HTMLFormElement>,
+    taskInput: TaskModel
   ): void => {
     tasksService
-      .create(plannerId, title, description, timespan)
+      .create(plannerId, taskInput, timespan)
       .then((data) => {
         if (data.message) {
           setServerError(data.message);
@@ -50,14 +38,12 @@ const CreateTask = ({
       .catch((err) => console.error(err));
   };
 
-  const checkIsDisabled = (disable: boolean): void =>{
+  const checkIsDisabled = (disable: boolean): void => {
     setFormCanceled(false);
     setIsDisabled(!!disable);
-  }
+  };
 
-  // todo any
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const onCancelForm = (e: any): void => {
+  const onCancelForm = (e: React.MouseEvent<HTMLButtonElement>): void => {
     setFormCanceled(true);
     setServerError([]);
     onCancelFormHandler(e);

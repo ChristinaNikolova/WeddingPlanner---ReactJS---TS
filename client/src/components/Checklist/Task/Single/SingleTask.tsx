@@ -1,22 +1,9 @@
-import type { ReactNode } from "react";
+import type { SingleTaskProps } from "../../../../interfaces/props/tasks/SingleTaskProps";
 import { displayStyles, tagNames } from "../../../../utils/constants/global";
 import { toggleWithTargetContent } from "../../../../utils/helpers/dropdown";
 import styles from "./SingleTask.module.css";
 
-interface SingleTaskProps {
-  // todo string/number
-  index: number;
-  taskId: string;
-  id: string;
-  title: string;
-  description: string;
-  progress: number;
-  target: number;
-  children: ReactNode;
-  onEditHandler: (id: string, index: number) => void;
-  onDeleteHandler: (id: string) => void;
-}
-
+// todo string/number
 const SingleTask = ({
   index,
   taskId,
@@ -29,14 +16,17 @@ const SingleTask = ({
   onEditHandler,
   onDeleteHandler,
 }: SingleTaskProps) => {
-  // todo any
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const onMouseEnterHandler = (e: any): void => {
-    if (e.target.nodeName !== tagNames.H4) {
+  const onMouseEnterHandler = (
+    e: React.MouseEvent<HTMLHeadingElement>
+  ): void => {
+    const target = e.target as HTMLElement;
+
+    if (target.nodeName !== tagNames.H4) {
       return;
     }
 
-    e.target.children[0].style.display = displayStyles.INLINE_BLOCK;
+    (target.children[0] as HTMLElement).style.display =
+      displayStyles.INLINE_BLOCK;
   };
 
   const onMouseLeaveHandler = (): void => {
@@ -47,12 +37,10 @@ const SingleTask = ({
     });
   };
 
-  // todo any
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const onShowContent = (e: any): void => {
-    const targetIcon = e.target;
-    const targetElement =
-      targetIcon.parentElement.parentElement.parentElement.nextSibling;
+  const onShowContent = (e: React.MouseEvent<HTMLElement>): void => {
+    const targetIcon = e.target as HTMLElement;
+    const targetElement = targetIcon?.parentElement?.parentElement
+      ?.parentElement?.nextSibling as HTMLElement;
     toggleWithTargetContent(targetElement, targetIcon);
   };
 

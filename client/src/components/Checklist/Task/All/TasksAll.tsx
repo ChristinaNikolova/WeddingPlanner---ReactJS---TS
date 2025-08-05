@@ -5,6 +5,7 @@ import CreateTask from "../Create/CreateTask";
 import UpdateTask from "../Update/UpdateTask";
 import AddButton from "../../../shared/Buttons/Add/AddButton";
 import SubtasksAll from "../../Subtask/All/SubtasksAll";
+import type { TaskProps } from "../../../../interfaces/props/tasks/TaskProps";
 import {
   timespans,
   displayStyles,
@@ -13,11 +14,9 @@ import {
 import { cancelForm } from "../../../../utils/helpers/form";
 import * as tasksService from "../../../../services/tasks";
 import styles from "./TasksAll.module.css";
-import type { TaskProps } from "../../../../interfaces/props/TaskProps";
 
 const ChecklistAll = () => {
   const { id: plannerId } = useParams();
-  // todo check this
   const tasksAllRef = useRef<HTMLElement | null>(null);
 
   const [tasks, setTasks] = useState<TaskProps[]>([]);
@@ -35,21 +34,21 @@ const ChecklistAll = () => {
     }
   }, []);
 
-  // todo any
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const onShowTaskFormHandler = (e: any): void => {
-    const targetFormElement = e.target.parentElement.parentElement.nextSibling;
+  const onShowTaskFormHandler = (e: React.MouseEvent<HTMLElement>): void => {
+    const target = e.target as HTMLElement;
+    const targetFormElement = target.parentElement?.parentElement
+      ?.nextSibling as HTMLElement;
     targetFormElement.style.display = displayStyles.FLEX;
 
-    const timeSpanValue =
-      targetFormElement.previousSibling.children[0].innerText.toLowerCase();
+    const timeSpanValue = (
+      (targetFormElement?.previousSibling as HTMLElement)
+        ?.children[0] as HTMLElement
+    ).innerText.toLowerCase();
     setTimespan(timeSpanValue);
   };
 
-  // todo any
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const onCancelFormHandler = (e: any): void => {
-    cancelForm(e.target);
+  const onCancelFormHandler = (e: React.SyntheticEvent<HTMLElement>): void => {
+    cancelForm(e.target as HTMLElement);
     setTaskId("");
     setCurrentIndex("");
   };
@@ -73,9 +72,7 @@ const ChecklistAll = () => {
       .catch((err) => console.error(err));
   };
 
-  // todo any
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const finish = (e: any): void => {
+  const finish = (e: React.FormEvent<HTMLFormElement>): void => {
     onCancelFormHandler(e);
     loadTasks();
   };

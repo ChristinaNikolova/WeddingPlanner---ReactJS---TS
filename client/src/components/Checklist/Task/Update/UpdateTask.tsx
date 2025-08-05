@@ -1,19 +1,12 @@
 import { useState, useEffect } from "react";
 import FormTask from "../Form/FormTask";
 import FormButton from "../../../shared/Buttons/Form/FormButton";
+import type { ErrorProps } from "../../../../interfaces/props/shared/Errors/ErrorProps";
+import type { TaskProps } from "../../../../interfaces/props/tasks/TaskProps";
+import type { UpdateTaskProps } from "../../../../interfaces/props/tasks/UpdateTaskProps";
+import type { TaskModel } from "../../../../interfaces/models/TaskModel";
 import * as tasksService from "../../../../services/tasks";
 import { formNames } from "../../../../utils/constants/global";
-import type { ErrorProps } from "../../../../interfaces/props/shared/Errors/ErrorProps";
-import type { TaskProps } from "../../../../interfaces/props/TaskProps";
-
-interface UpdateTaskProps {
-  plannerId: string;
-  taskId: string;
-  onCancelFormHandler: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  // todo any
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  finish: (e: any) => void;
-}
 
 const UpdateTask = ({
   plannerId,
@@ -34,16 +27,13 @@ const UpdateTask = ({
   }, []);
 
   useEffect(() => {}, [serverError]);
-
+  // todo taskInput
   const onSubmitHandler = (
-    // todo any
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    e: any,
-    title: string,
-    description: string
+    e: React.FormEvent<HTMLFormElement>,
+    taskInput: TaskModel
   ): void => {
     tasksService
-      .update(taskId, title, description)
+      .update(taskId, taskInput)
       .then((data) => {
         if (data.message) {
           setServerError(data.message);
