@@ -3,7 +3,6 @@ import { displayStyles, tagNames } from "../../../../utils/constants/global";
 import { toggleWithTargetContent } from "../../../../utils/helpers/dropdown";
 import styles from "./SingleTask.module.css";
 
-// todo string/number
 const SingleTask = ({
   index,
   taskId,

@@ -14,7 +14,6 @@ import ArticlesAllSearch from "../ArticlesAllSearch/ArticlesAllSearch";
 import ArticlesList from "../ArticlesList/ArticlesList";
 import type { ArticleDetailsProps } from "../../../interfaces/props/articles/ArticleDetailsProps";
 
-// todo check return type everywhere
 // todo test pagination + search + categories
 const ArticlesAll = ({ pathToImage }: { pathToImage: string }) => {
   const [searchParams] = useSearchParams();
