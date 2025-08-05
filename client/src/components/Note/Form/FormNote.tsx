@@ -42,7 +42,7 @@ const FormNote = ({
 
   const checkDisabled = (): void => {
     const isDisabled = helpers.isButtonDisabled(values, [descriptionError]);
-    checkIsDisabled(isDisabled);
+    checkIsDisabled!(isDisabled);
   };
 
   const onSubmitHelperHandler = (e: React.FormEvent<HTMLFormElement>): void => {

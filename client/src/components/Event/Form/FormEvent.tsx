@@ -81,7 +81,7 @@ const FormEvent = ({
       startTimeError,
       endTimeError,
     ]);
-    checkIsDisabled(isDisabled);
+    checkIsDisabled!(isDisabled);
   };
 
   const onSubmitHelperHandler = (e: React.FormEvent<HTMLFormElement>): void => {
