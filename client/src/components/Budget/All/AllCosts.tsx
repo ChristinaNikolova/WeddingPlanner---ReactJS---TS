@@ -78,9 +78,9 @@ const AllCosts = () => {
       .catch((err) => console.error(err));
   };
 
-  const onEditHandler = (id: string, index: string): void => {
+  const onEditHandler = (id: string, index: number): void => {
     setCostId(id);
-    setCurrentIndex(index);
+    setCurrentIndex(index.toString());
   };
 
   const calculateActualCosts = (): string => {
@@ -166,7 +166,7 @@ const AllCosts = () => {
                   .map((cost) => (
                     <SingleCost
                       key={cost.id}
-                      index={index.toString()}
+                      index={index}
                       costId={costId}
                       id={cost.id}
                       title={cost.title}
