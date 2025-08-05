@@ -1,19 +1,20 @@
 import { api } from "./api";
 import { requester } from "./requester";
-import type { SubtaskProps } from "../interfaces/props/SubtaskProps";
+import type { SubtaskModel } from "../interfaces/models/SubtaskModel";
+import type { SubtaskProps } from "../interfaces/props/subtasks/SubtaskProps";
 import { httpMethods, serviceNames } from "../utils/constants/global";
 import { handleServiceError } from "../utils/helpers/errorHandler";
 
 export const create = async (
   taskId: string,
-  description: string
+  subtask: SubtaskModel
 ): Promise<SubtaskProps> => {
   try {
     const response = await requester(
       `${api.public.subtasks}/${taskId}`,
       httpMethods.POST,
       {
-        description,
+        ...subtask,
       }
     );
     return response.json();
@@ -66,13 +67,13 @@ export const getById = async (id: string): Promise<SubtaskProps> => {
 
 export const update = async (
   id: string,
-  description: string
+  subtask: SubtaskModel
 ): Promise<SubtaskProps> => {
   try {
     const response = await requester(
       `${api.public.subtasks}/${id}`,
       httpMethods.PUT,
-      { description }
+      { ...subtask }
     );
     return response.json();
   } catch (error) {
