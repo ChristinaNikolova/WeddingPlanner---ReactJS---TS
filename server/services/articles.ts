@@ -35,8 +35,6 @@ async function create(
   return {
     ...article.toObject(),
     id: article._id.toString(),
-    // todo ???
-    // category: article.category.toString(),
   };
 }
 
