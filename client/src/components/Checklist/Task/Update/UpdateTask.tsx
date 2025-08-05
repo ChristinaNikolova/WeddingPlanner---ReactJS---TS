@@ -27,7 +27,7 @@ const UpdateTask = ({
   }, []);
 
   useEffect(() => {}, [serverError]);
-  // todo taskInput
+
   const onSubmitHandler = (
     e: React.FormEvent<HTMLFormElement>,
     taskInput: TaskModel

@@ -5,6 +5,6 @@ export interface AddButtonProps {
   text: ButtonText;
   isEmptyString: boolean;
   onShowFormHandler:
-    | ((noteId: string) => void)
+    | ((id: string) => void)
     | ((event: React.MouseEvent<HTMLElement>) => void);
 }

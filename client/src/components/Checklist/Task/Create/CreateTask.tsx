@@ -22,10 +22,10 @@ const CreateTask = ({
 
   const onSubmitHandler = (
     e: React.FormEvent<HTMLFormElement>,
-    taskInput: TaskModel
+    inputTask: TaskModel
   ): void => {
     tasksService
-      .create(plannerId, taskInput, timespan)
+      .create(plannerId, inputTask, timespan)
       .then((data) => {
         if (data.message) {
           setServerError(data.message);

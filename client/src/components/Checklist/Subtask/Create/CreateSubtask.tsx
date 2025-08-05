@@ -21,10 +21,10 @@ const CreateSubtask = ({
 
   const onSubmitHandler = (
     e: React.FormEvent<HTMLFormElement>,
-    subtask: SubtaskModel
+    inputSubtask: SubtaskModel
   ): void => {
     subtasksService
-      .create(taskId, subtask)
+      .create(taskId, inputSubtask)
       .then((data) => {
         if (data.message) {
           setServerError(data.message);

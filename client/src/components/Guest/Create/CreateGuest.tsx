@@ -19,9 +19,9 @@ const CreateGuest = ({
 
   useEffect(() => {}, [serverError]);
 
-  const onSubmitHandler = (guestInput: GuestModel): void => {
+  const onSubmitHandler = (inputGuest: GuestModel): void => {
     guestsService
-      .create(plannerId, guestInput)
+      .create(plannerId, inputGuest)
       .then((data) => {
         if (data.message) {
           setServerError(data.message);

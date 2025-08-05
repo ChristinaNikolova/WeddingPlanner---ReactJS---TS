@@ -1,6 +1,5 @@
 import type { InputProps } from "../../../../interfaces/props/shared/Tags/InputProps";
 
-//todo check this checked={checked || false} => checked={checked ? checked : ""}
 const Input = ({
   name,
   type,
