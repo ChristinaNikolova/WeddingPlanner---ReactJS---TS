@@ -8,6 +8,7 @@ import type { NoteModel } from "../../../models/NoteModel";
 import type { PlannerModel } from "../../../models/PlannerModel";
 import type { SubtaskModel } from "../../../models/SubtaskModel";
 import type { TaskModel } from "../../../models/TaskModel";
+import type { ArticleModel } from "../../../models/ArticleModel";
 
 export interface BaseFormProps<
   T extends
@@ -18,9 +19,10 @@ export interface BaseFormProps<
     | PlannerModel
     | SubtaskModel
     | TaskModel
+    | ArticleModel
 > {
   formName?: FormName;
-  image?: string;
+  imagePage?: string;
   serverError: ErrorProps[];
   children?: ReactNode;
   checkIsDisabled?: (isDisabled: boolean) => void;

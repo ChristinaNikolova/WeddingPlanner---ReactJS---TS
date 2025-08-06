@@ -1,10 +1,4 @@
 import { useState, useEffect } from "react";
-
-import { category as categoryModel } from "../../../../utils/constants/model";
-import * as helpers from "../../../../utils/helpers/form";
-import * as validator from "../../../../utils/validators/article";
-import * as categoriesService from "../../../../services/categories";
-
 import Input from "../../../shared/Tags/Input/Input";
 import TextArea from "../../../shared/Tags/TextArea/TextArea";
 import Select from "../../../shared/Tags/Select/Select";
@@ -14,6 +8,10 @@ import FormButton from "../../../shared/Buttons/Form/FormButton";
 import type { FormArticleProps } from "../../../../interfaces/props/articles/FormArticleProps";
 import type { CategoryProps } from "../../../../interfaces/props/categories/CategoryProps";
 import type { ArticleModel } from "../../../../interfaces/models/ArticleModel";
+import { category as categoryModel } from "../../../../utils/constants/model";
+import * as helpers from "../../../../utils/helpers/form";
+import * as validator from "../../../../utils/validators/article";
+import * as categoriesService from "../../../../services/categories";
 
 const FormArticle = ({
   formName,
@@ -36,7 +34,6 @@ const FormArticle = ({
         ? category.id
         : categoryModel.DEFAULT_CATEGORY_SELECTED_ID,
   });
-
   const [isDisabled, setIsDisabled] = useState<boolean>(true);
   const [categories, setCategories] = useState<CategoryProps[]>([]);
   const [titleError, setTitleError] = useState<string>("");
@@ -92,7 +89,7 @@ const FormArticle = ({
   };
 
   const validateCategory = (): void => {
-    setCategoryError(validator.validCategory(values.category!));
+    setCategoryError(validator.validCategory(values.category as string));
   };
 
   const checkDisabled = (): void => {
@@ -114,7 +111,7 @@ const FormArticle = ({
     setContentError(validator.validContent(values.content));
     setImageError(validator.validImage(values.image));
     setJumboImageError(validator.validImage(values.jumboImage));
-    setCategoryError(validator.validCategory(values.category!));
+    setCategoryError(validator.validCategory(values.category as string));
 
     if (
       titleError ||
@@ -133,6 +130,7 @@ const FormArticle = ({
       jumboImage: values.jumboImage,
       category: values.category,
     };
+
     onSubmitHandler(article);
   };
 
@@ -192,7 +190,7 @@ const FormArticle = ({
             <Select
               name="category"
               label="Category"
-              value={values.category}
+              value={values.category as string}
               onChangeHandler={changeHandler}
               onBlurHandler={validateCategory}
               categories={categories}
@@ -202,7 +200,7 @@ const FormArticle = ({
           <FormButton
             formName={formName}
             isDisabled={isDisabled}
-            onCancelFormHandler={onCancelFormHandler}
+            onCancelFormHandler={onCancelFormHandler!}
           />
         </form>
       </div>

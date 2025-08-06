@@ -23,7 +23,6 @@ const FormCategory = ({
     name,
     image,
   });
-
   const [isDisabled, setIsDisabled] = useState<boolean>(true);
   const [nameError, setNameError] = useState<string>("");
   const [imageError, setImageError] = useState<string>("");

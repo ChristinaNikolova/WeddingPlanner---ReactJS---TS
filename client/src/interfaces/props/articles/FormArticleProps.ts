@@ -1,11 +1,6 @@
 import type { ArticleModel } from "../../models/ArticleModel";
-import type { CategoryProps } from "../categories/CategoryProps";
-import type { FormProps } from "../shared/Forms/FormProps";
+import type { BaseFormProps } from "../shared/Forms/BaseFormProps";
 
-export interface FormArticleProps extends FormProps {
-  title: string;
-  content: string;
-  jumboImage: string;
-  category: CategoryProps | string;
-  onSubmitHandler: (article: ArticleModel) => void;
-}
+export interface FormArticleProps
+  extends BaseFormProps<ArticleModel>,
+    ArticleModel {}

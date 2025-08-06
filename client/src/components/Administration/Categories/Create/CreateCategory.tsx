@@ -21,7 +21,6 @@ const CreateCategory = () => {
           setServerError(data.message);
           return;
         }
-
         navigate("/administration/categories");
       })
       .catch((err) => console.error(err));

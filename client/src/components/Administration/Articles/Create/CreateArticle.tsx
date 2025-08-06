@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import FormArticle from "../Form/FormArticle";
-import * as articlesService from "../../../../services/articles";
-import { formNames } from "../../../../utils/constants/global";
 import type { ErrorProps } from "../../../../interfaces/props/shared/Errors/ErrorProps";
 import type { ArticleModel } from "../../../../interfaces/models/ArticleModel";
+import * as articlesService from "../../../../services/articles";
+import { formNames } from "../../../../utils/constants/global";
 
 const CreateArticle = () => {
   const formName = formNames.CREATE;

@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router";
 import FormArticle from "../Form/FormArticle";
-import * as articlesService from "../../../../services/articles";
-import { formNames } from "../../../../utils/constants/global";
 import type { ErrorProps } from "../../../../interfaces/props/shared/Errors/ErrorProps";
 import type { ArticleDetailsProps } from "../../../../interfaces/props/articles/ArticleDetailsProps";
 import type { ArticleModel } from "../../../../interfaces/models/ArticleModel";
+import * as articlesService from "../../../../services/articles";
+import { formNames } from "../../../../utils/constants/global";
 
 const UpdateArticle = () => {
   const formName = formNames.UPDATE;
@@ -34,7 +34,6 @@ const UpdateArticle = () => {
           setServerError(data.message);
           return;
         }
-
         onCancelFormHandler();
       })
       .catch((err) => console.error(err));
