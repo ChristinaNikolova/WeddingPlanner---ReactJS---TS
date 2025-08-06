@@ -13,6 +13,7 @@ const SingleCost = ({
 }: SingleCostProps) => {
   const onMouseEnterHandler = (e: React.MouseEvent<HTMLElement>): void => {
     const target = e.target as HTMLElement;
+
     if (target.nodeName !== tagNames.P) {
       return;
     }

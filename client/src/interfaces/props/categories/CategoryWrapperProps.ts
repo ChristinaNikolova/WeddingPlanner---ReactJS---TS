@@ -1,5 +1,5 @@
-import type { CategoryBaseProps } from "./CategoryBaseProps";
+import type { CategoryModel } from "../../models/CategoryModel";
 
-export interface CategoryWrapperProps extends CategoryBaseProps {
+export interface CategoryWrapperProps extends CategoryModel {
   categoryCosts: string;
 }

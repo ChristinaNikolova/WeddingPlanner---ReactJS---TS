@@ -1,9 +1,6 @@
 import { lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 
-import { AuthProvider } from "./contexts/AuthProvider";
-import * as constants from "./utils/constants/images";
-
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import Home from "./components/Home/Home";
@@ -29,6 +26,8 @@ import AdminRoute from "./components/common/AdminRoute";
 import GuestRoute from "./components/common/GuestRoute";
 import PrivateRoute from "./components/common/PrivateRoute";
 
+import { AuthProvider } from "./contexts/AuthProvider";
+import * as constants from "./utils/constants/images";
 import "./App.css";
 
 const AdminDashboard = lazy(

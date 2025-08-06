@@ -1,7 +1,4 @@
-import type { ErrorProps } from "../shared/Errors/ErrorProps";
-import type { CategoryBaseProps } from "./CategoryBaseProps";
+import type { BaseModel } from "../../models/BaseModel";
+import type { CategoryModel } from "../../models/CategoryModel";
 
-export interface CategoryProps extends CategoryBaseProps {
-  id: string;
-  message?: ErrorProps[];
-}
+export interface CategoryProps extends BaseModel, CategoryModel {}

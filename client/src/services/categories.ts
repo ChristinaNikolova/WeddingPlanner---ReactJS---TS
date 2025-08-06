@@ -48,6 +48,7 @@ export const deleteById = async (
     if (response.status !== 204) {
       return response.json();
     }
+
     return undefined;
   } catch (error) {
     return handleServiceError(error, serviceNames.CATEGORIES);

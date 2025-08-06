@@ -14,7 +14,6 @@ export const toggleWithTargetContent = (
   targetIcon: HTMLElement
 ): void => {
   const isHidden = targetElement.style.display === displayStyles.NONE;
-
   targetElement.style.display = isHidden
     ? displayStyles.BLOCK
     : displayStyles.NONE;

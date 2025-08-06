@@ -1,10 +1,7 @@
-import type { ErrorProps } from "../shared/Errors/ErrorProps";
+import type { ArticleModel } from "../../models/ArticleModel";
+import type { BaseModel } from "../../models/BaseModel";
 
-export interface ArticleProps {
-  id: string;
-  title: string;
+export interface ArticleProps extends BaseModel, ArticleModel {
   shortContent: string;
-  image: string;
   createdAt?: string;
-  message?: ErrorProps[];
 }
