@@ -1,5 +1,6 @@
 import ArticleSingle from "../ArticleSingle/ArticleSingle";
 import type { ArticlesListProps } from "../../../interfaces/props/articles/ArticleListProps";
+import type { CategoryProps } from "../../../interfaces/props/categories/CategoryProps";
 import styles from "./ArticlesList.module.css";
 
 const ArticlesList = ({
@@ -20,7 +21,7 @@ const ArticlesList = ({
               image={a.image}
               shortContent={a.shortContent}
               createdAt={a.createdAt}
-              categoryName={a.category.name}
+              categoryName={(a.category as CategoryProps).name}
               currentPage={currentPage}
               selectedCategory={selectedCategory}
               jumboImage=""

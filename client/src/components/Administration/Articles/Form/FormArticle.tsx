@@ -77,7 +77,7 @@ const FormArticle = ({
   };
 
   const validateContent = (): void => {
-    setContentError(validator.validContent(values.content));
+    setContentError(validator.validContent(values.content as string));
   };
 
   const validateImage = (): void => {
@@ -108,7 +108,7 @@ const FormArticle = ({
     e.preventDefault();
 
     setTitleError(validator.validTitle(values.title));
-    setContentError(validator.validContent(values.content));
+    setContentError(validator.validContent(values.content as string));
     setImageError(validator.validImage(values.image));
     setJumboImageError(validator.validImage(values.jumboImage));
     setCategoryError(validator.validCategory(values.category as string));
@@ -157,7 +157,7 @@ const FormArticle = ({
             <TextArea
               name="content"
               label="Content"
-              value={values.content}
+              value={values.content as string}
               rows={16}
               onChangeHandler={changeHandler}
               onBlurHandler={validateContent}
