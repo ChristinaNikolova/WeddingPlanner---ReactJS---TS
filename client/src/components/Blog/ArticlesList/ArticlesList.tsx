@@ -23,6 +23,9 @@ const ArticlesList = ({
               categoryName={a.category.name}
               currentPage={currentPage}
               selectedCategory={selectedCategory}
+              jumboImage=""
+              content=""
+              category=""
             />
           ))}
         </div>

@@ -12,7 +12,7 @@ const ArticleDetails = () => {
   const { userId, isAdmin } = useAuth();
   const { id } = useParams();
   const navigate = useNavigate();
-  
+
   const location = useLocation();
   const { state } = location;
   const page = state?.page ? state.page : "1";
@@ -32,7 +32,6 @@ const ArticleDetails = () => {
       .then((res) => {
         setArticle(res);
         setIsLiked(setIsLikedHelper(res.likes));
-
         if (hasToScroll) {
           scrollToTop();
           setHasToScroll(false);

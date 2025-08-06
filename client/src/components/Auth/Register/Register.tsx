@@ -77,7 +77,6 @@ const Register = () => {
           setServerError(data.message!);
           return;
         }
-
         userLogin(data);
         navigate("/");
       })

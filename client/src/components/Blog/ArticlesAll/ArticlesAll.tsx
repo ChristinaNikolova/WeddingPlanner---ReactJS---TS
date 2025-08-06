@@ -18,7 +18,7 @@ const ArticlesAll = ({ pathToImage }: { pathToImage: string }) => {
 
   const location = useLocation();
   const { state } = location;
-  
+
   const navigate = useNavigate();
 
   const [articles, setArticles] = useState<ArticleDetailsProps[]>([]);
@@ -44,12 +44,10 @@ const ArticlesAll = ({ pathToImage }: { pathToImage: string }) => {
         setCurrentPage(data.currentPage!);
         setPagesCount(data.pagesCount!);
         setIsSearched(false);
-
         if (hasToScroll) {
           scrollToTop();
           setHasToScroll(false);
         }
-
         if (hasToNavigate) {
           startPageHelper();
           setHasToNavigate(false);

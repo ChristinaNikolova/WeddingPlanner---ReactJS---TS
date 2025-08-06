@@ -50,7 +50,6 @@ const Login = () => {
           setServerError(data.message!);
           return;
         }
-
         userLogin(data);
         navigate("/");
       })
