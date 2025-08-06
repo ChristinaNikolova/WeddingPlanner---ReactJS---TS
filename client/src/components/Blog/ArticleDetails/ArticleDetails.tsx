@@ -3,6 +3,7 @@ import { useParams, useNavigate, Link, useLocation } from "react-router-dom";
 import Jumbotron from "../../shared/Jumbotron/Jumbotron";
 import LastThreeArticles from "../../shared/Blog/LastThreeArticles/LastThreeArticles";
 import type { ArticleDetailsProps } from "../../../interfaces/props/articles/ArticleDetailsProps";
+import type { CategoryProps } from "../../../interfaces/props/categories/CategoryProps";
 import { useAuth } from "../../../hooks/useAuth";
 import * as articlesService from "../../../services/articles";
 import { scrollToTop } from "../../../utils/helpers/form";
@@ -101,11 +102,11 @@ const ArticleDetails = () => {
               </span>
               <img
                 className="img"
-                src={article.category?.image}
-                alt={article.category?.name}
+                src={(article.category as CategoryProps)?.image}
+                alt={(article.category as CategoryProps)?.name}
                 loading="lazy"
               />
-              {article.category?.name}
+              {(article.category as CategoryProps)?.name}
             </li>
             <li className={styles["article-details-li"]}>
               <span className={styles["article-details-li-span"]}>Date:</span>
@@ -134,7 +135,7 @@ const ArticleDetails = () => {
           <p className={styles["article-details-bold-content"]}>
             {article.shortContent}
           </p>
-          {article.content?.map((el, i) => (
+          {(article.content as string[])?.map((el, i) => (
             <p key={i} className={styles["article-details-content-text"]}>
               {el}
             </p>

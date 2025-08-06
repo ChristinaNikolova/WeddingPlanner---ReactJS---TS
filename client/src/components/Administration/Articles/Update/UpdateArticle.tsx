@@ -58,7 +58,7 @@ const UpdateArticle = () => {
     <FormArticle
       formName={formName}
       title={article.title}
-      content={article.content.join(" ")}
+      content={(article.content as string[]).join(" ")}
       image={article.image}
       jumboImage={article.jumboImage}
       category={article.category}
