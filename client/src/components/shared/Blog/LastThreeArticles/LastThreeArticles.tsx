@@ -25,6 +25,9 @@ const LastThreeArticles = () => {
             title={article.title}
             shortContent={article.shortContent}
             image={article.image}
+            jumboImage=""
+            content=""
+            category=""
           />
         ))}
       </div>

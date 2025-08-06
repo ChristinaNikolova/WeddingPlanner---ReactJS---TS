@@ -12,6 +12,7 @@ import styles from "./GuestsAll.module.css";
 
 const GuestsAll = () => {
   const { id: plannerId } = useParams();
+
   const [guestId, setGuestId] = useState<string>("");
   const [guests, setGuests] = useState<GuestProps[]>([]);
   const [isHidden, setIsHidden] = useState<boolean>(true);

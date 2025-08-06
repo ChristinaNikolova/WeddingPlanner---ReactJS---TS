@@ -25,6 +25,8 @@ const FormGuest = ({
   onSubmitHandler,
   checkIsDisabled,
 }: FormGuestProps) => {
+  const formRef = useRef<HTMLDivElement | null>(null);
+
   const [values, setValues] = useState<GuestModel>({
     firstName,
     lastName,
@@ -38,7 +40,6 @@ const FormGuest = ({
   });
   const [firstNameError, setFirstNameError] = useState<string>("");
   const [lastNameError, setLastNameError] = useState<string>("");
-  const formRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     if (!formRef.current) return;

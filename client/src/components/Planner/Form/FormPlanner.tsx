@@ -205,7 +205,7 @@ const FormPlanner = ({
           <FormButton
             formName={formName}
             isDisabled={isDisabled}
-            onCancelFormHandler={onCancelFormHandler}
+            onCancelFormHandler={onCancelFormHandler!}
           />
         </form>
       </div>

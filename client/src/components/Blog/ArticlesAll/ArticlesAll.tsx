@@ -18,7 +18,7 @@ const ArticlesAll = ({ pathToImage }: { pathToImage: string }) => {
 
   const location = useLocation();
   const { state } = location;
-
+  
   const navigate = useNavigate();
 
   const [articles, setArticles] = useState<ArticleDetailsProps[]>([]);

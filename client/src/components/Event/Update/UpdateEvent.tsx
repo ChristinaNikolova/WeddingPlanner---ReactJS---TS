@@ -15,6 +15,7 @@ const UpdateEvent = ({
   finish,
 }: UpdateEventProps) => {
   const formName = formNames.UPDATE;
+
   const [serverError, setServerError] = useState<ErrorProps[]>([]);
   const [event, setEvent] = useState<EventProps | undefined>(undefined);
   const [isDisabled, setIsDisabled] = useState<boolean>(true);
@@ -55,9 +56,7 @@ const UpdateEvent = ({
   ) {
     return null;
   }
-  // todo test routes
-  // todo order files
-  // todo read me
+
   return (
     <FormEvent
       title={event.title}

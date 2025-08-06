@@ -8,6 +8,7 @@ const DetailsPlanner = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const plannerRef = useRef<HTMLTableSectionElement | null>(null);
+
   const [planner, setPlanner] = useState<PlannerProps | undefined>(undefined);
   const [isHovering, setIsHovering] = useState<boolean>(false);
 

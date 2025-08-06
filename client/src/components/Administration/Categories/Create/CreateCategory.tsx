@@ -9,6 +9,7 @@ import { formNames } from "../../../../utils/constants/global";
 const CreateCategory = () => {
   const formName = formNames.CREATE;
   const navigate = useNavigate();
+
   const [serverError, setServerError] = useState<ErrorProps[]>([]);
 
   useEffect(() => {}, [serverError]);

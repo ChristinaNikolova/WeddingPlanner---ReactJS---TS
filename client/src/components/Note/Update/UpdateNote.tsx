@@ -15,6 +15,7 @@ const UpdateNote = ({
   finish,
 }: UpdateNoteProps) => {
   const formName = formNames.UPDATE;
+
   const [serverError, setServerError] = useState<ErrorProps[]>([]);
   const [note, setNote] = useState<NoteProps | undefined>(undefined);
   const [isDisabled, setIsDisabled] = useState<boolean>(true);

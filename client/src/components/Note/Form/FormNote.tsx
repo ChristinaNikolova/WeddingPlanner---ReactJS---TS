@@ -15,6 +15,7 @@ const FormNote = ({
   checkIsDisabled,
 }: FormNoteProps) => {
   const formRef = useRef<HTMLDivElement | null>(null);
+
   const [values, setValues] = useState<NoteModel>({
     description,
   });

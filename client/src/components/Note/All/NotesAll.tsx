@@ -12,6 +12,7 @@ import styles from "./NotesAll.module.css";
 
 const NotesAll = () => {
   const { id: plannerId } = useParams();
+
   const [notes, setNotes] = useState<NoteProps[]>([]);
   const [noteId, setNoteId] = useState<string>("");
   const [isHidden, setIsHidden] = useState<boolean>(true);

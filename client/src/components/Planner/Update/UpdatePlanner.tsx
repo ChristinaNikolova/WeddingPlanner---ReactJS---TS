@@ -11,6 +11,7 @@ const UpdatePlanner = () => {
   const formName = formNames.UPDATE;
   const navigate = useNavigate();
   const { id } = useParams();
+
   const [planner, setPlanner] = useState<PlannerProps | undefined>(undefined);
   const [serverError, setServerError] = useState<ErrorProps[]>([]);
 

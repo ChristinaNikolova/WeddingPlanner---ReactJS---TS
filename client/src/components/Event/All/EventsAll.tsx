@@ -12,6 +12,7 @@ import styles from "./EventsAll.module.css";
 
 const EventsAll = () => {
   const { id: plannerId } = useParams();
+
   const [events, setEvents] = useState<EventProps[]>([]);
   const [eventId, setEventId] = useState<string>("");
   const [isHidden, setIsHidden] = useState<boolean>(true);

@@ -8,12 +8,11 @@ import * as articlesService from "../../../services/articles";
 import { scrollToTop } from "../../../utils/helpers/form";
 import styles from "./ArticleDetails.module.css";
 
-// fix read more article new when already read article!!!
 const ArticleDetails = () => {
   const { userId, isAdmin } = useAuth();
   const { id } = useParams();
   const navigate = useNavigate();
-
+  
   const location = useLocation();
   const { state } = location;
   const page = state?.page ? state.page : "1";

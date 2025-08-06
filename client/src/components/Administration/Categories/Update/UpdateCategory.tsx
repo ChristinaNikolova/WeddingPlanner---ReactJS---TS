@@ -11,6 +11,7 @@ const UpdateCategory = () => {
   const formName = formNames.UPDATE;
   const navigate = useNavigate();
   const { id } = useParams();
+
   const [category, setCategory] = useState<CategoryProps | undefined>(
     undefined
   );

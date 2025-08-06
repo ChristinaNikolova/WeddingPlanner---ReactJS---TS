@@ -15,6 +15,7 @@ const UpdateCost = ({
   finish,
 }: UpdateCostProps) => {
   const formName = formNames.UPDATE;
+
   const [serverError, setServerError] = useState<ErrorProps[]>([]);
   const [cost, setCost] = useState<CostProps | undefined>(undefined);
   const [isDisabled, setIsDisabled] = useState<boolean>(true);
