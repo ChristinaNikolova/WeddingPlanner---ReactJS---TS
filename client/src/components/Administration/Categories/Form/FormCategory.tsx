@@ -104,7 +104,7 @@ const FormCategory = ({
           <FormButton
             formName={formName}
             isDisabled={isDisabled}
-            onCancelFormHandler={onCancelFormHandler}
+            onCancelFormHandler={onCancelFormHandler!}
           />
         </form>
         <Bottom

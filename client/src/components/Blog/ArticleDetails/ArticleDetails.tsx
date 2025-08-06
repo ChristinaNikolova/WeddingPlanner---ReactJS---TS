@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import { useParams, useNavigate, Link, useLocation } from "react-router-dom";
 import Jumbotron from "../../shared/Jumbotron/Jumbotron";
 import LastThreeArticles from "../../shared/Blog/LastThreeArticles/LastThreeArticles";
+import type { ArticleDetailsProps } from "../../../interfaces/props/articles/ArticleDetailsProps";
 import { useAuth } from "../../../hooks/useAuth";
 import * as articlesService from "../../../services/articles";
 import { scrollToTop } from "../../../utils/helpers/form";
 import styles from "./ArticleDetails.module.css";
-import type { ArticleDetailsProps } from "../../../interfaces/props/articles/ArticleDetailsProps";
 
 // fix read more article new when already read article!!!
 const ArticleDetails = () => {

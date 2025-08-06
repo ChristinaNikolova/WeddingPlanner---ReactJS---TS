@@ -9,6 +9,7 @@ import type { PlannerModel } from "../../../models/PlannerModel";
 import type { SubtaskModel } from "../../../models/SubtaskModel";
 import type { TaskModel } from "../../../models/TaskModel";
 import type { ArticleModel } from "../../../models/ArticleModel";
+import type { CategoryModel } from "../../../models/CategoryModel";
 
 export interface BaseFormProps<
   T extends
@@ -20,9 +21,9 @@ export interface BaseFormProps<
     | SubtaskModel
     | TaskModel
     | ArticleModel
+    | CategoryModel
 > {
   formName?: FormName;
-  imagePage?: string;
   serverError: ErrorProps[];
   children?: ReactNode;
   checkIsDisabled?: (isDisabled: boolean) => void;

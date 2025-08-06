@@ -1,20 +1,17 @@
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
-
-import * as articlesService from "../../../services/articles";
-import { directions } from "../../../utils/constants/global";
-import { scrollToTop } from "../../../utils/helpers/form";
-
 import Jumbotron from "../../shared/Jumbotron/Jumbotron";
 import Pagination from "../../shared/Pagination/Pagination";
 import ArticlesAllCategoryDropDown from "../ArticlesAllCategoryDropDown/ArticlesAllCategoryDropDown";
-
-import styles from "./ArticlesAll.module.css";
 import ArticlesAllSearch from "../ArticlesAllSearch/ArticlesAllSearch";
 import ArticlesList from "../ArticlesList/ArticlesList";
 import type { ArticleDetailsProps } from "../../../interfaces/props/articles/ArticleDetailsProps";
+import type { CategoryProps } from "../../../interfaces/props/categories/CategoryProps";
+import * as articlesService from "../../../services/articles";
+import { directions } from "../../../utils/constants/global";
+import { scrollToTop } from "../../../utils/helpers/form";
+import styles from "./ArticlesAll.module.css";
 
-// todo test pagination + search + categories
 const ArticlesAll = ({ pathToImage }: { pathToImage: string }) => {
   const [searchParams] = useSearchParams();
   const page = searchParams?.get("page") ? searchParams.get("page") : "1";
@@ -25,10 +22,10 @@ const ArticlesAll = ({ pathToImage }: { pathToImage: string }) => {
   const navigate = useNavigate();
 
   const [articles, setArticles] = useState<ArticleDetailsProps[]>([]);
-  // todo add type here
-  const [selectedCategory, setSelectedCategory] = useState({
+  const [selectedCategory, setSelectedCategory] = useState<CategoryProps>({
     id: state?.category.id ? state.category.id : "default",
     name: state?.category.name ? state.category.name : "all",
+    image: "",
   });
   const [currentPage, setCurrentPage] = useState<string>(page!);
   const [pagesCount, setPagesCount] = useState<number>(1);
@@ -43,9 +40,9 @@ const ArticlesAll = ({ pathToImage }: { pathToImage: string }) => {
     articlesService
       .all(currentPage, selectedCategory.id, query)
       .then((data) => {
-        setArticles(data.articles);
-        setCurrentPage(data.currentPage);
-        setPagesCount(data.pagesCount);
+        setArticles(data.articles!);
+        setCurrentPage(data.currentPage!);
+        setPagesCount(data.pagesCount!);
         setIsSearched(false);
 
         if (hasToScroll) {
@@ -87,6 +84,7 @@ const ArticlesAll = ({ pathToImage }: { pathToImage: string }) => {
     setSelectedCategory({
       id: target.id,
       name: target.innerText,
+      image: "",
     });
     setHasToNavigate(true);
   };
@@ -96,6 +94,7 @@ const ArticlesAll = ({ pathToImage }: { pathToImage: string }) => {
     setSelectedCategory({
       id: "default",
       name: "all",
+      image: "",
     });
     setHasToNavigate(true);
   };

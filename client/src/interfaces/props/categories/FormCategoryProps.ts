@@ -1,11 +1,6 @@
 import type { CategoryModel } from "../../models/CategoryModel";
-import type { ErrorProps } from "../shared/Errors/ErrorProps";
-import type { FormButtonProps } from "../shared/Forms/FormButtonProps";
+import type { BaseFormProps } from "../shared/Forms/BaseFormProps";
 
-export interface FormCategoryProps extends FormButtonProps {
-  name: string;
-  onSubmitHandler: (category: CategoryModel) => void;
-  // todo extract
-  image: string;
-  serverError: ErrorProps[];
-}
+export interface FormCategoryProps
+  extends BaseFormProps<CategoryModel>,
+    CategoryModel {}
